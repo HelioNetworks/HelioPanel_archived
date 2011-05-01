@@ -9,5 +9,8 @@ class HomeController extends Controller {
     /**
      * Display welcome page
      */
-    function home() {}
+    function home() {
+
+        return $this->render('HelioNetworksHelioPanelBundle:Home:home.html.twig');
+    }
 }

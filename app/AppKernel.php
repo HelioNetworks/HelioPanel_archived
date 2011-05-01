@@ -18,6 +18,8 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new JMS\SecurityExtraBundle\JMSSecurityExtraBundle(),
             new Acme\DemoBundle\AcmeDemoBundle(),
+            new HelioNetworks\HelioPanelBundle\HelioNetworksHelioPanelBundle(),
+            new HelioNetworks\FileManagerBundle\HelioNetworksFileManagerBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
