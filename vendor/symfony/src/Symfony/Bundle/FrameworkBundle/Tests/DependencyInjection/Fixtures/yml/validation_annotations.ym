@@ -1,0 +1,7 @@
+framework:
+    secret: s3cr3t
+    validation:
+        enabled:     true
+        annotations:
+            namespaces:
+                app: Application\Validator\Constraints\
