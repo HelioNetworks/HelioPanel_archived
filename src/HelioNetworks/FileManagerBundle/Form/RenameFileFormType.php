@@ -6,18 +6,11 @@ use Symfony\Component\Form\FormBuilder;
 
 use Symfony\Component\Form\AbstractType;
 
-class RenameType extends AbstractType {
-
+class RenameFileFormType extends AbstractType
+{
     public function buildForm(FormBuilder $builder, array $options)
     {
         $builder->add('source');
         $builder->add('destination');
-    }
-
-    public function getDefaultOptions(array $options)
-    {
-        return array(
-            'data_class' => 'HelioNetworks\FileManagerBundle\Entity\Rename',
-        );
     }
 }
