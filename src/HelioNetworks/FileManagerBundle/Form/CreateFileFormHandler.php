@@ -1,6 +1,8 @@
 <?php
 namespace HelioNetworks\FileManagerBundle\Form;
 
+use Gaufrette\Filesystem\Filesystem;
+
 use Symfony\Component\HttpFoundation\Request;
 
 use Symfony\Component\Form\Form;
@@ -21,9 +23,8 @@ class CreateFileFormHandler
         return $this->form->getData()->filename;
     }
 
-    public function process()
+    public function process(Filesystem $filesystem)
     {
-        $handle = fopen($this->getFilename(), 'w');
-        fclose($handle);
+        $filesystem->write($this->getFilename(), '');
     }
 }
