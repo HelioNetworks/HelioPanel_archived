@@ -5,7 +5,7 @@ use Symfony\Component\HttpFoundation\Request;
 
 use Symfony\Component\Form\Form;
 
-class RenameFileFormHandle
+class RenameFileFormHandler
 {
     protected $form;
     protected $request;
@@ -16,8 +16,18 @@ class RenameFileFormHandle
         $this->request = $request;
     }
 
+    public function getSource()
+    {
+        return $this->form->getData()->source;
+    }
+
+    public function getDestination()
+    {
+        return $this->form->getData()->destination;
+    }
+
     public function process()
     {
-
+        rename($this->getSource(), $this->getDestination());
     }
 }

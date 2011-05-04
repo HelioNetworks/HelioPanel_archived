@@ -13,4 +13,11 @@ class RenameFileFormType extends AbstractType
         $builder->add('source');
         $builder->add('destination');
     }
+
+    public function getDefaultOptions(array $options)
+    {
+        return array(
+            'data_class' => 'HelioNetworks\FileManagerBundle\Form\RenameFile',
+        );
+    }
 }
