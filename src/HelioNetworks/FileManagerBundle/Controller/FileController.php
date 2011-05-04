@@ -2,6 +2,10 @@
 
 namespace HelioNetworks\FileManagerBundle\Controller;
 
+use HelioNetworks\FileManagerBundle\Form\CreateFileFormHandler;
+
+use HelioNetworks\FileManagerBundle\Form\CreateFileFormType;
+
 use HelioNetworks\FileManagerBundle\Form\DeleteFileFormHandler;
 
 use HelioNetworks\FileManagerBundle\Form\DeleteFileFormType;
@@ -28,7 +32,24 @@ class FileController extends Controller {
         $this->filesystem = $filesystem;
     }
 
-    public function create() {}
+    public function create()
+    {
+        $form = $this->get('form.factory')->create(new CreateFileFormType());
+
+        $request = $this->get('request');
+
+        if($request->getMethod() == 'POST') {
+
+            $form->bindRequest($request);
+
+            if($form->isValid()) {
+
+                $handler = new CreateFileFormHandler($form, $request);
+
+                $handler->process($this->filesystem);
+            }
+        }
+    }
 
     public function edit() {}
 
