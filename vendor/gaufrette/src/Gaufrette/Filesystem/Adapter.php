@@ -71,4 +71,14 @@ interface Adapter
      * @return boolean TRUE on success, or FALSE on failure
      */
     function delete($key);
+
+    /**
+     * Renames the file
+     *
+     * @param string $oldKey
+     * @param string $newKey
+     *
+     * @return boolean TRUE on success, or FALSE on failure
+     */
+    function rename($oldKey, $newKey);
 }

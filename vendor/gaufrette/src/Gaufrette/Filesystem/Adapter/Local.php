@@ -112,6 +112,14 @@ class Local implements Adapter
     }
 
     /**
+     * {@InheritDoc}
+     */
+    public function rename($oldKey, $newKey)
+    {
+        return rename($this->computePath($oldKey), $this->computePath($newKey));
+    }
+
+    /**
      * Computes the path from the specified key
      *
      * @param  string $key The key which for to compute the path
