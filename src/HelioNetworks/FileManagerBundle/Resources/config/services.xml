@@ -3,4 +3,15 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
+	
+	<services>
+		<service id="helionetworks_filemanager.filesystem.adapter" class="Gaufrette\Filesystem\Adapter\Local">
+			<argument>%helionetworks_filemanager.filesystem.base_directory%</argument>
+		</service>
+		
+		<service id="helionetworks_filemanager.filesystem" class="Gaufrette\Filesystem\Filesystem">
+			<argument type="service" id="helionetworks_filemanager.filesystem.adapter"/>
+		</service>
+	</services>
+	
 </container>

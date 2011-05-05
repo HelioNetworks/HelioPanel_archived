@@ -10,10 +10,6 @@ use HelioNetworks\FileManagerBundle\Form\DeleteFileFormHandler;
 
 use HelioNetworks\FileManagerBundle\Form\DeleteFileFormType;
 
-use Gaufrette\Filesystem\Filesystem;
-
-use Gaufrette\Filesystem\Adapter\Local;
-
 use HelioNetworks\FileManagerBundle\Form\RenameFileFormHandler;
 
 use HelioNetworks\FileManagerBundle\Form\RenameFileFormType;
@@ -21,16 +17,6 @@ use HelioNetworks\FileManagerBundle\Form\RenameFileFormType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class FileController extends Controller {
-
-    public $filesystem;
-
-    public function __construct()
-    {
-        $adapter = new Local('/home1/area52/public_html/test_dir/');
-        $filesystem = new Filesystem($adapter);
-
-        $this->filesystem = $filesystem;
-    }
 
     public function create()
     {
@@ -46,7 +32,7 @@ class FileController extends Controller {
 
                 $handler = new CreateFileFormHandler($form, $request);
 
-                $handler->process($this->filesystem);
+                $handler->process($this->get('helionetworks_filemanager.filesystem'));
             }
         }
     }
@@ -68,7 +54,7 @@ class FileController extends Controller {
 
                 $handler = new RenameFileFormHandler($form, $request);
 
-                $handler->process($this->filesystem);
+                $handler->process($this->get('helionetworks_filemanager.filesystem'));
             }
         }
     }
@@ -87,7 +73,7 @@ class FileController extends Controller {
 
                 $handler = new DeleteFileFormHandler($form, $request);
 
-                $handler->process($this->filesystem);
+                $handler->process($this->get('helionetworks_filemanager.filesystem'));
             }
         }
     }
