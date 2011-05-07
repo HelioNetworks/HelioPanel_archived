@@ -1,5 +1,8 @@
 <?php
 
+///// HelioPanel /////
+//// File Manager ////
+
 // Turn off all error reporting
 error_reporting(0);
 
@@ -19,6 +22,11 @@ require 'files/pages/rename.php';
 // If a move was requested, ask for the destination
 if ($_GET['act'] == 'move') {
 require 'files/pages/move.php';
+}
+
+// If a copy was requested, ask for the destination
+if ($_GET['act'] == 'copy') {
+require 'files/pages/copy.php';
 }
 
 // Include the footer

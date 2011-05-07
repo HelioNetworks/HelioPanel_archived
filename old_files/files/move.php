@@ -12,6 +12,6 @@ $dest = $_POST['dest'];
 rename("".$path."".$from."", "".$dest."".$from."");
 
 // Redirect to the file manager
-// header('location:../files.php?path='.$path);
+header('location:../files.php?path='.$path);
 
 ?>

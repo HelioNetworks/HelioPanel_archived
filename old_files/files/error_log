@@ -1,1 +1,0 @@
-[11-Apr-2011 10:39:15] PHP Warning:  rename(/home1/area52/public_html/php/error_log,/home1/area52/public_html/) [<a href='function.rename'>function.rename</a>]: Not a directory in /home1/area52/public_html/HelioPanel/files/move.php on line 12
