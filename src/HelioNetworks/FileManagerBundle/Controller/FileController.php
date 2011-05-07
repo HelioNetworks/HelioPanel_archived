@@ -22,59 +22,37 @@ class FileController extends Controller {
     {
         $form = $this->get('form.factory')->create(new CreateFileFormType());
 
-        $request = $this->get('request');
+        $handler = new CreateFileFormHandler($form, $this->get('request'));
+        $handler->process($this->get('helionetworks_filemanager.filesystem'));
 
-        if($request->getMethod() == 'POST') {
-
-            $form->bindRequest($request);
-
-            if($form->isValid()) {
-
-                $handler = new CreateFileFormHandler($form, $request);
-
-                $handler->process($this->get('helionetworks_filemanager.filesystem'));
-            }
-        }
+        return $this->render('HelioNetworksFileManagerBundle:File:create.html.twig',array(
+		    'form' => $form->createView(),
+		));
     }
 
     public function edit() {}
 
     public function rename()
     {
-
         $form = $this->get('form.factory')->create(new RenameFileFormType());
 
-        $request = $this->get('request');
+        $handler = new RenameFileFormHandler($form, $this->get('request'));
+        $handler->process($this->get('helionetworks_filemanager.filesystem'));
 
-        if($request->getMethod() == 'POST') {
-
-            $form->bindRequest($request);
-
-            if($form->isValid()) {
-
-                $handler = new RenameFileFormHandler($form, $request);
-
-                $handler->process($this->get('helionetworks_filemanager.filesystem'));
-            }
-        }
+        return $this->render('HelioNetworksFileManagerBundle:File:rename.html.twig',array(
+		    'form' => $form->createView(),
+		));
     }
 
     public function delete()
     {
         $form = $this->get('form.factory')->create(new DeleteFileFormType());
 
-        $request = $this->get('request');
+        $handler = new DeleteFileFormHandler($form, $this->get('request'));
+        $handler->process($this->get('helionetworks_filemanager.filesystem'));
 
-        if($request->getMethod() == 'POST') {
-
-            $form->bindRequest($request);
-
-            if($form->isValid()) {
-
-                $handler = new DeleteFileFormHandler($form, $request);
-
-                $handler->process($this->get('helionetworks_filemanager.filesystem'));
-            }
-        }
+        return $this->render('HelioNetworksFileManagerBundle:File:delete.html.twig',array(
+		    'form' => $form->createView(),
+		));
     }
 }
