@@ -2,24 +2,11 @@
 namespace HelioNetworks\FileManagerBundle\Form;
 
 use Gaufrette\Filesystem\Filesystem;
-
 use Symfony\Component\HttpFoundation\Request;
-
 use Symfony\Component\Form\Form;
 
-class RenameFileFormHandler
+class RenameFileFormHandler extends FormHandler
 {
-    protected $form;
-    protected $request;
-    protected $filesystem;
-
-    public function __construct(Form $form, Request $request)
-    {
-        $this->form = $form;
-        $this->request = $request;
-        $this->filesystem = $filesystem;
-    }
-
     public function getSource()
     {
         return $this->form->getData()->source;
@@ -32,6 +19,11 @@ class RenameFileFormHandler
 
     public function process(Filesystem $filesystem)
     {
-        $filesystem->rename($this->getSource(), $this->getDestination());
+        if($this->isValid()) {
+            return $filesystem->rename($this->getSource(), $this->getDestination());
+        }
+        else {
+            return false;
+        }
     }
 }
