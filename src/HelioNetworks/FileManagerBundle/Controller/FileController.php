@@ -23,7 +23,7 @@ class FileController extends Controller {
         $form = $this->get('form.factory')->create(new CreateFileFormType());
 
         $handler = new CreateFileFormHandler($form, $this->get('request'));
-        $handler->process($this->get('helio_networks_file_manager.filesystem.ftp'));
+        $handler->process($this->get('filesystem'));
 
         return $this->render('HelioNetworksFileManagerBundle:File:create.html.twig',array(
 		    'form' => $form->createView(),
@@ -37,7 +37,7 @@ class FileController extends Controller {
         $form = $this->get('form.factory')->create(new RenameFileFormType());
 
         $handler = new RenameFileFormHandler($form, $this->get('request'));
-        $handler->process($this->get('helio_networks_file_manager.filesystem.ftp'));
+        $handler->process($this->get('filesystem'));
 
         return $this->render('HelioNetworksFileManagerBundle:File:rename.html.twig',array(
 		    'form' => $form->createView(),
@@ -49,7 +49,7 @@ class FileController extends Controller {
         $form = $this->get('form.factory')->create(new DeleteFileFormType());
 
         $handler = new DeleteFileFormHandler($form, $this->get('request'));
-        $handler->process($this->get('helio_networks_file_manager.filesystem.ftp'));
+        $handler->process($this->get('filesystem'));
 
         return $this->render('HelioNetworksFileManagerBundle:File:delete.html.twig',array(
 		    'form' => $form->createView(),

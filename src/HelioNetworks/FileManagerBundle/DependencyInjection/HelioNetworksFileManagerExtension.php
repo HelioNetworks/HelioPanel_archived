@@ -14,22 +14,23 @@ class HelioNetworksFileManagerExtension extends Extension
         $loader = new XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.xml');
 
+        $this->configureFilesystemAdapter($configs, $container);
     }
 
     public function configureFilesystemAdapter(array $configs, ContainerBuilder $container)
     {
         // add the default configuration for the local filesystem
-        if ($container->hasDefinition('helio_networks_file_manager.adapter.filesystem.local') && isset($config['filesystem']['helio_networks_file_manager.adapter.filesystem.local'])) {
+        if ($container->hasDefinition('helio_networks_file_manager.adapter.filesystem.local') && isset($configs[0]['adapter']['filesystem']['local'])) {
             $definition = $container->getDefinition('helio_networks_file_manager.adapter.filesystem.local');
-            $configuration =  $config['filesystem']['helio_networks_file_manager.adapter.filesystem.local'];
+            $configuration =  $configs[0]['adapter']['filesystem']['local'];
             $definition->addArgument($configuration['directory']);
             $definition->addArgument($configuration['create']);
         }
 
         // add the default configuration for the FTP filesystem
-        if ($container->hasDefinition('helio_networks_file_manager.adapter.filesystem.ftp') && isset($config['filesystem']['helio_networks_file_manager.adapter.filesystem.ftp'])) {
+        if ($container->hasDefinition('helio_networks_file_manager.adapter.filesystem.ftp') && isset($configs[0]['adapter']['filesystem']['ftp'])) {
             $definition = $container->getDefinition('helio_networks_file_manager.adapter.filesystem.ftp');
-            $configuration =  $config['filesystem']['helio_networks_file_manager.adapter.filesystem.ftp'];
+            $configuration = $configs[0]['adapter']['filesystem']['ftp'];
             $definition->addArgument($configuration['directory']);
             $definition->addArgument($configuration['username']);
             $definition->addArgument($configuration['password']);
