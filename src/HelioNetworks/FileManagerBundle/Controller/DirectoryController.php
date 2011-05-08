@@ -6,15 +6,15 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class DirectoryController extends Controller {
 
-    function create() {}
+    public function createAction() {}
 
-    function delete() {}
+    public function deleteAction() {}
 
-    function rename() {}
+    public function renameAction() {}
 
-    function enumerate()
+    public function enumerateAction()
     {
-        $filesystem = $this->get('helionetworks_filemanager.filesystem.ftp');
+        $filesystem = $this->get('helio_networks_file_manager.filesystem.ftp');
 
         $this->render('HelioNetworksFileManagerBundle:Direcotory:enumerate.html.twig', array(
             'keys' => $filesystem->keys(),

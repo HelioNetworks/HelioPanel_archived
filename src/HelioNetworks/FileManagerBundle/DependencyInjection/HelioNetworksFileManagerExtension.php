@@ -2,8 +2,9 @@
 
 namespace HelioNetworks\FileManagerBundle\DependencyInjection;
 
+use Symfony\Component\Config\FileLocator;
+use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
-
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 
 class HelioNetworksFileManagerExtension extends Extension
@@ -18,17 +19,17 @@ class HelioNetworksFileManagerExtension extends Extension
     public function configureFilesystemAdapter(array $configs, ContainerBuilder $container)
     {
         // add the default configuration for the local filesystem
-        if ($container->hasDefinition('helionetworks_filemanager.adapter.filesystem.local') && isset($config['filesystem']['helionetworks_filemanager.adapter.filesystem.local'])) {
-            $definition = $container->getDefinition('helionetworks_filemanager.adapter.filesystem.local');
-            $configuration =  $config['filesystem']['helionetworks_filemanager.adapter.filesystem.local'];
+        if ($container->hasDefinition('helio_networks_file_manager.adapter.filesystem.local') && isset($config['filesystem']['helio_networks_file_manager.adapter.filesystem.local'])) {
+            $definition = $container->getDefinition('helio_networks_file_manager.adapter.filesystem.local');
+            $configuration =  $config['filesystem']['helio_networks_file_manager.adapter.filesystem.local'];
             $definition->addArgument($configuration['directory']);
             $definition->addArgument($configuration['create']);
         }
 
         // add the default configuration for the FTP filesystem
-        if ($container->hasDefinition('helionetworks_filemanager.adapter.filesystem.ftp') && isset($config['filesystem']['helionetworks_filemanager.adapter.filesystem.ftp'])) {
-            $definition = $container->getDefinition('helionetworks_filemanager.adapter.filesystem.ftp');
-            $configuration =  $config['filesystem']['helionetworks_filemanager.adapter.filesystem.ftp'];
+        if ($container->hasDefinition('helio_networks_file_manager.adapter.filesystem.ftp') && isset($config['filesystem']['helio_networks_file_manager.adapter.filesystem.ftp'])) {
+            $definition = $container->getDefinition('helio_networks_file_manager.adapter.filesystem.ftp');
+            $configuration =  $config['filesystem']['helio_networks_file_manager.adapter.filesystem.ftp'];
             $definition->addArgument($configuration['directory']);
             $definition->addArgument($configuration['username']);
             $definition->addArgument($configuration['password']);

@@ -5,15 +5,15 @@
 
 	
 	<services>
-        <service id="helionetworks_filemanager.adapter.filesystem.local" class="Gaufrette\Filesystem\Adapter\Local" />
-        <service id="helionetworks_filemanager.adapter.filesystem.ftp"   class="Gaufrette\Filesystem\Adapter\Ftp" />
+        <service id="helio_networks_file_manager.adapter.filesystem.local" class="Gaufrette\Filesystem\Adapter\Local" />
+        <service id="helio_networks_file_manager.adapter.filesystem.ftp"   class="Gaufrette\Filesystem\Adapter\Ftp" />
 	
-        <service id="helionetworks_filemanager.filesystem.ftp" class="Gaufrette\Filesystem\Filesystem" >
-       		<argument type="service" id="sonata.media.adapter.filesystem.ftp" />
+        <service id="helio_networks_file_manager.filesystem.ftp" class="Gaufrette\Filesystem\Filesystem" >
+       		<argument type="service" id="helio_networks_file_manager.adapter.filesystem.ftp" />
         </service>
 
-        <service id="helionetworks_filemanager.filesystem.local" class="Gaufrette\Filesystem\Filesystem">
-            <argument type="service" id="sonata.media.adapter.filesystem.local" />
+        <service id="helio_networks_file_manager.filesystem.local" class="Gaufrette\Filesystem\Filesystem">
+            <argument type="service" id="helio_networks_file_manager.adapter.filesystem.local" />
         </service>
 	</services>
 	

@@ -18,38 +18,38 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class FileController extends Controller {
 
-    public function create()
+    public function createAction()
     {
         $form = $this->get('form.factory')->create(new CreateFileFormType());
 
         $handler = new CreateFileFormHandler($form, $this->get('request'));
-        $handler->process($this->get('helionetworks_filemanager.filesystem.ftp'));
+        $handler->process($this->get('helio_networks_file_manager.filesystem.ftp'));
 
         return $this->render('HelioNetworksFileManagerBundle:File:create.html.twig',array(
 		    'form' => $form->createView(),
 		));
     }
 
-    public function edit() {}
+    public function editAction() {}
 
-    public function rename()
+    public function renameAction()
     {
         $form = $this->get('form.factory')->create(new RenameFileFormType());
 
         $handler = new RenameFileFormHandler($form, $this->get('request'));
-        $handler->process($this->get('helionetworks_filemanager.filesystem.ftp'));
+        $handler->process($this->get('helio_networks_file_manager.filesystem.ftp'));
 
         return $this->render('HelioNetworksFileManagerBundle:File:rename.html.twig',array(
 		    'form' => $form->createView(),
 		));
     }
 
-    public function delete()
+    public function deleteAction()
     {
         $form = $this->get('form.factory')->create(new DeleteFileFormType());
 
         $handler = new DeleteFileFormHandler($form, $this->get('request'));
-        $handler->process($this->get('helionetworks_filemanager.filesystem.ftp'));
+        $handler->process($this->get('helio_networks_file_manager.filesystem.ftp'));
 
         return $this->render('HelioNetworksFileManagerBundle:File:delete.html.twig',array(
 		    'form' => $form->createView(),

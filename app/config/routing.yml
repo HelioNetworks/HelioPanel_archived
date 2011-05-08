@@ -3,20 +3,20 @@ homepage:
     defaults: { _controller: HelioNetworksHelioPanelBundle:Home:home }
 
 filemanager:
-	pattern: /filemanager/
-	defaults: {_controller: HelioNetworksFileManagerBundle:Directory:enumenrate }
+    pattern: /filemanager/
+    defaults: {_controller: HelioNetworksFileManagerBundle:Directory:enumerate }
 
 filemanager_file_rename:
-	pattern: /filemanager/file/rename/
-	defaults: { _controller: HelioNetworksFileManagerBundle:File:rename }
+    pattern: /filemanager/file/rename/
+    defaults: { _controller: HelioNetworksFileManagerBundle:File:rename }
 
 filemanager_file_delete:
-	pattern: /filemanager/file/delete/
-	defaults: { _controller: HelioNetworksFileManagerBundle:File:delete }
+    pattern: /filemanager/file/delete/
+    defaults: { _controller: HelioNetworksFileManagerBundle:File:delete }
 
 filemanager_file_edit:
-	pattern: /filemanager/file/edit/
-	defaults: { _controller: HelioNetworksFileManagerBundle:File:edit }
+    pattern: /filemanager/file/edit/
+    defaults: { _controller: HelioNetworksFileManagerBundle:File:edit }
 
 _demo_secured:
     resource: "@AcmeDemoBundle/Controller/SecuredController.php"
