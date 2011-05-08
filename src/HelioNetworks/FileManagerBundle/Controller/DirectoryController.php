@@ -14,7 +14,7 @@ class DirectoryController extends Controller {
 
     public function enumerateAction()
     {
-        $filesystem = $this->get('helio_networks_file_manager.filesystem.ftp');
+        $filesystem = $this->get('filesystem');
 
         $this->render('HelioNetworksFileManagerBundle:Direcotory:enumerate.html.twig', array(
             'keys' => $filesystem->keys(),
