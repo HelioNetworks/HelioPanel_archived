@@ -12,12 +12,12 @@ class DirectoryController extends Controller {
 
     function rename() {}
 
-    /**
-     * For those of you who don't know what
-     * enumerate means, it's basically a
-     * synonym for 'list'. The problem
-     * is that 'list' is a PHP built-in
-     * function that is already taken
-     */
-    function enumerate() {}
+    function enumerate()
+    {
+        $filesystem = $this->get('helionetworks_filemanager.filesystem.ftp');
+
+        $this->render('HelioNetworksFileManagerBundle:Direcotory:enumerate.html.twig', array(
+            'keys' => $filesystem->keys(),
+        ));
+    }
 }
