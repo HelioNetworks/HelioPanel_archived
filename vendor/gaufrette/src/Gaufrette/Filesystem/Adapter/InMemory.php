@@ -135,14 +135,4 @@ class InMemory implements Adapter
 
         return true;
     }
-    /**
-     * {@inheritDoc}
-     */
-    public function rename($oldKey, $newKey)
-    {
-        $this->files[$newKey] = $this->files[$oldKey];
-        $this->delete($oldKey);
-
-        return true;
-    }
 }

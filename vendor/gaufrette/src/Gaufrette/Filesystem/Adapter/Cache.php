@@ -110,12 +110,6 @@ class Cache implements Adapter
         $this->cache->delete($key);
     }
 
-    public function rename($oldKey, $newKey)
-    {
-        $this->source->rename($oldKey, $newKey);
-        $this->cache->rename($oldKey, $newKey);
-    }
-
     /**
      * Indicates whether the cache for the specified key needs to be reloaded
      *

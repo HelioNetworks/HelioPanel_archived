@@ -100,15 +100,6 @@ class Filesystem
         return $this->adapter->delete($key);
     }
 
-    public function rename($oldKey, $newKey)
-    {
-        if(!$this->has($oldKey)) {
-            throw new \InvalidArgumentException(sprintf('The file %s does not exist.', $oldKey));
-        }
-
-        return $this->adapter->rename($oldKey, $newKey);
-    }
-
     /**
      * Returns an array of all keys matching the specified pattern
      *
