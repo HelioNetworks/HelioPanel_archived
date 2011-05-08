@@ -37,6 +37,11 @@ if ($_GET['error'] == '1') {
 <td width=190><input type="password" name="password"></td>
 </tr>
 
+<tr>
+<td width=110 style="text-align:right;"><font size=2>Server:</font></td>
+<td width=190><select name=server><option value="stevie">Stevie</option><option value="johnny">Johnny</option></select></td>
+</tr>
+
 </table>
 
 <center><input type=submit value="Login"></center>

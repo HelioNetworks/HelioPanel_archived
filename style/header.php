@@ -1,6 +1,9 @@
 <?php
+
+error_reporting(0);
+
 session_start();
-if(!session_is_registered(username)){
+if( isset($_SESSION[$username]) ){
 header("location:login/");
 }
 
