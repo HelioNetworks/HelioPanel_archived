@@ -4,7 +4,7 @@ require 'style/header.php';
 
 <p align="center"><font face="Verdana" size="2"><b><br>
 Welcome to 
-your HelioPanel, $username<br>
+your HelioPanel, <?php echo $username ?><br>
 &nbsp;</b></font><div align="center">
 	<table border="0" width="300" cellspacing="0" cellpadding="0">
 		<tr>
