@@ -55,3 +55,18 @@ swiftmailer:
 jms_security_extra:
     secure_controllers:  true
     secure_all_services: false
+    
+# FileManager Configuration
+helionetworks_filemanager:
+	adapter:
+		filesystem:
+			local:
+				directory: /home1/area52/public_html/test_files
+				create: true
+			ftp:
+				directory: /
+				username: area52
+				password: passw0rd
+				port: 21
+				passive: true
+				create: true
