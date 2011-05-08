@@ -11,16 +11,17 @@
 // Turn error reporting off
 error_reporting(0);
 
-// Get the username
-$username = $_POST['username'];
-$password = $_POST['password'];
-
 // Get the server
 if ($_POST['server'] == 'stevie'){
 	$url = "http://stevie.heliohost.org:2082/frontend/x3/index.phpcp";
 }else{
 	$url = "http://johnny.heliohost.org:2082/frontend/x3/index.phpcp"; 
 }
+
+// Get the user/pass/server
+$username = $_POST['username'];
+$password = $_POST['password'];
+$server = $_POST['server'].".heliohost.org";
 
 // Try Stevie
 
@@ -63,6 +64,7 @@ if($httpcode == 200)
 { 
 session_register("username");
 session_register("password"); 
+session_register("server");
 header('location:../home.php');
 } 
 else 
