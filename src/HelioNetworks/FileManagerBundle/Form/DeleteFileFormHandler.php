@@ -7,7 +7,7 @@ use Symfony\Component\HttpFoundation\Request;
 
 use Symfony\Component\Form\Form;
 
-class DeleteFileFormHandler extends FormHandlers
+class DeleteFileFormHandler extends FormHandler
 {
     public function getFilename()
     {

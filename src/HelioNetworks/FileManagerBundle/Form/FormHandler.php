@@ -30,5 +30,4 @@ class FormHandler
         return false;
     }
 
-    public function process() {}
 }

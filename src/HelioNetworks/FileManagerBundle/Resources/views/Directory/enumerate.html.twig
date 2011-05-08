@@ -1,0 +1,11 @@
+{% extends 'HelioNetworksFileManagerBundle::base.html.twig' %}
+
+{% block content %}
+<ul>
+	{% for value in keys %}
+	  <li>
+	  	{{ value }}
+	  </li>
+	{% endfor %}
+</ul>
+{% endblock %}

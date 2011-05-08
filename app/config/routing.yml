@@ -9,6 +9,10 @@ filemanager:
 filemanager_file_rename:
     pattern: /filemanager/file/rename/
     defaults: { _controller: HelioNetworksFileManagerBundle:File:rename }
+    
+filemanager_file_create:
+    pattern: /filemanager/file/create/
+    defaults: { _controller: HelioNetworksFileManagerBundle:File:create }
 
 filemanager_file_delete:
     pattern: /filemanager/file/delete/

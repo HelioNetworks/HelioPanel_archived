@@ -16,7 +16,7 @@ class DirectoryController extends Controller {
     {
         $filesystem = $this->get('filesystem');
 
-        $this->render('HelioNetworksFileManagerBundle:Direcotory:enumerate.html.twig', array(
+        return $this->render('HelioNetworksFileManagerBundle:Directory:enumerate.html.twig', array(
             'keys' => $filesystem->keys(),
         ));
     }

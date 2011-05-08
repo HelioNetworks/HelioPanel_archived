@@ -23,11 +23,14 @@ class FileController extends Controller {
         $form = $this->get('form.factory')->create(new CreateFileFormType());
 
         $handler = new CreateFileFormHandler($form, $this->get('request'));
-        $handler->process($this->get('filesystem'));
-
-        return $this->render('HelioNetworksFileManagerBundle:File:create.html.twig',array(
-		    'form' => $form->createView(),
-		));
+        if($handler->process($this->get('filesystem'))) {
+            return $this->redirect($this->generateUrl('filemanager'));
+        }
+        else {
+            return $this->render('HelioNetworksFileManagerBundle:File:create.html.twig',array(
+    		    'form' => $form->createView(),
+    		));
+        }
     }
 
     public function editAction() {}
@@ -37,11 +40,14 @@ class FileController extends Controller {
         $form = $this->get('form.factory')->create(new RenameFileFormType());
 
         $handler = new RenameFileFormHandler($form, $this->get('request'));
-        $handler->process($this->get('filesystem'));
-
-        return $this->render('HelioNetworksFileManagerBundle:File:rename.html.twig',array(
-		    'form' => $form->createView(),
-		));
+        if($handler->process($this->get('filesystem'))) {
+            return $this->redirect($this->generateUrl('filemanager'));
+        }
+        else {
+            return $this->render('HelioNetworksFileManagerBundle:File:rename.html.twig',array(
+    		    'form' => $form->createView(),
+    		));
+        }
     }
 
     public function deleteAction()
@@ -49,10 +55,13 @@ class FileController extends Controller {
         $form = $this->get('form.factory')->create(new DeleteFileFormType());
 
         $handler = new DeleteFileFormHandler($form, $this->get('request'));
-        $handler->process($this->get('filesystem'));
-
-        return $this->render('HelioNetworksFileManagerBundle:File:delete.html.twig',array(
-		    'form' => $form->createView(),
-		));
+        if($handler->process($this->get('filesystem'))){
+            return $this->redirect($this->generateUrl('filemanager'));
+        }
+        else {
+            return $this->render('HelioNetworksFileManagerBundle:File:delete.html.twig',array(
+		    	'form' => $form->createView(),
+		    ));
+        }
     }
 }
