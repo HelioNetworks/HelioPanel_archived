@@ -20,7 +20,10 @@ class RenameFileFormHandler extends FormHandler
     public function process(Filesystem $filesystem)
     {
         if($this->isValid()) {
-            return $filesystem->rename($this->getSource(), $this->getDestination());
+            $filesystem->write($this->getDestination(), $filesystem->read($this->getSource()));
+            $filesystem->delete($this->getSource());
+
+            return true;
         }
         else {
             return false;
