@@ -4,7 +4,7 @@
 <ul>
 	{% for value in keys %}
 	  <li>
-	  	{{ value }}
+	  	{{ value }} <a href="{{ path('filemanager_file_rename') }}">Rename File</a>
 	  </li>
 	{% endfor %}
 </ul>
