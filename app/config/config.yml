@@ -61,7 +61,7 @@ helio_networks_file_manager:
     adapter:
         filesystem:
             local:
-                directory: /home1/area52/public_html/test_files
+                directory: "C:/Users/Geoffrey/workspace/test_files/"
                 create: true
             ftp:
                 directory: /
@@ -70,3 +70,7 @@ helio_networks_file_manager:
                 port: 21
                 passive: true
                 create: true
+                
+services:
+    filesystem:
+        alias: helio_networks_file_manager.filesystem.local
