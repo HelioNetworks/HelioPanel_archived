@@ -2,6 +2,8 @@
 
 namespace HelioNetworks\FileSystemBundle\FileSystem;
 
+use Doctrine\Tests\Models\DirectoryTree\File;
+
 use HelioNetworks\FileSystemBundle\Exception\SecurityBreachException;
 
 class FileSystem
@@ -64,53 +66,22 @@ class FileSystem
         }
     }
 
-    /**
-     * {@InheritDoc}
-     */
-    public function exists($key)
+    public function get($key)
     {
-        return is_file($this->computePath($key));
-    }
+        $path = $this->computePath($key);
 
-    /**
-     * {@InheritDoc}
-     */
-    public function keys()
-    {
-        $iterator = new RecursiveIteratorIterator(
-            new RecursiveDirectoryIterator(
-                $this->directory,
-                FilesystemIterator::SKIP_DOTS | FilesystemIterator::UNIX_PATHS
-            )
-        );
-
-        $files = iterator_to_array($iterator);
-
-        $self = $this;
-        return array_values(
-            array_map(
-                function($file) use ($self) {
-                    return $self->computeKey(strval($file));
-                },
-                $files
-            )
-        );
-    }
-
-    /**
-     * {@InheritDoc}
-     */
-    public function mtime($key)
-    {
-        return filemtime($this->computePath($key));
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function checksum($key)
-    {
-        return Checksum::fromFile($this->computePath($key));
+        if(is_dir($path))
+        {
+            return new Directory($path);
+        }
+        elseif(is_file($path))
+        {
+            return new File($path);
+        }
+        else
+        {
+            throw new \Exception('File not found');
+        }
     }
 
     /**
