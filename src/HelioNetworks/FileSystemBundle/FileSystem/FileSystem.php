@@ -2,8 +2,7 @@
 
 namespace HelioNetworks\FileSystemBundle\FileSystem;
 
-use Doctrine\Tests\Models\DirectoryTree\File;
-
+use Symfony\Component\HttpFoundation\File\Exception\FileNotFoundException;
 use HelioNetworks\FileSystemBundle\Exception\SecurityBreachException;
 
 class FileSystem
@@ -22,38 +21,6 @@ class FileSystem
 
         $this->directory = $this->normalizePath($directory);
         $this->ensureDirectoryExists($this->directory, false);
-    }
-
-    /**
-     * {@InheritDoc}
-     */
-    public function read($key)
-    {
-        $content = file_get_contents($this->computePath($key));
-
-        if (false === $content) {
-            throw new \RuntimeException(sprintf('Could not read the \'%s\' file.', $key));
-        }
-
-        return $content;
-    }
-
-    /**
-     * {@InheritDoc}
-     */
-    public function write($key, $content)
-    {
-        $path = $this->computePath($key);
-
-        $this->ensureDirectoryExists(dirname($path), true);
-
-        $numBytes = file_put_contents($this->computePath($key), $content);
-
-        if (false === $numBytes) {
-            throw new \RuntimeException(sprintf('Could not write the \'%s\' file.', $key));
-        }
-
-        return $numBytes;
     }
 
     /**
@@ -80,7 +47,7 @@ class FileSystem
         }
         else
         {
-            throw new \Exception('File not found');
+            throw new FileNotFoundException($path);
         }
     }
 
@@ -109,7 +76,7 @@ class FileSystem
         $path = $this->normalizePath($this->directory . '/' . $key);
 
         if (0 !== strpos($path, $this->directory)) {
-            throw new \OutOfBoundsException(sprintf('The file \'%s\' is out of the filesystem.', $key));
+            throw new SecurityBreachException();
         }
 
         return $path;

@@ -34,4 +34,9 @@ class Directory
 
         return $contents;
     }
+
+    public function getName()
+    {
+        return basename($path);
+    }
 }
