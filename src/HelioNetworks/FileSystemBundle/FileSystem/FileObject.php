@@ -2,10 +2,10 @@
 
 namespace HelioNetworks\FileSystemBundle\FileSystem;
 
-class File extends FileObject
+abstract class FileObject
 {
-    protected $path;
     protected $BaseFileSystem;
+    protected $path;
 
     public function setBaseFileSystem(BaseFileSystem $BaseFileSystem)
     {
@@ -17,13 +17,14 @@ class File extends FileObject
         $this->path = $path;
     }
 
-    public function getContents()
+    public function parentDir()
     {
-        return $this->BaseFileSystem->read($this->path);
+        $directory = new Directory(dirname($this->path));
+        $directory->setBaseFileSystem($this->BaseFileSystem);
     }
 
-    public function setContents($contents)
+    public function getName()
     {
-        return $this->BaseFileSystem->write($this->path, $contents);
+        return basename($path);
     }
 }

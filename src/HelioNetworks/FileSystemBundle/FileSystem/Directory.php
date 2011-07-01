@@ -1,50 +1,28 @@
 <?php
 
-namespace HelioNetworks\FileSystemBundle;
+namespace HelioNetworks\FileSystemBundle\FileSystem;
 
-use Symfony\Component\DependencyInjection\ContainerAware;
-
-class Directory extends ContainerAware
+class Directory extends FileObject
 {
-    protected $path;
-    protected $BaseFileSystem;
-
-    public function setBaseFileSystem(BaseFileSystem $BaseFileSystem)
-    {
-        $this->BaseFileSystem = $BaseFileSystem;
-    }
-
-    public function __construct($path)
-    {
-        $this->path = $path;
-    }
-
     public function children()
     {
-        $children = scandir($this->path);
+        $children = array();
 
-        $contents = array();
-
-        foreach($children as $child)
+        foreach($this->BaseFileSystem->scan($this->path) as $child)
         {
             if($child != '.' && $child != '..')
             {
-                if(is_dir($child))
+                if($this->BaseFileSystem->isDir($child))
                 {
-                    $contents[] = new Directory($entry);
+                    $children[] = new Directory($child);
                 }
                 else
                 {
-                    $contents[] = new File($path);
+                    $children[] = new File($child);
                 }
             }
         }
 
-        return $contents;
-    }
-
-    public function getName()
-    {
-        return basename($path);
+        return $children;
     }
 }

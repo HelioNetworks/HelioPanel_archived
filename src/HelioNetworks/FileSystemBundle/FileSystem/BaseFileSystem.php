@@ -20,13 +20,29 @@ class BaseFileSystem
         $this->ensureDirectoryExists($this->directory, false);
     }
 
+    /**
+     * Scans the directory
+     *
+     * @param string $key The directory to scan
+     *
+     * @return array The contents of the directory
+     */
     public function scan($key)
     {
-        return scandir($this->computeKey($key));
+        return scandir($this->computePath($key));
+    }
+
+
+    public function isDir($key)
+    {
+        return is_dir($this->computePath($key));
     }
 
     /**
-     * {@InheritDoc}
+     * Renames a file
+     *
+     * @param string $key Source
+     * @param string $new Destination
      */
     public function rename($key, $new)
     {
@@ -40,17 +56,12 @@ class BaseFileSystem
      *
      * @param  string  $key       Key of the file
      * @param  string  $content   Content to write in the file
-     * @param  boolean $overwrite Whether to overwrite the file if exists
      *
      * @return integer The number of bytes that were written into the file
      */
-    public function write($key, $content, $overwrite = false)
+    public function write($key, $content)
     {
-        if (!$overwrite && $this->has($key)) {
-            throw new \InvalidArgumentException(sprintf('The file %s already exists and can not be overwritten.', $key));
-        }
-
-        return $this->adapter->write($key, $content);
+        return file_put_contents($this->computeKey(key), $content);
     }
 
     /**
@@ -62,16 +73,12 @@ class BaseFileSystem
      */
     public function read($key)
     {
-        if (!$this->has($key)) {
-            throw new \InvalidArgumentException(sprintf('The file %s does not exist.', $key));
-        }
-
-        return $this->adapter->read($key);
+        return file_get_contents($this->computeKey($key));
     }
 
 
     /**
-     * {@InheritDoc}
+     * Deletes the file
      */
     public function delete($key)
     {
