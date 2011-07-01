@@ -7,6 +7,12 @@ use Symfony\Component\DependencyInjection\ContainerAware;
 class Directory extends ContainerAware
 {
     protected $path;
+    protected $BaseFileSystem;
+
+    public function setBaseFileSystem(BaseFileSystem $BaseFileSystem)
+    {
+        $this->BaseFileSystem = $BaseFileSystem;
+    }
 
     public function __construct($path)
     {
