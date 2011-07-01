@@ -1,6 +1,10 @@
 <?php
 
-class File
+namespace HelioNetworks\FileSystemBundle\FileSystem;
+
+use Symfony\Component\DependencyInjection\ContainerAware;
+
+class File extends ContainerAware
 {
     protected $path;
 

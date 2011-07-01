@@ -2,7 +2,9 @@
 
 namespace HelioNetworks\FileSystemBundle;
 
-class Directory
+use Symfony\Component\DependencyInjection\ContainerAware;
+
+class Directory extends ContainerAware
 {
     protected $path;
 
