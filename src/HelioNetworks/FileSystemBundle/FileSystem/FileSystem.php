@@ -2,8 +2,7 @@
 
 namespace HelioNetworks\FileSystemBundle\FileSystem;
 
-use HelioNetworks\FileSystemBundle\BaseFileSystem;
-
+use HelioNetworks\FileSystemBundle\FileSystem\BaseFileSystem;
 use Symfony\Component\HttpFoundation\File\Exception\FileNotFoundException;
 use HelioNetworks\FileSystemBundle\Exception\SecurityBreachException;
 
@@ -13,7 +12,7 @@ class FileSystem
 
     public function __construct($directory = '/', $username = 'root')
     {
-        if($directory == '/' || $username = 'root')
+        if(($directory == '/') || ($username == 'root'))
         {
             throw new SecurityBreachException();
         }

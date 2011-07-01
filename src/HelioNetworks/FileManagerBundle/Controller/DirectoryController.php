@@ -4,6 +4,8 @@ namespace HelioNetworks\FileManagerBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use HelioNetworks\FileSystemBundle\FileSystem\FileSystem;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
 class DirectoryController extends Controller {
 
@@ -21,12 +23,16 @@ class DirectoryController extends Controller {
 
     public function renameAction() {}
 
+    /**
+     * @Template()
+     * @Route("/filemanager", name="filemanager")
+     */
     public function enumerateAction()
     {
-        $filesystem = $this->get('filesystem_manager');
+        $filesystem = $this->getFileSystem();
 
-        return $this->render('HelioNetworksFileManagerBundle:Directory:enumerate.html.twig', array(
-            'keys' => $filesystem->keys(),
-        ));
+        return array(
+            'keys' => array(),
+        );
     }
 }

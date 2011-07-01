@@ -1,6 +1,6 @@
 <?php
 
-namespace HelioNetworks\FileSystemBundle;
+namespace HelioNetworks\FileSystemBundle\FileSystem;
 
 /**
  * The Base FileSystem
