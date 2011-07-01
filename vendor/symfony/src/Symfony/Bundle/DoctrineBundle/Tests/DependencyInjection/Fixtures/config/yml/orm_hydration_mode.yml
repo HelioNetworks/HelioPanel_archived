@@ -1,9 +1,0 @@
-doctrine:
-    dbal: ~
-    orm:
-        entity_managers:
-            default:
-                hydrators:
-                    test_hydrator: Symfony\Bundle\DoctrineBundle\Tests\DependencyInjection\TestHydrator
-                mappings:
-                    YamlBundle: ~
