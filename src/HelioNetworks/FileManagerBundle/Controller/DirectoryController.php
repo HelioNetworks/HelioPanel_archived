@@ -14,7 +14,7 @@ class DirectoryController extends Controller {
      */
     public function getFileSystem()
     {
-        $this->get('filesystem_manager')->create('/home/area52', 'area52');
+        return $this->get('filesystem_manager')->create('C:\TestFileSystem', 'area52');
     }
 
     public function createAction() {}
@@ -32,7 +32,7 @@ class DirectoryController extends Controller {
         $filesystem = $this->getFileSystem();
 
         return array(
-            'keys' => array(),
+            'files' => $filesystem->get('/')->children(),
         );
     }
 }

@@ -2,9 +2,9 @@
 
 {% block content %}
 <ul>
-	{% for value in keys %}
+	{% for object in files %}
 	  <li>
-	  	{{ value }} <a href="{{ path('filemanager_file_rename') }}">Rename File</a>
+	  	{{ object.name }} <a href="">Rename File</a>
 	  </li>
 	{% endfor %}
 </ul>

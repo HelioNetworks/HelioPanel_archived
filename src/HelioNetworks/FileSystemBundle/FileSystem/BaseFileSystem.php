@@ -40,6 +40,11 @@ class BaseFileSystem
         return is_dir($this->computePath($key));
     }
 
+    public function isFile($key)
+    {
+        return file_exists($this->computePath($key));
+    }
+
     /**
      * Renames a file
      *

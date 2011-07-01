@@ -22,18 +22,16 @@ class FileSystem
 
     public function get($key)
     {
-        $path = $this->computePath($key);
-
-        if(is_dir($path))
+        if($this->BaseFileSystem->isDir($key))
         {
-            $directory = new Directory($path);
+            $directory = new Directory($key);
             $directory->setBaseFileSystem($this->BaseFileSystem);
 
             return $directory;
         }
-        elseif(is_file($path))
+        elseif($this->BaseFileSystem->isFile($key))
         {
-            $file = new File($path);
+            $file = new File($key);
             $file->setBaseFileSystem($this->BaseFileSystem);
 
             return $file;

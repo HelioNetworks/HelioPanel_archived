@@ -25,6 +25,6 @@ abstract class FileObject
 
     public function getName()
     {
-        return basename($path);
+        return basename($this->path);
     }
 }
