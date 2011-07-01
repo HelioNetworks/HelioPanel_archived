@@ -7,6 +7,8 @@ namespace HelioNetworks\FileSystemBundle\FileSystem;
  *
  * All file operations must be run through this class.
  */
+use HelioNetworks\FileSystemBundle\Exception\SecurityBreachException;
+
 class BaseFileSystem
 {
     protected $username;
@@ -102,6 +104,11 @@ class BaseFileSystem
         $path = $this->normalizePath($this->directory . '/' . $key);
 
         if (0 !== strpos($path, $this->directory)) {
+            throw new SecurityBreachException();
+        }
+
+        if(fileowner($path) != $this->username)
+        {
             throw new SecurityBreachException();
         }
 
