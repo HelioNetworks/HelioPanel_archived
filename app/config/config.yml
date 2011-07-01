@@ -69,7 +69,3 @@ helio_networks_file_manager:
                 port: 21
                 passive: true
                 create: true
-                
-services:
-    filesystem:
-        alias: helio_networks_file_manager.filesystem.local

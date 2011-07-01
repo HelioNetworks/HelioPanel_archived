@@ -19,6 +19,7 @@ class AppKernel extends Kernel
             new JMS\SecurityExtraBundle\JMSSecurityExtraBundle(),
             new HelioNetworks\HelioPanelBundle\HelioNetworksHelioPanelBundle(),
             new HelioNetworks\FileManagerBundle\HelioNetworksFileManagerBundle(),
+            new HelioNetworks\FileSystemBundle\HelioNetworksFileSystemBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
