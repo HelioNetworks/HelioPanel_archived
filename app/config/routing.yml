@@ -1,8 +1,3 @@
-HelioNetworksFileSystemBundle:
-    resource: "@HelioNetworksFileSystemBundle/Controller/"
-    type:     annotation
-    prefix:   /
-
 homepage:
     pattern:  /
     defaults: { _controller: HelioNetworksHelioPanelBundle:Home:home }
