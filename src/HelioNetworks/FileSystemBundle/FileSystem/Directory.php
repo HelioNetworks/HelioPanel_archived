@@ -11,10 +11,27 @@ class Directory
         $this->path = $path;
     }
 
-    public function contents()
+    public function children()
     {
-        $contents = scandir($this->path);
+        $children = scandir($this->path);
 
+        $contents = array();
 
+        foreach($children as $child)
+        {
+            if($child != '.' && $child != '..')
+            {
+                if(is_dir($child))
+                {
+                    $contents[] = new Directory($entry);
+                }
+                else
+                {
+                    $contents[] = new File($path);
+                }
+            }
+        }
+
+        return $contents;
     }
 }
