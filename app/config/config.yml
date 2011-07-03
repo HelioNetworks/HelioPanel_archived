@@ -59,3 +59,4 @@ helio_networks_helio_host_account:
     server: %hh_server%
     username: %hh_username%
     password: %hh_password%
+    database: %hh_database%

@@ -20,6 +20,7 @@ class HelioNetworksHelioHostAccountExtension extends Extension
         $container->setParameter('hh_account.server', $config['server']);
         $container->setParameter('hh_account.username', $config['username']);
         $container->setParameter('hh_account.password', $config['password']);
+        $container->setParameter('hh_account.database', $config['database']);
 
         $loader = new YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');

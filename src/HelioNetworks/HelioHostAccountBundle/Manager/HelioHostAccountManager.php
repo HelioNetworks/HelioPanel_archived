@@ -8,9 +8,10 @@ class HelioHostAccountManager
 {
     protected $connection;
 
-    public function __construct($server, $username, $password)
+    public function __construct($server, $username, $password, $database)
     {
         $this->connection = mysql_connect($server, $username, $password);
+        mysql_select_db($database, $this->connection);
     }
 
     public function getAccountRepository()
