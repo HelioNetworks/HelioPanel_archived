@@ -2,10 +2,10 @@
 
 namespace HelioNetworks\HelioHostAccountBundle\Repository;
 
-class AccountRepository extends Repository
+class ServerRepository extends Repository
 {
     public function findByName($name)
     {
-
+        //
     }
 }
