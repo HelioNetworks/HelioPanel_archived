@@ -10,7 +10,7 @@ class Configuration implements ConfigurationInterface
     public function getConfigTreeBuilder()
     {
         $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('hh_account');
+        $rootNode = $treeBuilder->root('helio_networks_helio_host_account');
 
         $rootNode
             ->children()
