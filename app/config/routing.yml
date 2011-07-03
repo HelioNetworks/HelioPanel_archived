@@ -1,3 +1,8 @@
+HelioNetworksHelioHostAccountBundle:
+    resource: "@HelioNetworksHelioHostAccountBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 HelioNetworksFileManagerBundle:
     resource: "@HelioNetworksFileManagerBundle/Controller"
     type:     annotation

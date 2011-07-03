@@ -20,6 +20,7 @@ class AppKernel extends Kernel
             new HelioNetworks\HelioPanelBundle\HelioNetworksHelioPanelBundle(),
             new HelioNetworks\FileManagerBundle\HelioNetworksFileManagerBundle(),
             new HelioNetworks\FileSystemBundle\HelioNetworksFileSystemBundle(),
+            new HelioNetworks\HelioHostAccountBundle\HelioNetworksHelioHostAccountBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

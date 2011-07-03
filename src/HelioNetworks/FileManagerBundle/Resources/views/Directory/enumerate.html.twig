@@ -4,8 +4,36 @@
 <ul>
 	{% for object in files %}
 	  <li>
-	  	{{ object.name }} <a href="">Rename File</a>
+	  	{{ object.name }} <a href="#" id="rename">Rename File</a>
 	  </li>
 	{% endfor %}
 </ul>
+
+<div style="display:none;" id="rename-dialog" title="Rename File">
+    
+    From: <input type="text" disabled /> <br />
+    To: <input type="text" id="destination" /> <br />
+    <button id="rename-button">Rename file</button>
+    
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        
+        $('#rename').click(function(){
+            
+            $( '#rename-dialog' ).dialog({
+                height: 140,
+                modal: true
+            });            
+        });
+        
+        $('#rename-button').click(function() {
+            
+            
+        });        
+
+    });
+</script>
+
 {% endblock %}
