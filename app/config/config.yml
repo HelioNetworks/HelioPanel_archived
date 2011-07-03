@@ -55,7 +55,7 @@ jms_security_extra:
     secure_controllers:  true
     secure_all_services: false
     
-hh_account:
+helio_networks_helio_host_account:
     server: %hh_server%
     username: %hh_username%
     password: %hh_password%
