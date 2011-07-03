@@ -55,17 +55,7 @@ jms_security_extra:
     secure_controllers:  true
     secure_all_services: false
     
-# FileManager Configuration
-helio_networks_file_manager:
-    adapter:
-        filesystem:
-            local:
-                directory: "/home1/area52/public_html/test_files/"
-                create: true
-            ftp:
-                directory: /
-                username: area52
-                password: passw0rd
-                port: 21
-                passive: true
-                create: true
+hh_account:
+    server: %hh_server%
+    username: %hh_username%
+    password: %hh_password%
