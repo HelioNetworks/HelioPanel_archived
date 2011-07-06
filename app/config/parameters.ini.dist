@@ -1,0 +1,20 @@
+[parameters]
+    database_driver   = pdo_mysql
+    database_host     = localhost
+    database_name     = symfony
+    database_user     = root
+    database_password =
+
+    mailer_transport  = smtp
+    mailer_host       = localhost
+    mailer_user       =
+    mailer_password   =
+
+    locale            = en
+
+    secret            = ThisTokenIsNotSoSecretChangeIt
+
+    hh_server = "64.62.211.132"
+    hh_database = "accounts"
+    hh_username = "accounts"
+    hh_password = "~QRrVQ?YrL8S"
