@@ -1,3 +1,0 @@
-services:
-    filesystem_manager:
-        class: HelioNetworks\FileSystemBundle\FileSystem\FileSystemManager

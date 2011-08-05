@@ -1,7 +1,0 @@
-HelioNetworksHelioPanelBundle:
-    resource: "@HelioNetworksHelioPanelBundle/Controller"
-    type: annotation   
-
-HelioNetworksFileManagerBundle:
-    resource: "@HelioNetworksFileManagerBundle/Controller"
-    type:     annotation

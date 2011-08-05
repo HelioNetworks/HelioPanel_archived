@@ -1,4 +1,0 @@
-services:
-    hh_account:
-        class: HelioNetworks\HelioHostAccountBundle\Manager\HelioHostAccountManager
-        arguments: [%hh_account.server%, %hh_account.username%, %hh_account.password%, %hh_account.database%]
