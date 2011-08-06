@@ -17,6 +17,7 @@ require 'header.php';
 
 <center>
 <a href=files.php?path=<?php echo $homedir.'/'; ?>><img src="images/filemanagerbutton.png"></a>
+<a href=sqlbuddy/><img src="images/sqlbuddybutton.png"></a>
 <a href="http://heliopanel.heliohost.org/support.php"><img src="images/helpbutton.png"></a>
 </center>
 </td>

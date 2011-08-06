@@ -41,28 +41,28 @@ if (!isset($_POST['newpath'])) {
 </body>
 
 </html>
-
+	
 <?php
 }else{
-
+	
 	if (!copy($_POST['oldpath']."".$_POST['filename'], $_POST['newpath']."".$_POST['filename'])) {
 		die ('The file could not be copied. Please try again.');
 	}
 	?>
-
+	
 	<html>
-
+	
 	<head>
 	<script type="text/javascript">
 	window.opener.document.location.reload(true);
 	</script>
 	</head>
-
+	
 	<body>
 	<br><br><center><font face=arial><b>The file has been copied.</b></font><br><font face=arial>Please close this window.</font></center>
 	</body>
-
+	
 	</html>
-
+	
 	<?php
 }
