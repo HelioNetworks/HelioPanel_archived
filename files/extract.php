@@ -31,6 +31,8 @@ if (!isset($_POST['type'])) {
 <p>
 <select name=type>
 <option value=zip>ZIP Archive</option>
+<option value=gz>GZ Archive</option>
+<option value=tar>TAR Archive</option>
 </select>
 </p>
 
@@ -60,15 +62,21 @@ if (!isset($_POST['type'])) {
 	}elseif ($_POST['type'] == 'gz') {
 		
 		$file = $_POST['path']."".$_POST['file'];
+		
 		$extract = pathinfo($file);
 		$fn = ($extract['filename']);
-		$data = file_get_contents("compress.zlib://$file");
-		file_put_contents($fn, $data);
+
+		$gun = gzopen($file, "r");
+		$gzdata = gzread($gun, 500000);
+		gzclose($gun);
+
+		file_put_contents($fn, $gzdata);
+		rename($fn, $_POST['path']."".$fn);
 
 	}elseif ($_POST['type'] == 'tar') {
 		
 		require 'tarfunction.php';
-		untar($_POST['path']."".$_POST['file']);
+		untar($_POST['path']."".$_POST['file'], $_POST['path']);
 
 	}
 	?>
