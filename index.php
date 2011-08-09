@@ -3,7 +3,7 @@ require 'header.php';
 ?>
 
 <!-- Updates and Renewal -->
-<IFRAME src="http://heliopanel.heliohost.org/update.php?version=0.1" width=1 height=1 frameborder=0></IFRAME>
+<IFRAME src="http://heliopanel.heliohost.org/update.php?version=0.2" width=1 height=1 frameborder=0></IFRAME>
 <iframe name='cpupdate' src='http://www.heliohost.org/scripts/renew.php?fromcpanel=1&username=<?php echo $_SESSION['username']; ?>' width='1' height='1' frameborder='0'></iframe>
 <!-- End of the IFRAMES. -->
 
