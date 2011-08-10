@@ -50,7 +50,6 @@ if ($files = $fileRepository->ls($path)) {
          	';
           }
        }
-  closedir($handle);
 }else{
 	echo "<font face=tahoma size=3><b><center>Sorry, the directory you are looking for doesn't exist.</center></b></font>";
 }
