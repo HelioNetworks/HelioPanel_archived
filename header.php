@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 session_start();
 
@@ -9,6 +9,9 @@ if (!isset($_SESSION['username'])) {
 
 // Include the configuration
 require 'config.php';
+require 'FileRepository.php';
+
+$fileRepository = new FileRepository("http://".$_SERVER['HTTP_HOST']."/heliopanel/hook.php", $authKey);
 
 // Get the user's home directory
 if (file_exists('/home/'.$username)) {
@@ -26,7 +29,7 @@ if (file_exists('/home/'.$username)) {
 <link href="style.css" type="text/css" rel="stylesheet">
 <title>HelioPanel</title>
 
-<SCRIPT LANGUAGE="JavaScript"> 
+<SCRIPT LANGUAGE="JavaScript">
 <!-- Begin
 function popUp(URL) {
 day = new Date();
@@ -34,7 +37,7 @@ id = day.getTime();
 eval("page" + id + " = window.open(URL, '" + id + "', 'toolbar=0,scrollbars=0,location=0,statusbar=0,menubar=0,resizable=0,width=400,height=200,left = 0,top = 0');");
 }
 // End -->
-</script> 
+</script>
 
 </head>
 
