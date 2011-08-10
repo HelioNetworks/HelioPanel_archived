@@ -3,7 +3,7 @@ if (!isset($_GET['do'])) {
 
     $path = explode('/', realpath(__DIR__));
 
-    $username = $path[1];
+    $username = $path[2];
     $password = '';
 ?>
 
