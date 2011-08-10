@@ -1,5 +1,10 @@
 <?php
 if (!isset($_GET['do'])) {
+
+    $path = explode('/', realpath(__DIR__));
+
+    $username = $path[1];
+    $password = '';
 ?>
 
 <html>
@@ -22,33 +27,41 @@ if (!isset($_GET['do'])) {
 <p><i>/home1/<b>jje</b>/</i></p>
 <p>We also need a password. This password can be whatever you like and it doesn't have to be the same as your cPanel password, as long as it doesn't have any special characters.</p>
 <form method=post action="install.php?do=install">
-<textarea name="content" style="width:90%; height:80px;">
-<?php
-echo htmlspecialchars(file_get_contents('config.php')); 
-?>
-</textarea>
-<input type=submit value="Finish">
+    <p>Username: <input type="text" name="username" value="<?php echo $username; ?>" /></p>
+    <p>Password: <input type="password" name="password" value="<?php echo $password; ?>" /></p>
+    <input type=submit value="Finish">
 </form>
 </td></tr></table>
 
 <?php
 }elseif ($_GET['do'] == 'install') {
 
-$fh = fopen('config.php', 'w') or die("<b>Error, couldn't write config.php</b>"); 
-fwrite($fh, $_POST['content']); 
-fclose($fh);  
+    $username = @$_POST['username'];
+    $password = @$_POST['password'];
 
-$zip = new ZipArchive;
-if ($zip->open('editors.zip') === TRUE) {
-    $zip->extractTo('./');
-    $zip->close();
-} else {
-    echo 'Error, couldnt install editors.';
-}
+    $CONFIG_TEMPLATE = '
+	<?php
 
-unlink('editors.zip');
+	$username = "%username%";
+	$password = "%password%";
+';
 
-header("location:install.php?do=finish"); 
+    $CONFIG_TEMPLATE = str_replace('%username%', $username, $CONFIG_TEMPLATE);
+    $CONFIG_TEMPLATE = str_replace('%password%', $password, $CONFIG_TEMPLATE);
+
+    file_put_contents(__DIR__.'config.php', $CONFIG_TEMPLATE);
+
+    $zip = new ZipArchive;
+    if ($zip->open('editors.zip') === TRUE) {
+        $zip->extractTo('./');
+        $zip->close();
+    } else {
+        echo 'Error, couldn\'t install editors.';
+    }
+
+    unlink('editors.zip');
+
+    header("location:install.php?do=finish");
 
 }elseif ($_GET['do'] == 'finish') {
 ?>
@@ -73,6 +86,12 @@ header("location:install.php?do=finish");
 <p>You are now free to <a href="./">login</a> to your HelioPanel and take advantage of the software.
 If you have any questions please visit <a href="http://heliopanel.heliohost.org">The HelioPanel Project</a> website.</p>
 </td></tr></table>
+
+<p><strong>Removing install.php...</strong></p>
+<?php
+unlink(__FILE__);
+?>
+<p><strong>install.php removed</strong></p>
 
 <?php
 }
