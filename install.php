@@ -24,7 +24,7 @@ if (!isset($_GET['do'])) {
 <form method=post action="install.php?do=install">
 <textarea name="content" style="width:90%; height:80px;">
 <?php
-echo htmlspecialchars(file_get_contents('config.php')); 
+echo htmlspecialchars(file_get_contents('config.php'));
 ?>
 </textarea>
 <input type=submit value="Finish">
@@ -34,9 +34,9 @@ echo htmlspecialchars(file_get_contents('config.php'));
 <?php
 }elseif ($_GET['do'] == 'install') {
 
-$fh = fopen('config.php', 'w') or die("<b>Error, couldn't write config.php</b>"); 
-fwrite($fh, $_POST['content']); 
-fclose($fh);  
+$fh = fopen('config.php', 'w') or die("<b>Error, couldn't write config.php</b>");
+fwrite($fh, $_POST['content']);
+fclose($fh);
 
 $zip = new ZipArchive;
 if ($zip->open('editors.zip') === TRUE) {
@@ -48,7 +48,7 @@ if ($zip->open('editors.zip') === TRUE) {
 
 unlink('editors.zip');
 
-header("location:install.php?do=finish"); 
+header("location:install.php?do=finish");
 
 }elseif ($_GET['do'] == 'finish') {
 ?>
@@ -73,6 +73,12 @@ header("location:install.php?do=finish");
 <p>You are now free to <a href="./">login</a> to your HelioPanel and take advantage of the software.
 If you have any questions please visit <a href="http://heliopanel.heliohost.org">The HelioPanel Project</a> website.</p>
 </td></tr></table>
+
+<p><strong>Removing install.php...</strong></p>
+<?php
+unlink(__FILE__);
+?>
+<p><strong>install.php removed</strong></p>
 
 <?php
 }
