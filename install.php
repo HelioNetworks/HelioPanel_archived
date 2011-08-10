@@ -41,8 +41,7 @@ if (!isset($_GET['do'])) {
 
     $authKey = base_convert(mt_rand(0x1D39D3E06400000, 0x41C21CB8E0FFFFFF), 10, 36);
 
-    $CONFIG_TEMPLATE = '
-	<?php
+    $CONFIG_TEMPLATE = '<?php
 
 	$username = "%username%";
 	$password = "%password%";
