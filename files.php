@@ -5,7 +5,7 @@ require 'header.php';
 
 // If the home page was requested
 if (!isset($_GET['r'])) {
-	
+
 if($_GET['path'] == '/') {
 	$path = $homedir.'/';
 }else{
@@ -24,20 +24,18 @@ if($_GET['path'] == '/') {
 
 <?php
 
-if ($handle = opendir($path)) {
- 
-   while (false !== ($file = readdir($handle))) {
-          
+
+if ($files = $fileRepository->ls($path)) {
+
+   foreach ($files as $file) {
+
           if ($file != "." && $file != "..") {
-	  
-	  		if(is_file($path.''.$file.'')) {
-	  			$type = 'file';
-	  		}else{
-	  			$type = 'folder';
-	  		}
-	  			  		
+
+	  		$type = $file['type'];
+	  		$file = $file['file'];
+
          	$thelist .= '
-         	         		      	
+
          		<tr>
          		<td align=left width=40><img src=images/files/'.$type.'.png></td>
          		<td align=left><a href=files.php?path='.$path.''.$file.'/><font face=Verdana color=black>'.$file.'</font></a></td>
@@ -52,7 +50,6 @@ if ($handle = opendir($path)) {
          	';
           }
        }
-  closedir($handle);
 }else{
 	echo "<font face=tahoma size=3><b><center>Sorry, the directory you are looking for doesn't exist.</center></b></font>";
 }
