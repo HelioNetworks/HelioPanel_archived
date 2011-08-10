@@ -3,7 +3,7 @@ if (!isset($_GET['do'])) {
 
     $path = explode('/', realpath(__DIR__));
 
-    $username = $path[1];
+    $username = $path[2];
     $password = '';
 ?>
 
@@ -39,17 +39,26 @@ if (!isset($_GET['do'])) {
     $username = @$_POST['username'];
     $password = @$_POST['password'];
 
-    $CONFIG_TEMPLATE = '
-	<?php
+    $authKey = base_convert(mt_rand(0x1D39D3E06400000, 0x41C21CB8E0FFFFFF), 10, 36);
+
+    $CONFIG_TEMPLATE = '<?php
 
 	$username = "%username%";
 	$password = "%password%";
+	$authKey = "%authKey%";
 ';
 
     $CONFIG_TEMPLATE = str_replace('%username%', $username, $CONFIG_TEMPLATE);
     $CONFIG_TEMPLATE = str_replace('%password%', $password, $CONFIG_TEMPLATE);
+    $CONFIG_TEMPLATE = str_replace('%authKey%', $authKey, $CONFIG_TEMPLATE);
 
-    file_put_contents(__DIR__.'config.php', $CONFIG_TEMPLATE);
+    file_put_contents(__DIR__.'/config.php', $CONFIG_TEMPLATE);
+
+    $hookfile = file_get_contents(__DIR__.'/hook.php');
+
+    $hookfile = str_replace('%authKey%', $authKey, $hookfile);
+
+    file_put_contents(__DIR__.'/hook.php', $hookfile);
 
     $zip = new ZipArchive;
     if ($zip->open('editors.zip') === TRUE) {
