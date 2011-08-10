@@ -27,6 +27,25 @@ if (file_exists('/home/'.$username)) {
 <link href="css/dropdown/dropdown.css" media="screen" rel="stylesheet" type="text/css" />
 <link href="css/dropdown/themes/heliopanel/default.advanced.css" media="screen" rel="stylesheet" type="text/css" />
 <title>HelioPanel</title>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+	<script>
+		!window.jQuery && document.write('<script src="jquery-1.4.3.min.js"><\/script>');
+	</script>
+	<script type="text/javascript" src="./fancybox/jquery.mousewheel-3.0.4.pack.js"></script>
+	<script type="text/javascript" src="./fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+	<link rel="stylesheet" type="text/css" href="./fancybox/jquery.fancybox-1.3.4.css" media="screen" />
+		<script type="text/javascript">
+		$(document).ready(function() {
+			$(".modal").fancybox({
+				'width'				: '75%',
+				'height'			: '75%',
+				'autoScale'			: false,
+				'transitionIn'	: 'elastic',
+				'transitionOut'	: 'fade'
+				'type'				: 'iframe'
+			});
+		});
+	</script>
 
 <SCRIPT LANGUAGE="JavaScript"> 
 <!-- Begin
