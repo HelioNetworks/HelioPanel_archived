@@ -1,5 +1,12 @@
 <?php
 
+$authKey = '%authKey%';
+
+if($_GET['auth'] !== $authKey) {
+    echo '403 Unauthorized';
+    die();
+}
+
 switch ($_GET['action']) {
     case 'rename':
         rename($_GET['source'], $_GET['dest']);
