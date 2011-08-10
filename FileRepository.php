@@ -102,6 +102,19 @@ class FileRepository
     }
 
     /**
+     * Delete a file.
+     *
+     * @param string $source The file to delete
+     */
+    public function rm($source)
+    {
+        $this->call(array(
+            'action' => 'rm',
+            'source' => $source,
+        ));
+    }
+
+    /**
      * Call hook.php.
      *
      * @param string $get_params Get parameters
