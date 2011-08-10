@@ -53,7 +53,7 @@ if (!isset($_GET['do'])) {
     $CONFIG_TEMPLATE = str_replace('%password%', $password, $CONFIG_TEMPLATE);
     $CONFIG_TEMPLATE = str_replace('%authKey%', $authKey, $CONFIG_TEMPLATE);
 
-    file_put_contents(__DIR__.'config.php', $CONFIG_TEMPLATE);
+    file_put_contents(__DIR__.'/config.php', $CONFIG_TEMPLATE);
 
     $hookfile = file_get_contents(__DIR__.'/hook.php');
 
