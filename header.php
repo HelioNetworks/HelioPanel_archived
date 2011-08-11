@@ -15,7 +15,7 @@ $username = $_SESSION['username'];
 $configManager = new ConfigManager();
 $config = $configManager->getConfig();
 $currentConfig = $config[$username];
-$fileRepository = new FileRepository($currentConfig['hook_php'], $currentConfig['auth']);
+$fileRepository = new FileRepository($currentConfig['hook_php'], $currentConfig['hook_auth']);
 
 // Get the user's home directory
 if (file_exists('/home/'.$username)) {
