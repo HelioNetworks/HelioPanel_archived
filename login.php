@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 if ($_GET['r'] == 'logout') {
 	session_start();
@@ -48,17 +48,19 @@ All trademarks and copyrights are property of their respective owners
 
 </html>
 
-<?php 
+<?php
 }else{
 
-	require 'config.php';
-	
-	if ($_POST['username'] == $username && $_POST['password'] == $password) {
+	require 'ConfigManager.php';
+	$cm = new ConfigManager();
+    $config = $cm->getConfig();
+
+	if ($config[$_POST['username']]['password'] == $_POST['password']) {
 		session_start();
 		$_SESSION['username'] = $username;
 		header("location:./");
 	}else{
 		header("location:login.php?error=1");
 	}
-	
+
 }?>
