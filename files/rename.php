@@ -41,26 +41,26 @@ if (!isset($_POST['newfilename'])) {
 </body>
 
 </html>
-	
+
 <?php
 }else{
-	
-	rename($_POST['path']."".$_POST['oldfilename'], $_POST['path']."".$_POST['newfilename']);
+
+	$fileRepository->rename($_POST['path']."".$_POST['oldfilename'], $_POST['path']."".$_POST['newfilename']);
 	?>
-	
+
 	<html>
-	
+
 	<head>
 	<script type="text/javascript">
 	window.opener.document.location.reload(true);
 	</script>
 	</head>
-	
+
 	<body>
 	<br><br><center><font face=arial><b>The file has been renamed.</b></font><br><font face=arial>Please close this window.</font></center>
 	</body>
-	
+
 	</html>
-	
+
 	<?php
 }
