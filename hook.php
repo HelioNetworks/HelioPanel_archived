@@ -47,4 +47,8 @@ switch ($_GET['action']) {
         }
 
         echo serialize($files);
+        break;
+    case 'rm':
+        unlink($_GET['source']);
+        break;
 }
