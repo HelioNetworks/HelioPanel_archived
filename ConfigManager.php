@@ -4,7 +4,7 @@ class ConfigManager
 {
     public function setConfig(array $config)
     {
-        $configFile = '<?php $config = '.var_dump($config);
+        $configFile = '<?php $config = '.var_export($config, true);
         file_put_contents(__DIR__.'/config.php', $configFile);
     }
 
