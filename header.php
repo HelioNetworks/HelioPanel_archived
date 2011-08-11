@@ -258,6 +258,7 @@ eval("page" + id + " = window.open(URL, '" + id + "', 'toolbar=0,scrollbars=0,lo
 	            <li><a href="http://www.helionet.org/index/index.php?showforum=79">Contribute</a></li>
 	        </ul>
 	    </li>
+                    <li><a href="http://www.cl58services.co.cc/heliohost/">HelioHost Guide</a></li>
 	    <li><a href="javascript:;">Tools</a>
 	        <ul>
                     <li><a href="http://www.cl58services.co.cc/heliohost/">HelioHost Guide</a></li>
