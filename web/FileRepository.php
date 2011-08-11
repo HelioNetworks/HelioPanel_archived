@@ -120,7 +120,7 @@ class FileRepository
      * @param string $get_params Get parameters
      * @param string $post_params Post parameters
      */
-    protected function call($get_params, $post_params = array())
+    protected function call($get_params, $post_params = array(), $update_automatically = true)
     {
         $get_params['auth'] = $this->auth;
         $query = http_build_query($get_params);
@@ -128,10 +128,25 @@ class FileRepository
         $url = $this->url . '?' . $query;
 
         if(empty($post_params)) {
-            return file_get_contents($url);
+            $contents = file_get_contents($url);
         } else {
-            return $this->doPostRequest($url, http_build_query($post_params));
+            $contents = $this->doPostRequest($url, http_build_query($post_params));
         }
+
+        if (($contents == '600 Not Implemented') && $update_automatically) {
+            $this->call(array(
+                'action' => 'update',
+            ), array(
+                'data' => file_get_contents(__DIR__.'/hook.php'),
+            ), false);
+
+            $contents = $this->call($get_params, $post_params, false);
+        } else {
+            $contents = false;
+        }
+
+        return $contents;
+
     }
 
     /**
