@@ -37,26 +37,26 @@ if (!isset($_POST['delete'])) {
 </body>
 
 </html>
-	
+
 <?php
 }else{
-	
-	unlink($_POST['file']);
+
+	$fileRepository->rm($_POST['file']);
 	?>
-	
+
 	<html>
-	
+
 	<head>
 	<script type="text/javascript">
 	window.opener.document.location.reload(true);
 	</script>
 	</head>
-	
+
 	<body>
 	<br><br><center><font face=arial><b>The file has been permanently deleted.</b></font><br><font face=arial>Please close this window.</font></center>
 	</body>
-	
+
 	</html>
-	
+
 	<?php
 }

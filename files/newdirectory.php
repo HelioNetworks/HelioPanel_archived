@@ -38,26 +38,26 @@ if (!isset($_POST['filename'])) {
 </body>
 
 </html>
-	
+
 <?php
 }else{
-	
-	mkdir($_POST['path']."".$_POST['filename'], 0755);
+
+	$fileRepository->mkdir($_POST['path']."".$_POST['filename']);
 	?>
-	
+
 	<html>
-	
+
 	<head>
 	<script type="text/javascript">
 	window.opener.document.location.reload(true);
 	</script>
 	</head>
-	
+
 	<body>
 	<br><br><center><font face=arial><b>The directory has been created.</b></font><br><font face=arial>Please close this window.</font></center>
 	</body>
-	
+
 	</html>
-	
+
 	<?php
 }

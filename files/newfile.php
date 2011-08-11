@@ -38,26 +38,26 @@ if (!isset($_POST['filename'])) {
 </body>
 
 </html>
-	
+
 <?php
 }else{
-	
-	$filehandle = fopen($_POST["path"].''.$_POST["filename"], 'w') or die("<b>HelioPanel is unable to create the file. Please check file permissions.</b>");
+
+	$fileRepository->touch($_POST["path"].''.$_POST["filename"]);
 	?>
-	
+
 	<html>
-	
+
 	<head>
 	<script type="text/javascript">
 	window.opener.document.location.reload(true);
 	</script>
 	</head>
-	
+
 	<body>
 	<br><br><center><font face=arial><b>The file has been created.</b></font><br><font face=arial>Please close this window.</font></center>
 	</body>
-	
+
 	</html>
-	
+
 	<?php
 }

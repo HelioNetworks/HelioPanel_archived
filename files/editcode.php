@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start();
 
 // Make sure the user is logged in
@@ -45,8 +45,8 @@ if (!isset($_POST['content'])) {
 </tr></table>
 
 <textarea name="content" id="textarea" style="width:100%; height:400px">
-<?php 
-echo htmlspecialchars(file_get_contents($_GET['file'])); 
+<?php
+echo htmlspecialchars(file_get_contents($_GET['file']));
 ?>
 </textarea>
 
@@ -146,12 +146,10 @@ document.getElementById("buBuild").onclick = function() {
 </body>
 </html>
 
-<?php 
+<?php
 }else{
 
-	$fh = fopen($_POST['file'], 'w') or die("<b>HelioPanel is unable to edit the file. Please check file permissions.</b>"); 
-	fwrite($fh, $_POST['content']); 
-	fclose($fh);  
-	header("location:editcode.php?file=".$_POST['file']); 
-	
+	$fileRepository->save($_POST['file'], $_POST['content']);
+	header("location:editcode.php?file=".$_POST['file']);
+
 }?>
