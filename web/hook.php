@@ -51,4 +51,11 @@ switch ($_GET['action']) {
     case 'rm':
         unlink($_GET['source']);
         break;
+    case 'update':
+        $data = str_replace('%authKey%', $authKey, $_POST['data']);
+        file_put_contents(__FILE__, $data);
+        break;
+    default:
+        echo '600 Not Implemented';
+        break;
 }
