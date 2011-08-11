@@ -57,7 +57,7 @@ All trademarks and copyrights are property of their respective owners
 
 	if ($config[$_POST['username']]['password'] == $_POST['password']) {
 		session_start();
-		$_SESSION['username'] = $username;
+		$_SESSION['username'] = $_POST['username'];
 		header("location:./");
 	}else{
 		header("location:login.php?error=1");
