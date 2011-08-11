@@ -41,23 +41,21 @@ if (!isset($_GET['do'])) {
 
     $authKey = base_convert(mt_rand(0x1D39D3E06400000, 0x41C21CB8E0FFFFFF), 10, 36);
 
-    $CONFIG_TEMPLATE = '<?php
+    require_once 'ConfigManager.php';
 
-	$username = "%username%";
-	$password = "%password%";
-	$authKey = "%authKey%";
-';
+    $config = array(
+        $username => array(
+            'password' => $password,
+            'hook_php' => 'http://'.$_SERVER['HTTP_HOST'].dirname($_SERVER['REQUEST_URL']).'/hook.php',
+            'hook_auth' => $authKey,
+        ),
+    );
 
-    $CONFIG_TEMPLATE = str_replace('%username%', $username, $CONFIG_TEMPLATE);
-    $CONFIG_TEMPLATE = str_replace('%password%', $password, $CONFIG_TEMPLATE);
-    $CONFIG_TEMPLATE = str_replace('%authKey%', $authKey, $CONFIG_TEMPLATE);
-
-    file_put_contents(__DIR__.'/config.php', $CONFIG_TEMPLATE);
+    $cm = new ConfigManager();
+    $cm->setConfig($config);
 
     $hookfile = file_get_contents(__DIR__.'/hook.php');
-
     $hookfile = str_replace('%authKey%', $authKey, $hookfile);
-
     file_put_contents(__DIR__.'/hook.php', $hookfile);
 
     $zip = new ZipArchive;
