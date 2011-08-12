@@ -52,7 +52,7 @@ switch ($_GET['action']) {
         unlink($_GET['source']);
         break;
     case 'update':
-        $data = str_replace('%authKey%', $authKey, $_POST['data']);
+        $data = str_replace('%aut'.'hKey%', $authKey, $_POST['data']);
         file_put_contents(__FILE__, $data);
         break;
     default:
