@@ -30,7 +30,7 @@ if (!isset($_POST['content'])) {
 
 <textarea name="content" id="editor1">
 <?php
-echo htmlspecialchars(file_get_contents($_GET['file']));
+echo htmlspecialchars($fileRepository->get($_GET['file']));
 ?>
 </textarea>
 

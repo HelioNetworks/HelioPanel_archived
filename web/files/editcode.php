@@ -46,7 +46,7 @@ if (!isset($_POST['content'])) {
 
 <textarea name="content" id="textarea" style="width:100%; height:400px">
 <?php
-echo htmlspecialchars(file_get_contents($_GET['file']));
+echo htmlspecialchars($fileRepository->get($_GET['file']));
 ?>
 </textarea>
 
