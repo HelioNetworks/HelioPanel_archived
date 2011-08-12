@@ -5,6 +5,20 @@ session_start();
 // Make sure the user is logged in
 if (!isset($_SESSION['username'])) {
 	header("location:login.php");
+	die();
+}
+
+function installHook($username, $password, $redirect = 'http://central.heliopanel.heliohost.org')
+{
+    $url = 'http://heliopanel.heliohost.org/install/autoinstall.php?';
+    $query = http_build_query(array(
+        'username' => $username,
+        'password' => $password,
+        'redirect' => $redirect,
+    ));
+
+    header('location:'.$url.$query);
+    die();
 }
 
 // Include the configuration
