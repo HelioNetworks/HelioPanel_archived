@@ -133,16 +133,18 @@ class FileRepository
             $contents = $this->doPostRequest($url, http_build_query($post_params));
         }
 
-        if (($contents == '600 Not Implemented') && $update_automatically) {
-            $this->call(array(
-                'action' => 'update',
-            ), array(
-                'data' => file_get_contents(__DIR__.'/hook.php'),
-            ), false);
+        if (($contents == '600 Not Implemented')) {
+            if($update_automatically) {
+                $this->call(array(
+                    'action' => 'update',
+                ), array(
+                    'data' => file_get_contents(__DIR__.'/hook.php'),
+                ), false);
 
-            $contents = $this->call($get_params, $post_params, false);
-        } else {
-            $contents = false;
+                $contents = $this->call($get_params, $post_params, false);
+            } else {
+                $contents = false;
+            }
         }
 
         return $contents;
