@@ -293,3 +293,5 @@ eval("page" + id + " = window.open(URL, '" + id + "', 'toolbar=0,scrollbars=0,lo
 <td bgcolor="#F5F1E5"></td>
 <td bgcolor="#DAAE36" background="images/body-shadow-l.png"></td>
 <td bgcolor="#F5F1E5" width=714>
+
+<a href="https://github.com/HelioNetworks/HelioPanel/issues/new">Report a bug! Request a feature! Make HelioPanel better!</a>
