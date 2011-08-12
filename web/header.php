@@ -191,7 +191,7 @@ eval("page" + id + " = window.open(URL, '" + id + "', 'toolbar=0,scrollbars=0,lo
 	            </li>
 	        </ul>
 	    </li>
-	    <li><a href="/heliopanel/" class="active">HelioPanel</a>
+	    <li><a href="/" class="active">HelioPanel</a>
         <ul>
           <li><a href="http://heliopanel.heliohost.org">The HelioPanel Project</a></li>
           <li><a href="http://heliopanel.heliohost.org/features.php">Features</a></li>
