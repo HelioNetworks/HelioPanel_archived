@@ -12,40 +12,94 @@ if (!isset($_POST['type'])) {
 <html>
 
 <head>
-<link href="../style.css" type="text/css" rel="stylesheet">
-<title>Extract</title>
+	<link rel="stylesheet" href="../jquery/themes/base/jquery.ui.all.css">
+	<script src="../jquery/jquery-1.6.2.js"></script>
+	<script src="../jquery/external/jquery.bgiframe-2.1.2.js"></script>
+	<script src="../jquery/ui/jquery.ui.core.js"></script>
+	<script src="../jquery/ui/jquery.ui.widget.js"></script>
+	<script src="../jquery/ui/jquery.ui.mouse.js"></script>
+	<script src="../jquery/ui/jquery.ui.button.js"></script>
+	<script src="../jquery/ui/jquery.ui.draggable.js"></script>
+	<script src="../jquery/ui/jquery.ui.position.js"></script>
+	<script src="../jquery/ui/jquery.ui.resizable.js"></script>
+	<script src="../jquery/ui/jquery.ui.dialog.js"></script>
+	<script src="../jquery/ui/jquery.effects.core.js"></script>
+	
+	<style>
+		body { font-size: 62.5%; }
+		label, input { display:block; }
+		input.text { margin-bottom:12px; width:95%; padding: .4em; }
+		fieldset { padding:0; border:0; margin-top:25px; }
+		h1 { font-size: 1.2em; margin: .6em 0; }
+		div#users-contain { width: 350px; margin: 20px 0; }
+		div#users-contain table { margin: 1em 0; border-collapse: collapse; width: 100%; }
+		div#users-contain table td, div#users-contain table th { border: 1px solid #eee; padding: .6em 10px; text-align: left; }
+		.ui-dialog .ui-state-error { padding: .3em; }
+		.validateTips { border: 1px solid transparent; padding: 0.3em; }
+	</style>
+	
+	<script>
+	$(function() {
+		// a workaround for a flaw in the demo system (http://dev.jqueryui.com/ticket/4375), ignore!
+		$( "#dialog:ui-dialog" ).dialog( "destroy" );
+		
+		$( "#dialog" ).dialog({
+			autoOpen: false,
+			height: 300,
+			width: 350,
+			modal: true,
+			buttons: {
+				"Extract Archive": function() {
+					document.forms["form"].submit();
+				},
+				Cancel: function() {
+					$( this ).dialog( "close" );
+				}
+			},
+			close: function() {
+				history.go(-1);
+				allFields.val( "" ).removeClass( "ui-state-error" );
+			}
+		});
+
+		$( "#button" )
+				$( "#dialog" ).dialog( "open" );
+	});
+	</script>
+	
+	<title>Extract</title>
 </head>
 
 <body>
 
-<table align="center" class="filespopupheader"><tr><td valign="middle"><center><b>Extract</b></center></td></tr></table>
+<div id="dialog" title="Extract Archive">
 
-<table align="center" class="filespopupcontent"><tr><td><center>
+	<p class="validateTips">Please confirm that you wish to delete this file:</p>
 
-<form method=post action=extract.php>
-<input type=hidden name=file value="<?php echo $_GET['file']; ?>">
-<input type=hidden name=path value="<?php echo $_GET['path']; ?>">
-
-<p><?php echo $_GET['file']; ?></p>
-
-<p>
-<select name=type>
-<option value=zip>ZIP Archive</option>
-<option value=gz>GZ Archive</option>
-<option value=tar>TAR Archive</option>
-</select>
-</p>
-
-<input type=submit value="Extract">
-
-</form>
-
-</center></td></tr></table>
-
+	<form method=post action=extract.php name="form">
+	<fieldset>
+	<input type=hidden name=path value="<?php echo $_GET['file']; ?>">
+	<input type=hidden name=file value="<?php echo $_GET['file']; ?>">
+	
+	<label for="file2">Archive Path</label>
+	<input type="text" name="file2" value="<?php echo $_GET['path']."".$_GET['file']; ?>" id="file2" class="text ui-widget-content ui-corner-all" disabled />
+			
+	<label for="type">Type of Archive</label>
+	<select name="type" id="type" class="text ui-widget-content ui-corner-all">
+	<option value=zip>ZIP Archive</option>
+	<option value=gz>GZ Archive</option>
+	<option value=tar>TAR Archive</option>
+	</select>
+			
+	</fieldset>
+	</form>
+	
+</div>
+	
 </body>
 
 </html>
-	
+
 <?php
 }else{
 	
@@ -79,21 +133,7 @@ if (!isset($_POST['type'])) {
 		untar($_POST['path']."".$_POST['file'], $_POST['path']);
 
 	}
-	?>
 	
-	<html>
+	header("location:../files.php?path=".$_POST['path']);
 	
-	<head>
-	<script type="text/javascript">
-	window.opener.document.location.reload(true);
-	</script>
-	</head>
-	
-	<body>
-	<br><br><center><font face=arial><b>The file has been extracted.</b></font><br><font face=arial>Please close this window.</font></center>
-	</body>
-	
-	</html>
-	
-	<?php
 }
