@@ -28,7 +28,7 @@ if (!isset($_POST['content'])) {
 <input type=hidden name=file value="<?php echo $_GET['file']; ?>">
 
 <table class="filestoolbar"><tr>
-<td width=40 valign=middle><img border=0 src="../images/files/back-icon.png" style="cursor:pointer; opacity:0.5;filter:alpha(opacity=50)" onmouseover="this.style.opacity=1;this.filters.alpha.opacity=100" onmouseout="this.style.opacity=0.5;this.filters.alpha.opacity=50" onClick="top.window.location='../files.php?path=<?php echo $homedir; ?>/'"></td>
+<td width=40 valign=middle><img border=0 src="../images/files/back-icon.png" style="cursor:pointer; opacity:0.5;filter:alpha(opacity=50)" onmouseover="this.style.opacity=1;this.filters.alpha.opacity=100" onmouseout="this.style.opacity=0.5;this.filters.alpha.opacity=50" onClick="top.window.location='../files.php?path=<?php echo dirname($_GET['file']); ?>/'"></td>
 <td valign=middle><input type=text name=file value="<?php echo $_GET['file']; ?>" style="width:98%;" disabled></td>
 <td width=200 valign=middle><center><font face=arial size=2><b>Last Saved:</b> <?php echo date('h:i:s A'); ?> (PST)</font></center></td>
 <td width=40 valign=middle><input type=image border=0 src="../images/files/save.png" style="cursor:pointer; opacity:0.5;filter:alpha(opacity=50)" onmouseover="this.style.opacity=1;this.filters.alpha.opacity=100" onmouseout="this.style.opacity=0.5;this.filters.alpha.opacity=50"></td>
