@@ -1,23 +1,7 @@
 Please note that this is the development area for HelioPanel and usually does not resemble the most stable release. For information on installing please visit the official website mentioned above. HelioPanel is a control panel offered to the user's of HelioHost's services, which allows them to easily take full control of their website without facing any problems. The aim of HelioPanel is to resolve any common issues that user's face every day, and to make website management much easier.
 
-## Installing ##
+## Installation ##
+Before the use of the central HelioPanel installation, you must use the simple install script available from the HelioPanel Project website above, to gain access to the central HelioPanel used in 0.3BETA and above.
 
-Since HelioPanel is not a distributed web application, manual configuration will be required
-to set up the latest version.
-
-1. Check out the latest copy of HelioPanel with `git clone git://github.com/HelioNetworks/HelioPanel.git`. 
-2. Create a file named `config.php`. 
-3. Transfer the file named `hook.php` to the website you wish to install HelioPanel on.
-3. Populate config.php with this information:
-
-```php5
-<?php
-
-$users = array(
-    'user_id' => array(
-        'password' => 'user_password',
-        'hook_php' => 'http://path.to/hook.php',
-        'hook_auth' => 'random_string',
-    ),
-);
-```
+## Updates ##
+The central HelioPanel installation used in 0.3BETA and above (central.heliopanel.heliohost.org) is updated with the GitHub code every day at midnight, PST. Because of this updating feature, HelioPanel is constantly automatically updated with the latest features and the latest bugs solved.
