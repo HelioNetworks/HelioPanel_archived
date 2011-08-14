@@ -6,6 +6,8 @@ if (!isset($_SESSION['username'])) {
 	header("location:../login.php");
 }
 
+require __DIR__.'/../init.php';
+
 if (!isset($_POST['destination'])) {
 ?>
 
@@ -24,7 +26,7 @@ if (!isset($_POST['destination'])) {
 	<script src="../jquery/ui/jquery.ui.resizable.js"></script>
 	<script src="../jquery/ui/jquery.ui.dialog.js"></script>
 	<script src="../jquery/ui/jquery.effects.core.js"></script>
-	
+
 	<style>
 		body { font-size: 62.5%; }
 		label, input { display:block; }
@@ -37,12 +39,12 @@ if (!isset($_POST['destination'])) {
 		.ui-dialog .ui-state-error { padding: .3em; }
 		.validateTips { border: 1px solid transparent; padding: 0.3em; }
 	</style>
-	
+
 	<script>
 	$(function() {
 		// a workaround for a flaw in the demo system (http://dev.jqueryui.com/ticket/4375), ignore!
 		$( "#dialog:ui-dialog" ).dialog( "destroy" );
-		
+
 		$( "#dialog" ).dialog({
 			autoOpen: false,
 			height: 300,
@@ -66,7 +68,7 @@ if (!isset($_POST['destination'])) {
 				$( "#dialog" ).dialog( "open" );
 	});
 	</script>
-	
+
 	<title>Move</title>
 </head>
 
@@ -81,15 +83,15 @@ if (!isset($_POST['destination'])) {
 
 	<label for="source">Source</label>
 	<input type="text" name="source" value="<?php echo $_GET['path']; ?>" id="source" class="text ui-widget-content ui-corner-all" disabled />
-	
+
 	<label for="destination">Destination</label>
 	<input type="text" name="destination" id="destination" class="text ui-widget-content ui-corner-all" />
-			
+
 	</fieldset>
 	</form>
-	
+
 </div>
-	
+
 </body>
 
 </html>
@@ -98,6 +100,6 @@ if (!isset($_POST['destination'])) {
 }else{
 
 	$fileRepository->rename($_POST['oldpath']."".$_POST['filename'], $_POST['newpath']."".$_POST['filename']);
-	
+
 	header("location:../files.php?path=".$_POST['newpath']);
 }

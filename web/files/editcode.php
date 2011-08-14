@@ -6,17 +6,7 @@ if (!isset($_SESSION['username'])) {
 	header("location:../login.php");
 }
 
-// Include the configuration
-require '../config.php';
-
-// Get the user's home directory
-if (file_exists('/home/'.$username)) {
-    $homedir = '/home/'.$username;
-} elseif (file_exists('/home1/'.$username)) {
-    $homedir = '/home1/'.$username;
-} else {
-	die ('Fatal Error: Cannot find home directory!');
-}
+require __DIR__.'/../init.php';
 
 // If the form hasn't been submitted
 if (!isset($_POST['content'])) {

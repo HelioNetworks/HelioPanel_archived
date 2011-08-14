@@ -6,6 +6,8 @@ if (!isset($_SESSION['username'])) {
 	header("location:../login.php");
 }
 
+require __DIR__.'/../init.php';
+
 if (!isset($_POST['path'])) {
 ?>
 
@@ -24,7 +26,7 @@ if (!isset($_POST['path'])) {
 	<script src="../jquery/ui/jquery.ui.resizable.js"></script>
 	<script src="../jquery/ui/jquery.ui.dialog.js"></script>
 	<script src="../jquery/ui/jquery.effects.core.js"></script>
-	
+
 	<style>
 		body { font-size: 62.5%; }
 		label, input { display:block; }
@@ -37,12 +39,12 @@ if (!isset($_POST['path'])) {
 		.ui-dialog .ui-state-error { padding: .3em; }
 		.validateTips { border: 1px solid transparent; padding: 0.3em; }
 	</style>
-	
+
 	<script>
 	$(function() {
 		// a workaround for a flaw in the demo system (http://dev.jqueryui.com/ticket/4375), ignore!
 		$( "#dialog:ui-dialog" ).dialog( "destroy" );
-		
+
 		$( "#dialog" ).dialog({
 			autoOpen: false,
 			height: 300,
@@ -66,7 +68,7 @@ if (!isset($_POST['path'])) {
 				$( "#dialog" ).dialog( "open" );
 	});
 	</script>
-	
+
 	<title>Delete</title>
 </head>
 
@@ -80,15 +82,15 @@ if (!isset($_POST['path'])) {
 	<fieldset>
 	<input type=hidden name=path value="<?php echo $_GET['file']; ?>">
 	<input type=hidden name=file value="<?php echo $_GET['file']; ?>">
-	
+
 	<label for="file2">File Path</label>
 	<input type="text" name="file2" value="<?php echo $_GET['path']."".$_GET['file']; ?>" id="file2" class="text ui-widget-content ui-corner-all" disabled />
-			
+
 	</fieldset>
 	</form>
-	
+
 </div>
-	
+
 </body>
 
 </html>

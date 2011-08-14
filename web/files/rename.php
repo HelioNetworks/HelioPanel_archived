@@ -7,6 +7,9 @@ if (!isset($_SESSION['username'])) {
 }
 */
 
+require __DIR__.'/../init.php';
+
+
 if (!isset($_POST['newfilename'])) {
 ?>
 
@@ -25,7 +28,7 @@ if (!isset($_POST['newfilename'])) {
 	<script src="../jquery/ui/jquery.ui.resizable.js"></script>
 	<script src="../jquery/ui/jquery.ui.dialog.js"></script>
 	<script src="../jquery/ui/jquery.effects.core.js"></script>
-	
+
 	<style>
 		body { font-size: 62.5%; }
 		label, input { display:block; }
@@ -38,12 +41,12 @@ if (!isset($_POST['newfilename'])) {
 		.ui-dialog .ui-state-error { padding: .3em; }
 		.validateTips { border: 1px solid transparent; padding: 0.3em; }
 	</style>
-	
+
 	<script>
 	$(function() {
 		// a workaround for a flaw in the demo system (http://dev.jqueryui.com/ticket/4375), ignore!
 		$( "#dialog:ui-dialog" ).dialog( "destroy" );
-		
+
 		$( "#dialog" ).dialog({
 			autoOpen: false,
 			height: 300,
@@ -67,7 +70,7 @@ if (!isset($_POST['newfilename'])) {
 				$( "#dialog" ).dialog( "open" );
 	});
 	</script>
-	
+
 	<title>Rename</title>
 </head>
 
@@ -82,15 +85,15 @@ if (!isset($_POST['newfilename'])) {
 
 	<label for="source">Source Path</label>
 	<input type="text" name="source" value="<?php echo $_GET['path']; ?>" id="source" class="text ui-widget-content ui-corner-all" disabled />
-	
+
 	<label for="newfilename">New File Name</label>
 	<input type="text" name="newfilename" id="newfilename" class="text ui-widget-content ui-corner-all" />
-			
+
 	</fieldset>
 	</form>
-	
+
 </div>
-	
+
 </body>
 
 </html>
@@ -99,7 +102,7 @@ if (!isset($_POST['newfilename'])) {
 }else{
 
 	$fileRepository->rename($_POST['path']."".$_POST['oldfilename'], $_POST['path']."".$_POST['newfilename']);
-	
+
 	header("location:../files.php?path=".$_POST['path']);
-	
+
 }

@@ -6,6 +6,8 @@ if (!isset($_SESSION['username'])) {
 	header("location:../login.php");
 }
 
+require __DIR__.'/../init.php';
+
 if (!isset($_POST['type'])) {
 ?>
 
@@ -24,7 +26,7 @@ if (!isset($_POST['type'])) {
 	<script src="../jquery/ui/jquery.ui.resizable.js"></script>
 	<script src="../jquery/ui/jquery.ui.dialog.js"></script>
 	<script src="../jquery/ui/jquery.effects.core.js"></script>
-	
+
 	<style>
 		body { font-size: 62.5%; }
 		label, input { display:block; }
@@ -37,12 +39,12 @@ if (!isset($_POST['type'])) {
 		.ui-dialog .ui-state-error { padding: .3em; }
 		.validateTips { border: 1px solid transparent; padding: 0.3em; }
 	</style>
-	
+
 	<script>
 	$(function() {
 		// a workaround for a flaw in the demo system (http://dev.jqueryui.com/ticket/4375), ignore!
 		$( "#dialog:ui-dialog" ).dialog( "destroy" );
-		
+
 		$( "#dialog" ).dialog({
 			autoOpen: false,
 			height: 300,
@@ -66,7 +68,7 @@ if (!isset($_POST['type'])) {
 				$( "#dialog" ).dialog( "open" );
 	});
 	</script>
-	
+
 	<title>Extract</title>
 </head>
 
@@ -80,31 +82,31 @@ if (!isset($_POST['type'])) {
 	<fieldset>
 	<input type=hidden name=path value="<?php echo $_GET['file']; ?>">
 	<input type=hidden name=file value="<?php echo $_GET['file']; ?>">
-	
+
 	<label for="file2">Archive Path</label>
 	<input type="text" name="file2" value="<?php echo $_GET['path']."".$_GET['file']; ?>" id="file2" class="text ui-widget-content ui-corner-all" disabled />
-			
+
 	<label for="type">Type of Archive</label>
 	<select name="type" id="type" class="text ui-widget-content ui-corner-all">
 	<option value=zip>ZIP Archive</option>
 	<option value=gz>GZ Archive</option>
 	<option value=tar>TAR Archive</option>
 	</select>
-			
+
 	</fieldset>
 	</form>
-	
+
 </div>
-	
+
 </body>
 
 </html>
 
 <?php
 }else{
-	
+
 	if ($_POST['type'] == 'zip') {
-		
+
 		$zip = new ZipArchive;
 		if ($zip->open($_POST['path']."".$_POST['file']) === TRUE) {
 		    $zip->extractTo($_POST['path']);
@@ -112,11 +114,11 @@ if (!isset($_POST['type'])) {
 		} else {
 	    	die('The compressed archive could not be extracted. Please try again.');
 		}
-	
+
 	}elseif ($_POST['type'] == 'gz') {
-		
+
 		$file = $_POST['path']."".$_POST['file'];
-		
+
 		$extract = pathinfo($file);
 		$fn = ($extract['filename']);
 
@@ -128,12 +130,12 @@ if (!isset($_POST['type'])) {
 		rename($fn, $_POST['path']."".$fn);
 
 	}elseif ($_POST['type'] == 'tar') {
-		
+
 		require 'tarfunction.php';
 		untar($_POST['path']."".$_POST['file'], $_POST['path']);
 
 	}
-	
+
 	header("location:../files.php?path=".$_POST['path']);
-	
+
 }
