@@ -2,8 +2,22 @@ Please note that this is the development area for HelioPanel and usually does no
 
 ## Installing ##
 
-(TODO)
+Since HelioPanel is not a distributed web application, manual configuration will be required
+to set up the latest version.
 
-## Updates ##
+1. Check out the latest copy of HelioPanel with `git clone git://github.com/HelioNetworks/HelioPanel.git`. 
+2. Create a file named `config.php`. 
+3. Transfer the file named `hook.php` to the website you wish to install HelioPanel on.
+3. Populate config.php with this information:
 
-central.heliopanel.heliohost.org is updated with this code at midnight, PST.
+```php5
+<?php
+
+$users = array(
+    'user_id' => array(
+        'password' => 'user_password',
+        'hook_php' => 'http://path.to/hook.php',
+        'hook_auth' => 'random_string',
+    ),
+);
+```
