@@ -14,7 +14,7 @@ MIT license
 */
 
 // Include the HelioPanel Configuration file
-require '../config.php';
+require __DIR__.'/../init.php';
 
 /* The values below are for the login.php page */
 
