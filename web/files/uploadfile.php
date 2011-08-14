@@ -6,9 +6,6 @@ if (!isset($_SESSION['username'])) {
 	header("location:../login.php");
 }
 
-// Include the configuration
-require '../config.php';
-
 if (!isset($_POST['path'])) {
 ?>
 
