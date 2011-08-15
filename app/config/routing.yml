@@ -1,3 +1,13 @@
+HelioNetworksFileManagerBundle:
+    resource: "@HelioNetworksFileManagerBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+HelioNetworksHelioPanelBundle:
+    resource: "@HelioNetworksHelioPanelBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 # Internal routing configuration to handle ESI
 #_internal:
 #   resource: "@FrameworkBundle/Resources/config/routing/internal.xml"
