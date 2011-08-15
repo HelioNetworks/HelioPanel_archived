@@ -58,6 +58,12 @@ All trademarks and copyrights are property of their respective owners
 	if ($config[$_POST['username']]['password'] == $_POST['password']) {
 		session_start();
 		$_SESSION['username'] = $_POST['username'];
+		//Activate the account
+		require_once __DIR__.'/start_script.php';
+		$url = 'http://www.heliohost.org/scripts/renew.php?';
+		$url .= http_build_query(array('fromcpanel' => '1', 'username' => $_POST['username']));
+		start_script($url);
+				
 		header("location:./");
 	}else{
 		header("location:login.php?error=1");
