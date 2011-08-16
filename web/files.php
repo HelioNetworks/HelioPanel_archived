@@ -22,6 +22,18 @@ if($_GET['path'] == '/') {
 
 <table width="100%">
 
+<tr>
+<td align=left width=40></td>
+<td align=left><font face="Verdana"><b>File Name</b></font></td>
+<td align=left width=40><center><font face="Verdana"><b>Edit Code</b></font></center></td>
+<td align=left width=40><center><font face="Verdana"><b>WYSIWYG</b></font></center></td>
+<td align=left width=40><center><font face="Verdana"><b>Rename</b></font></center></td>
+<td align=left width=40><center><font face="Verdana"><b>Copy</b></font></center></td>
+<td align=left width=40><center><font face="Verdana"><b>Move</b></font></center></td>
+<td align=left width=40><center><font face="Verdana"><b>Delete</b></font></center></td>
+<td align=left width=40><center><font face="Verdana"><b>Extract</b></font></center></td>
+</tr>
+
 <?php
 
 
