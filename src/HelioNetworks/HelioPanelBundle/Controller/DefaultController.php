@@ -2,8 +2,6 @@
 
 namespace HelioNetworks\HelioPanelBundle\Controller;
 
-use Symfony\Component\HttpFoundation\RedirectResponse;
-
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -81,15 +79,19 @@ class DefaultController extends Controller
 			));
 
 			if(empty($hook_url)) {
-				return new RedirectResponse('/login.php?error=1');
+				throw new \RuntimeException('Hook url is empty');
 			} else {
-				global $config;
+				global $config, $configManager;
 
 				$config[$username] = array(
 					'password' => $password,
 					'hook_php' => $hook_url,
 					'hook_auth'=> $auth,
 				);
+
+				$configManager->setConfig($config);
+
+				return new Response();
 			}
 
     	}
