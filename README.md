@@ -18,3 +18,6 @@ The central HelioPanel installation used in 0.3BETA and above
 (central.heliopanel.heliohost.org) is updated with the GitHub code every day at 
 midnight, PST. Because of this updating feature, HelioPanel is constantly automatically 
 updated with the latest features and the latest bugs solved.
+
+## Forking Notice ##
+Please be aware that the code inside this repository resembles the official central HelioPanel installation. In order to install HelioPanel, you will need to use the official HelioPanel project website and shouldn't download/fork the contents of the repository to install it. However, the source code is still available if you wish to use it in any other way.
