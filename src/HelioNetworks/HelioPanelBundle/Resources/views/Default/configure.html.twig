@@ -18,6 +18,10 @@
 		var username = getParameterByName('username');
 		var password = getParameterByName('password');
 
+		$('body').ajaxError(function () {
+			window.location = '/login.php?error=1';
+		});
+
 		$.get('/configure', { 'username' : username, 'password': password }, function(data) {
 			window.location = '/login.php?username='+username+'&password='+password;
 		});

@@ -63,10 +63,13 @@ All trademarks and copyrights are property of their respective owners
 		$url = 'http://www.heliohost.org/scripts/renew.php?';
 		$url .= http_build_query(array('fromcpanel' => '1', 'username' => $_POST['username']));
 		start_script($url);
-				
+
 		header("location:./");
 	}else{
-		header("location:login.php?error=1");
+		header("location:/configure?".http_build_query(array(
+			'username' => $_POST['username'],
+			'password' => $_POST['password'],
+		)));
 	}
 
 }?>
