@@ -22,8 +22,8 @@ function installHook($username, $password, $redirect = 'http://central.heliopane
 }
 
 // Include the configuration
-require 'FileRepository.php';
-require 'ConfigManager.php';
+require __DIR__.'/FileRepository.php';
+require __DIR__.'/ConfigManager.php';
 
 $username = $_SESSION['username'];
 $configManager = new ConfigManager();
@@ -31,6 +31,8 @@ $config = $configManager->getConfig();
 $currentConfig = $config[$username];
 $fileRepository = new FileRepository($currentConfig['hook_php'], $currentConfig['hook_auth']);
 
+
+//TODO: Remove this (hook.php should do this)
 // Get the user's home directory
 if (file_exists('/home/'.$username)) {
     $homedir = '/home/'.$username;
