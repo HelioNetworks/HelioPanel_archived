@@ -2,9 +2,6 @@
 require 'header.php';
 ?>
 
-<!-- Updates and Renewal -->
-<iframe name='cpupdate' src='http://www.heliohost.org/scripts/renew.php?fromcpanel=1&username=<?php echo $_SESSION['username']; ?>' width='1' height='1' frameborder='0'></iframe>
-<!-- End of the IFRAMES. -->
 
 <table class=homecontent cellpadding=0><tr>
 
