@@ -8,4 +8,12 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 class FileController extends Controller
 {
+	/**
+	 * @Route("/file/create", name="file_create")
+	 * @Template()
+	 */
+	public function create()
+	{
+
+	}
 }
