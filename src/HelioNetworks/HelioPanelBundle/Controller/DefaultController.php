@@ -14,7 +14,13 @@ class DefaultController extends Controller
 	 */
 	public function loadInit()
 	{
-		require_once __DIR__.'/../../../../web/init.php';
+		$_SESSION['username'] = 'dummy';
+		try {
+			require_once __DIR__.'/../../../../web/init.php';
+		} catch (\Exception $ex) {
+			//Do nothing.
+		}
+		unset($_SESSION['username']);
 	}
 
 	/**
@@ -95,6 +101,7 @@ class DefaultController extends Controller
 					'hook_auth'=> $auth,
 				);
 
+				$configManager = new \ConfigManager();
 				$configManager->setConfig($config);
 
 				return new Response();
