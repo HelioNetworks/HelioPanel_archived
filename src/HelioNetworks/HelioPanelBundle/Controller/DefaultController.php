@@ -26,6 +26,10 @@ class DefaultController extends Controller
 	*/
 	protected function doPostRequest($url, $data, $optional_headers = null)
 	{
+		if(is_array($data)) {
+			$data = http_build_query($data);
+		}
+
 		$params = array('http' => array(
 	                  'method' => 'POST',
 	                  'content' => $data
