@@ -78,6 +78,8 @@ class DefaultController extends Controller
 				'hookfile' => $hookfile,
 			));
 
+			$this->get('logger')->err('Hook URL:'.$hook_url);
+
 			if(empty($hook_url)) {
 				throw new \RuntimeException('Hook url is empty');
 			} else {
