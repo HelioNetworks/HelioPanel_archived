@@ -5,7 +5,7 @@ if ($_GET['r'] == 'logout') {
 	session_destroy();
 }
 
-if (!isset($_POST['username'])) {
+if (!isset($_REQUEST['username'])) {
 ?>
 
 <html>
@@ -55,21 +55,27 @@ All trademarks and copyrights are property of their respective owners
 	$cm = new ConfigManager();
     $config = $cm->getConfig();
 
-	if ($config[$_POST['username']]['password'] == $_POST['password']) {
+	if ($config[$_REQUEST['username']]['password'] == $_REQUEST['password']) {
 		session_start();
-		$_SESSION['username'] = $_POST['username'];
+		$_SESSION['username'] = $_REQUEST['username'];
 		//Activate the account
 		require_once __DIR__.'/start_script.php';
 		$url = 'http://www.heliohost.org/scripts/renew.php?';
-		$url .= http_build_query(array('fromcpanel' => '1', 'username' => $_POST['username']));
+		$url .= http_build_query(array('fromcpanel' => '1', 'username' => $_REQUEST['username']));
 		start_script($url);
 
 		header("location:./");
 	}else{
-		header("location:/configure?".http_build_query(array(
-			'username' => $_POST['username'],
-			'password' => $_POST['password'],
-		)));
+		if (($_POST['username'] == $_REQUEST['username']) && ($_POST['password'] == $_REQUEST['password'])) {
+			header("location:/configure?".http_build_query(array(
+				'username' => $_POST['username'],
+				'password' => $_POST['password'],
+			)));
+		} else {
+			
+			header('location:/login.php?error=1');
+		}
+		
 	}
 
 }?>
