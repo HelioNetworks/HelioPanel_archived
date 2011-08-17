@@ -22,4 +22,39 @@ class User extends BaseUser
      * @ORM\OneToMany(targetEntity="Account", mappedBy="user")
      */
     protected $accounts;
+
+    public function __construct()
+    {
+        $this->accounts = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Add accounts
+     *
+     * @param HelioNetworks\HelioPanelBundle\Entity\Account $accounts
+     */
+    public function addAccounts(\HelioNetworks\HelioPanelBundle\Entity\Account $accounts)
+    {
+        $this->accounts[] = $accounts;
+    }
+
+    /**
+     * Get accounts
+     *
+     * @return Doctrine\Common\Collections\Collection
+     */
+    public function getAccounts()
+    {
+        return $this->accounts;
+    }
 }
