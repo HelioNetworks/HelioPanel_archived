@@ -1,6 +1,6 @@
 <?php
 
-session_start();
+@session_start();
 
 // Make sure the user is logged in
 if (!isset($_SESSION['username'])) {
