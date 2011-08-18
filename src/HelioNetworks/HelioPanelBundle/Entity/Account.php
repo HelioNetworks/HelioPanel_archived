@@ -16,6 +16,7 @@ class Account
 	*/
 	protected $id;
 
+	//TODO: Make this a separate entity
 	/**
 	 * The URL to the hookfile of this account.
 	 *
@@ -25,6 +26,13 @@ class Account
 	 * @ORM\Column(type="string")
 	 */
 	protected $hookfile;
+
+	/**
+	 * Auth to the hookfile.
+	 *
+	 * @ORM\Column(type="string")
+	 */
+	protected $hookfileauth;
 
 	/**
 	 * @ORM\Column(type="string")
@@ -44,7 +52,7 @@ class Account
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -64,7 +72,7 @@ class Account
     /**
      * Get hookfile
      *
-     * @return string 
+     * @return string
      */
     public function getHookfile()
     {
@@ -84,7 +92,7 @@ class Account
     /**
      * Get username
      *
-     * @return string 
+     * @return string
      */
     public function getUsername()
     {
@@ -104,7 +112,7 @@ class Account
     /**
      * Get password
      *
-     * @return string 
+     * @return string
      */
     public function getPassword()
     {
@@ -124,10 +132,30 @@ class Account
     /**
      * Get user
      *
-     * @return HelioNetworks\HelioPanelBundle\Entity\User 
+     * @return HelioNetworks\HelioPanelBundle\Entity\User
      */
     public function getUser()
     {
         return $this->user;
+    }
+
+    /**
+     * Set hookfileauth
+     *
+     * @param string $hookfileauth
+     */
+    public function setHookfileauth($hookfileauth)
+    {
+        $this->hookfileauth = $hookfileauth;
+    }
+
+    /**
+     * Get hookfileauth
+     *
+     * @return string 
+     */
+    public function getHookfileauth()
+    {
+        return $this->hookfileauth;
     }
 }
