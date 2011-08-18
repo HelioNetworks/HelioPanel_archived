@@ -39,5 +39,5 @@ if (file_exists('/home/'.$username)) {
 } elseif (file_exists('/home1/'.$username)) {
     $homedir = '/home1/'.$username;
 } else {
-	die ('Fatal Error: Cannot find home directory!');
+    $homedir = '/';
 }
