@@ -2,6 +2,7 @@
 
 namespace HelioNetworks\HelioPanelBundle\Controller;
 
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -61,7 +62,12 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
-        return array();
+    	if (!isset($_SESSION['username'])) {
+
+    		return new RedirectResponse('/login.php');
+    	}
+
+        return array('username' => $_SESSION['username']);
     }
 
     /**
