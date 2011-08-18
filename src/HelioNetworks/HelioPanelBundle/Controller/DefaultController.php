@@ -88,10 +88,8 @@ class DefaultController extends Controller
 				'hookfile' => $hookfile,
 			));
 
-			$this->get('logger')->err('Hook URL:'.$hook_url);
-
-			if(empty($hook_url)) {
-				throw new \RuntimeException('Hook url is empty');
+			if(empty($hook_url) || strpos($hook_url, '500 Internal Server Error')) {
+				throw new \RuntimeException('Hook url is empty or is invalid.');
 			} else {
 				global $config, $configManager;
 
