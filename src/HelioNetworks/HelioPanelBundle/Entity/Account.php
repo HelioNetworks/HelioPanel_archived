@@ -2,6 +2,7 @@
 
 namespace HelioNetworks\HelioPanelBundle\Entity;
 
+use HelioNetworks\HelioPanelBundle\FileRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -48,6 +49,16 @@ class Account
 	 * @ORM\ManyToOne(targetEntity="User", inversedBy="accounts")
 	 */
 	protected $user;
+
+	/**
+	 * Get the file repository for this account.
+	 *
+	 *  @return FileRepository
+	 */
+	public function getFileRepository()
+	{
+		return new FileRepository($this->hookfile, $this->hookfileauth);
+	}
 
     /**
      * Get id
@@ -152,7 +163,7 @@ class Account
     /**
      * Get hookfileauth
      *
-     * @return string 
+     * @return string
      */
     public function getHookfileauth()
     {
