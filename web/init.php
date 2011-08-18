@@ -8,13 +8,12 @@ if (!isset($_SESSION['username'])) {
 	die();
 }
 
-function installHook($username, $password, $redirect = 'http://central.heliopanel.heliohost.org')
+function installHook($username, $password)
 {
-    $url = 'http://heliopanel.heliohost.org/install/autoinstall.php?';
+    $url = '/configure?';
     $query = http_build_query(array(
         'username' => $username,
         'password' => $password,
-        'redirect' => $redirect,
     ));
 
     header('location:'.$url.$query);
