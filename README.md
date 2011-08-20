@@ -5,13 +5,15 @@ services, which allows them to easily take full control of their website without
 problems. The aim of HelioPanel is to resolve any common issues that user's face every 
 day, and to make website management much easier.
 
-## Installation ##
-Before the use of the central HelioPanel installation, you must use the simple install
-script available from the HelioPanel Project website above, to gain access to the central
-HelioPanel used in 0.3BETA and above.
+## Reporting Issues ##
 
-Currently, you still need to "install" heliopanel via http://heliopanel.heliohost.org/install
-before you will be able to login to http://central.heliopanel.heliohost.org/
+Please report all issues on our GitHub issue tracker. Also, please follow our 
+[Issue fixing strategy](https://github.com/HelioNetworks/HelioPanel/wiki/Issue-fixing-strategy)
+
+## Access ##
+
+To access HelioPanel, simply login with your existing cPanel creditentials to 
+http://central.heliopanel.heliohost.org/.
 
 ## Updates ##
 The central HelioPanel installation used in 0.3BETA and above 
