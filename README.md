@@ -5,6 +5,11 @@ services, which allows them to easily take full control of their website without
 problems. The aim of HelioPanel is to resolve any common issues that user's face every 
 day, and to make website management much easier.
 
+## Reporting Issues ##
+
+Please report all issues on our GitHub issue tracker. Also, please follow our 
+[Issue fixing strategy](https://github.com/HelioNetworks/HelioPanel/wiki/Issue-fixing-strategy)
+
 ## Access ##
 
 To access HelioPanel, simply login with your existing cPanel creditentials to 
