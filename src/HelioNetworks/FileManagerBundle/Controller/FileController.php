@@ -26,7 +26,7 @@ class FileController extends Controller
 	 * @Route("/file/create", name="file_create")
 	 * @Template()
 	 */
-	public function create()
+	public function createAction()
 	{
 		$createFileRequest = new CreateFileRequest();
 		$form = $this->createForm(new CreateFileRequestType(), $createFileRequest);
