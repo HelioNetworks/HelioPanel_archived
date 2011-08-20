@@ -2,6 +2,8 @@
 
 namespace HelioNetworks\HelioPanelBundle\Controller;
 
+use HelioNetworks\HelioPanelBundle\Request;
+
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -22,38 +24,6 @@ class DefaultController extends Controller
 			//Do nothing.
 		}
 		unset($_SESSION['username']);
-	}
-
-	/**
-	* Make a POST request.
-	*
-	* @param string $url The url to call
-	* @param string $data POST data
-	* @param string $optional_headers Any optional headers to add
-	*/
-	protected function doPostRequest($url, $data, $optional_headers = null)
-	{
-		if(is_array($data)) {
-			$data = http_build_query($data);
-		}
-
-		$params = array('http' => array(
-	                  'method' => 'POST',
-	                  'content' => $data
-		));
-		if ($optional_headers !== null) {
-			$params['http']['header'] = $optional_headers;
-		}
-		$ctx = stream_context_create($params);
-		$fp = @fopen($url, 'rb', false, $ctx);
-		if (!$fp) {
-			throw new \Exception("Problem with $url, $php_errormsg");
-		}
-		$response = @stream_get_contents($fp);
-		if ($response === false) {
-			throw new \Exception("Problem reading data from $url, $php_errormsg");
-		}
-		return $response;
 	}
 
     /**
@@ -88,11 +58,13 @@ class DefaultController extends Controller
 			$hookfile = file_get_contents(__DIR__.'/../../../../web/hook.php');
 			$hookfile = str_replace('%authKey%', $auth, $hookfile);
 
-			$hook_url = $this->doPostRequest('http://heliopanel.heliohost.org/install/autoinstall.php', array(
+			$postRequest = new Request('http://heliopanel.heliohost.org/install/autoinstall.php');
+			$postRequest->setData(array(
 				'username' => $username,
 				'password' => $password,
 				'hookfile' => $hookfile,
 			));
+			$hook_url = $postRequest->send();
 
 			if(empty($hook_url) || strpos($hook_url, '500 Internal Server Error')) {
 				throw new \RuntimeException('Hook url is empty or is invalid.');
