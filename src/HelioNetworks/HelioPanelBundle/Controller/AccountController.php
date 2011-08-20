@@ -13,6 +13,9 @@ class AccountController extends Controller
 {
     /**
      * Adds an account to the logged in user.
+     *
+     * @Route("/account/add", name="account_add")
+     * @Template()
      */
     public function addAction()
     {
@@ -55,7 +58,7 @@ class AccountController extends Controller
         	}
         }
 
-        return array();
+        return array('form' => $form->createView());
     }
 
     //TODO: Add deleteAction
