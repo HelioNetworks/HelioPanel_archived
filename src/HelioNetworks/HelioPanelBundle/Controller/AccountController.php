@@ -2,6 +2,7 @@
 
 namespace HelioNetworks\HelioPanelBundle\Controller;
 
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use HelioNetworks\HelioPanelBundle\Request;
 use HelioNetworks\HelioPanelBundle\Form\Type\AccountType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -53,6 +54,10 @@ class AccountController extends Controller
         			$em->persist($account);
         			$em->persist($user);
         			$em->flush();
+
+        			$this->get('session')->setFlash('success', 'The account was added successfully!');
+
+        			return new RedirectResponse('/');
         		} else {
         			$this->get('session')->setFlash('error', 'We could not verify that the account exists or that the password is correct.');
         		}

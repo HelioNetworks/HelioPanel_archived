@@ -32,12 +32,7 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
-    	if (!isset($_SESSION['username'])) {
-
-    		return new RedirectResponse('/login.php');
-    	}
-
-        return array('username' => $_SESSION['username']);
+        return array();
     }
 
     /**
