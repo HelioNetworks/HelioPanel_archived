@@ -72,7 +72,7 @@ class User extends BaseUser
      */
     public function setActiveAccount(\HelioNetworks\HelioPanelBundle\Entity\Account $activeAccount)
     {
-    	if ($this->getAccounts()->contains($activeAccount)) {
+    	if ($activeAccount->getUser() == $this) {
     		$this->activeAccount = $activeAccount;
     	}
     }

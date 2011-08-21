@@ -1,0 +1,8 @@
+{% extends '::heliopanel.html.twig' %}
+
+{% block content %}
+	{% for file in files %}
+		Type {{ file.type }}
+		File {{ file.file }}
+	{% endfor %}
+{% endblock %}
