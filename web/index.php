@@ -14,10 +14,11 @@ require 'header.php';
 <center>
 <a href=files.php?path=<?php echo $homedir.'/'; ?>><img src="images/filemanagerbutton.png"></a>
 <a href=sqlbuddy/><img src="images/sqlbuddybutton.png"></a>
+<a href=phpinfo.php><img src="images/phpbutton.png"></a>
 <a href="http://heliopanel.heliohost.org/support.php"><img src="images/helpbutton.png"></a>
 </center>
 </td>
-
+<a href="https://github.com/HelioNetworks/HelioPanel/issues/new">Help improve HelioPanel by reporting a bug or making suggestions!</a>
 <td><script src="http://widgets.twimg.com/j/2/widget.js"></script>
 <script>
 new TWTR.Widget({
