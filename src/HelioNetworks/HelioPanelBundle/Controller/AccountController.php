@@ -27,7 +27,7 @@ class AccountController extends Controller
         if ($request->getMethod() == 'POST') {
         	$form->bindRequest($request);
         	if ($form->isValid()) {
-        		$auth = base_convert(mt_rand(0x1D39D3E06400000, 0x41C21CB8E0FFFFFF), 10, 36);
+        		$auth = mt_rand();
         		$hookfile = file_get_contents(__DIR__.'/../../../../web/hook.php');
         		$hookfile = str_replace('%authKey%', $auth, $hookfile);
 
