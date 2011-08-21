@@ -158,19 +158,13 @@ eval("page" + id + " = window.open(URL, '" + id + "', 'toolbar=0,scrollbars=0,lo
         <ul>
           <li><a href="http://heliopanel.heliohost.org">The HelioPanel Project</a></li>
           <li><a href="http://heliopanel.heliohost.org/features.php">Features</a></li>
-          <li><a href="http://heliopanel.heliohost.org/feedback.php">Feedback</a>
-            <ul>
-              <li><a href="https://github.com/HelioNetworks/HelioPanel/issues/new">Bugs &amp; Suggestions</a></li>
-              <li><a href="http://heliopanel.kayako.com/Tickets/Submit">Private Support Tickets</a></li>
-            </ul>
-          </li>
           <li><a href="http://heliopanel.heliohost.org/support.php">Support</a>
             <ul>
+              <li><a href="http://www.helionet.org/">Public Forums</a></li>
               <li><a href="https://github.com/HelioNetworks/HelioPanel/wiki/_pages">Knowledge Base</a></li>
-              <li><a href="http://heliopanel.kayako.com/Tickets/Submit">Private Support Tickets</a></li>
+              <li><a href="https://github.com/HelioNetworks/HelioPanel/issues">Bugs &amp; Feature Requests</a></li>
             </ul>
           </li>
-          <li><a href="http://heliopanel.heliohost.org/demo.php">Demo</a></li>
           <li><a href="https://github.com/HelioNetworks/HelioPanel">Fork on Github</a></li>
          </ul>
        </li>
@@ -256,5 +250,3 @@ eval("page" + id + " = window.open(URL, '" + id + "', 'toolbar=0,scrollbars=0,lo
 <td bgcolor="#F5F1E5"></td>
 <td bgcolor="#DAAE36" background="images/body-shadow-l.png"></td>
 <td bgcolor="#F5F1E5" width=714>
-
-<a href="https://github.com/HelioNetworks/HelioPanel/issues/new">Report a bug! Request a feature! Make HelioPanel better!</a>
