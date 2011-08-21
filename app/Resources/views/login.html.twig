@@ -1,0 +1,26 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}
+	HelioPanel Login
+{% endblock %}
+
+{% block stylesheets %}
+	<link href="/login_style.css" type="text/css" rel="stylesheet">
+{% endblock %}
+
+{% block body %}
+	<table class=login align=center><tr><td valign=middle>
+	<p><b><u><font size=3>Login to HelioPanel</font></u></b></p>
+
+
+	{% block content %}
+
+	{% endblock %}
+
+	</td></tr></table>
+
+	<div class=logincopyrights><p>
+	&copy; Copyright Helio Networks 2011.<br>
+	All trademarks and copyrights are property of their respective owners
+	</p></div>
+{% endblock %}

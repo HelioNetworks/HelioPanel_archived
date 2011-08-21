@@ -1,0 +1,52 @@
+.login {
+	background-image:url('images/loginbg.png');
+	background-repeat:no-repeat;
+	font-size:14px;
+	width:300px;
+	height:400px;
+	text-align:center;
+	font-family:Verdana;
+}
+
+body {
+	background-color:#eee;
+}
+
+.logincopyrights {
+	text-align:center;
+	font-family:Arial;
+	color:#bbb;
+	font-size:10px;
+}
+
+.homecontent {
+	background-image:url('images/homebg.png');
+	background-repeat:no-repeat;
+	width:700px;
+	height:300px;
+}
+
+.homeheader {
+	font-family:Trebuchet MS;
+	font-size:23px;
+}
+
+.filestoolbar {
+	width:100%;
+	height:40px;
+}
+
+.filespopupheader {
+	background:#E0B949;
+	height:30px;
+	width:100%;
+	font-family:Arial;
+	color:white;
+}
+
+.filespopupcontent {
+	background:lightgray;
+	width:100%;
+	height:150px;
+	font-family:Arial;
+}
