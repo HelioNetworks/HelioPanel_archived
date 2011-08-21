@@ -67,5 +67,24 @@ class AccountController extends Controller
         return array('form' => $form->createView());
     }
 
+    /**
+     * @Route("/account/{id}/setActive", name="set_active_account")
+     */
+    public function setActiveAccountAction($id)
+    {
+    	$account = $this->getDoctrine()
+    		->getRepository('HelioNetworksHelioPanelBundle:Account')
+    		->findById($id);
+
+    	if ($account) {
+    		$this->get('security.context')
+    			->getToken()
+    			->getUser()
+    			->setActiveAccount($account);
+    	}
+
+    	return new RedirectResponse('/');
+    }
+
     //TODO: Add deleteAction
 }
