@@ -45,14 +45,13 @@ class AccountController extends Controller
         		$hookUrl = $postRequest->send();
 
         		if (preg_match('|^http(s)?://[a-z0-9-]+(.[a-z0-9-]+)*(:[0-9]+)?(/.*)?$|i', $hookUrl)) {
-        			$account->setHookfile($hookUrl);
-
         			$user = $this->get('security.context')->getToken()->getUser();
-        			$user->addAccounts($account);
+
+        			$account->setHookfile($hookUrl);
+        			$account->setUser($user);
 
         			$em = $this->getDoctrine()->getEntityManager();
         			$em->persist($account);
-        			$em->persist($user);
         			$em->flush();
 
         			$this->get('session')->setFlash('success', 'The account was added successfully!');
