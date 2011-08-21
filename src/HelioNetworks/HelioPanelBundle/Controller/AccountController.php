@@ -70,11 +70,11 @@ class AccountController extends Controller
     /**
      * @Route("/account/{id}/setActive", name="set_active_account")
      */
-    public function setActiveAccountAction($id)
+    public function setActiveAction($id)
     {
     	$account = $this->getDoctrine()
     		->getRepository('HelioNetworksHelioPanelBundle:Account')
-    		->findById($id);
+    		->findOneById($id);
 
     	if ($account) {
     		$this->get('security.context')
