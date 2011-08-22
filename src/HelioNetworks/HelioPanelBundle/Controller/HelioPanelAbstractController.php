@@ -1,0 +1,38 @@
+<?php
+
+namespace HelioNetworks\HelioPanelBundle\Controller;
+
+use HelioNetworks\HelioPanelBundle\Entity\Account;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+
+abstract class HelioPanelAbstractController extends Controller
+{
+	protected function getUser()
+	{
+		return $this->get('security.context')
+			->getToken()
+			->getUser();
+	}
+
+	protected function getActiveAccount()
+	{
+		if ($id = $this->getRequest()->getSession()->get('active_account_id')) {
+
+			return $this->getDoctrine()
+				->getRepository('HelioNetworksHelioPanelBundle:Account')
+				->findOneById($id);
+		}
+	}
+
+	protected function setActiveAccount(Account $account)
+	{
+		if ($account->getUser() !== $this->getUser()) {
+
+			throw new \UnexpectedValueException('Account is not owned by current user.');
+		}
+
+		$this->getRequest()
+			->getSession()
+			->set('active_account_id', $account->getId());
+	}
+}
