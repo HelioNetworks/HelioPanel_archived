@@ -26,6 +26,6 @@ class DirectoryController extends Controller
 		$path = $this->getRequest()->get('path');
 		$files = $this->getHook()->ls($path);
 
-		return array('files' => $files);
+		return array('files' => $files, 'path' => $path);
 	}
 }
