@@ -23,11 +23,6 @@ class User extends BaseUser
      */
     protected $accounts;
 
-    /**
-     * @ORM\OneToOne(targetEntity="Account")
-     */
-    protected $activeAccount;
-
     public function __construct()
     {
     	parent::__construct();
@@ -63,27 +58,5 @@ class User extends BaseUser
     public function getAccounts()
     {
         return $this->accounts;
-    }
-
-    /**
-     * Set activeAccount
-     *
-     * @param HelioNetworks\HelioPanelBundle\Entity\Account $activeAccount
-     */
-    public function setActiveAccount(\HelioNetworks\HelioPanelBundle\Entity\Account $activeAccount)
-    {
-    	if ($activeAccount->getUser() == $this) {
-    		$this->activeAccount = $activeAccount;
-    	}
-    }
-
-    /**
-     * Get activeAccount
-     *
-     * @return HelioNetworks\HelioPanelBundle\Entity\Account
-     */
-    public function getActiveAccount()
-    {
-        return $this->activeAccount;
     }
 }
