@@ -75,10 +75,7 @@ class AccountController extends HelioPanelAbstractController
     		->findOneById($id);
 
     	if ($account) {
-    		$this->get('security.context')
-    			->getToken()
-    			->getUser()
-    			->setActiveAccount($account);
+    		$this->setActiveAccount($account);
     	}
 
     	return new RedirectResponse('/');
