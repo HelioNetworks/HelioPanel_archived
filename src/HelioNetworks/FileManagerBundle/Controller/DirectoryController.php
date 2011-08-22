@@ -19,4 +19,10 @@ class DirectoryController extends HelioPanelAbstractController
 
 		return array('files' => $files, 'path' => $path);
 	}
+
+	//TODO: renameAction
+
+	//TODO: createAction
+
+	//TODO: deleteAction
 }

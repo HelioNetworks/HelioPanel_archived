@@ -12,17 +12,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 class FileController extends HelioPanelAbstractController
 {
 	/**
-	 * @return Account
-	 */
-	public function getCurrentAccount()
-	{
-		//TODO: Support multiple accounts.
-		$accounts = $this->get('security.context')->getToken()->getUser()->getAccounts();
-
-		return $accounts[0];
-	}
-
-	/**
 	 * @Route("/file/create", name="file_create")
 	 * @Template()
 	 */
@@ -35,10 +24,16 @@ class FileController extends HelioPanelAbstractController
 		if ($request->getMethod() == 'POST') {
 			$form->bindRequest($request);
 			if ($form->isValid()) {
-				$hook = $this->getCurrentAccount()->getFileRepository();
+				$hook = $this->getActiveAccount()->getFileRepository();
 
 				$hook->touch($createFileRequest->getFilename());
 			}
 		}
 	}
+
+	//TODO: renameAction
+
+	//TODO: deleteAction
+
+	//TODO: saveAction
 }
