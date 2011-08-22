@@ -249,12 +249,15 @@
 	<td bgcolor="#F5F1E5" width=714>
 
 	<a href="https://github.com/HelioNetworks/HelioPanel/issues/new">Report a bug! Request a feature! Make HelioPanel better!</a>
-	<strong>Change account context:</strong>
-	<ul>
-		{% for account in app.user.accounts %}
-			<li><a href="{{ url('set_active_account', { 'id':account.id }) }}">{{ account.username }}</a></li>
-		{% endfor %}
-	</ul>
+
+	{% if app.user %}
+		<strong>Change account context:</strong>
+		<ul>
+			{% for account in app.user.accounts %}
+				<li><a href="{{ url('set_active_account', { 'id':account.id }) }}">{{ account.username }}</a></li>
+			{% endfor %}
+		</ul>
+	{% endif %}
 
 	<a href="{{ url('account_add') }}">Or add an account.</a>
 
