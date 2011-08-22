@@ -2,14 +2,14 @@
 
 namespace HelioNetworks\FileManagerBundle\Controller;
 
+use HelioNetworks\HelioPanelBundle\Controller\HelioPanelAbstractController;
 use HelioNetworks\HelioPanelBundle\Entity\Account;
 use HelioNetworks\FileManagerBundle\Form\Type\CreateFileRequestType;
 use HelioNetworks\FileManagerBundle\Form\Model\CreateFileRequest;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
-class FileController extends Controller
+class FileController extends HelioPanelAbstractController
 {
 	/**
 	 * @return Account

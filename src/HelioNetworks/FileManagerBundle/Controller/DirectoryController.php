@@ -2,21 +2,12 @@
 
 namespace HelioNetworks\FileManagerBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use HelioNetworks\HelioPanelBundle\Controller\HelioPanelAbstractController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
-class DirectoryController extends Controller
+class DirectoryController extends HelioPanelAbstractController
 {
-	protected function getHook()
-	{
-		return $this->get('security.context')
-			->getToken()
-			->getUser()
-			->getActiveAccount()
-			->getFileRepository();
-	}
-
 	/**
 	 * @Route("/directory/list", name="directory_list")
 	 * @Template()

@@ -5,13 +5,12 @@ namespace HelioNetworks\HelioPanelBundle\Controller;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use HelioNetworks\HelioPanelBundle\Request;
 use HelioNetworks\HelioPanelBundle\Form\Type\AccountType;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Response;
 use HelioNetworks\HelioPanelBundle\Entity\Account;
 
-class AccountController extends Controller
+class AccountController extends HelioPanelAbstractController
 {
     /**
      * Adds an account to the logged in user.

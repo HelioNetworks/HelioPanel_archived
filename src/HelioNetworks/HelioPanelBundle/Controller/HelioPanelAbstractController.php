@@ -14,6 +14,15 @@ abstract class HelioPanelAbstractController extends Controller
 			->getUser();
 	}
 
+	protected function getHook()
+	{
+		return $this->getActiveAccount()
+			->getFileRepository();
+	}
+
+	/**
+	 * @return Account
+	 */
 	protected function getActiveAccount()
 	{
 		if ($id = $this->getRequest()->getSession()->get('active_account_id')) {
