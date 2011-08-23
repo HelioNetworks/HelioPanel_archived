@@ -2,6 +2,7 @@
 
 namespace HelioNetworks\HelioPanelBundle\Controller;
 
+use HelioNetworks\HelioPanelBundle\FileRepository;
 use HelioNetworks\HelioPanelBundle\Entity\Account;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
@@ -14,6 +15,9 @@ abstract class HelioPanelAbstractController extends Controller
 			->getUser();
 	}
 
+	/**
+	 * @return FileRepository
+	 */
 	protected function getHook()
 	{
 		return $this->getActiveAccount()

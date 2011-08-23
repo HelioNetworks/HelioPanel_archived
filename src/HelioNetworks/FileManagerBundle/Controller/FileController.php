@@ -2,6 +2,9 @@
 
 namespace HelioNetworks\FileManagerBundle\Controller;
 
+use HelioNetworks\FileManagerBundle\Form\Type\RenameFileRequestType;
+
+use HelioNetworks\FileManagerBundle\Form\Model\RenameFileRequest;
 use HelioNetworks\HelioPanelBundle\Controller\HelioPanelAbstractController;
 use HelioNetworks\HelioPanelBundle\Entity\Account;
 use HelioNetworks\FileManagerBundle\Form\Type\CreateFileRequestType;
@@ -24,15 +27,36 @@ class FileController extends HelioPanelAbstractController
 		if ($request->getMethod() == 'POST') {
 			$form->bindRequest($request);
 			if ($form->isValid()) {
-				$hook = $this->getActiveAccount()->getFileRepository();
-
-				$hook->touch($createFileRequest->getFilename());
+				$this->getHook()
+					->touch($createFileRequest->getFilename());
 			}
 		}
+
+		return array();
 	}
 
 	//Note: moveAction will not be created in favor of renameAction
-	//TODO: renameAction
+
+	/**
+	 * @Route("/file/rename", name="file_rename")
+	 * @Template()
+	 */
+	public function renameAction()
+	{
+		$renameFileRequest = RenameFileRequest();
+		$form = $this->createForm(new RenameFileRequestType(), $renameFileRequest);
+
+		$request = $this->getRequest();
+		if ($request->getMethod() == 'POST') {
+			$form->bindRequest($request);
+			if ($form->isValid()) {
+				$this->getHook()
+					->rename($renameFileRequest->getOldname(), $renameFileRequest->getNewName());
+			}
+		}
+
+		return array();
+	}
 
 	//TODO: deleteAction
 
