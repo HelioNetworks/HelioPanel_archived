@@ -34,49 +34,46 @@ class DefaultController extends HelioPanelAbstractController
     }
 
     /**
-     * Installs hook.php on the user's site.
+     * Create a new user based from a cPanel account.
      *
-     * @Route("/configure", name="heliopanel_configure")
+     * @Route("/createFromAccount", name="heliopanel_create_from_account")
      * @Template()
      */
-    public function configureAction()
+    public function createUserFromAccountAction()
     {
-    	if($this->getRequest()->isXmlHttpRequest()) {
-			$this->loadInit();
+		$this->loadInit();
 
-			$auth = base_convert(mt_rand(0x1D39D3E06400000, 0x41C21CB8E0FFFFFF), 10, 36);
+		$auth = base_convert(mt_rand(0x1D39D3E06400000, 0x41C21CB8E0FFFFFF), 10, 36);
 
-			$username = $this->getRequest()->get('username');
-			$password = $this->getRequest()->get('password');
-			$hookfile = file_get_contents(__DIR__.'/../../../../web/hook.php');
-			$hookfile = str_replace('%authKey%', $auth, $hookfile);
+		$username = $this->getRequest()->get('username');
+		$password = $this->getRequest()->get('password');
+		$hookfile = file_get_contents(__DIR__.'/../../../../web/hook.php');
+		$hookfile = str_replace('%authKey%', $auth, $hookfile);
 
-			$postRequest = new Request('http://heliopanel.heliohost.org/install/autoinstall.php');
-			$postRequest->setData(array(
-				'username' => $username,
+		$postRequest = new Request('http://heliopanel.heliohost.org/install/autoinstall.php');
+		$postRequest->setData(array(
+			'username' => $username,
+			'password' => $password,
+			'hookfile' => $hookfile,
+		));
+		$hook_url = $postRequest->send();
+
+		if(empty($hook_url) || strpos($hook_url, '500 Internal Server Error')) {
+			throw new \RuntimeException('Hook url is empty or is invalid.');
+		} else {
+			global $config, $configManager;
+
+			$config[$username] = array(
 				'password' => $password,
-				'hookfile' => $hookfile,
-			));
-			$hook_url = $postRequest->send();
+				'hook_php' => $hook_url,
+				'hook_auth'=> $auth,
+			);
 
-			if(empty($hook_url) || strpos($hook_url, '500 Internal Server Error')) {
-				throw new \RuntimeException('Hook url is empty or is invalid.');
-			} else {
-				global $config, $configManager;
+			$configManager = new \ConfigManager();
+			$configManager->setConfig($config);
 
-				$config[$username] = array(
-					'password' => $password,
-					'hook_php' => $hook_url,
-					'hook_auth'=> $auth,
-				);
-
-				$configManager = new \ConfigManager();
-				$configManager->setConfig($config);
-
-				return new Response();
-			}
-
-    	}
+			return new Response();
+		}
 
     	return array();
     }
