@@ -33,7 +33,7 @@ class FileController extends HelioPanelAbstractController
 			}
 		}
 
-		return array();
+		return array('form' => $form->createView());
 	}
 
 	//Note: moveAction will not be created in favor of renameAction

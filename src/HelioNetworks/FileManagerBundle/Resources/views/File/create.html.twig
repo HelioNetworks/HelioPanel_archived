@@ -1,0 +1,8 @@
+{% extends '::heliopanel.html.twig' %}
+
+{% block content %}
+	<form method="post" action="{{ url('file_create') }}" {{ form_enctype(form) }}>
+		{{ form_widget(form) }}
+		<input type="submit" value="Submit" />
+	</form>
+{% endblock %}
