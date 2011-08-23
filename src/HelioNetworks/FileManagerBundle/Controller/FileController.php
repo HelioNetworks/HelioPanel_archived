@@ -21,15 +21,15 @@ class FileController extends HelioPanelAbstractController
 	 */
 	public function createAction()
 	{
+		$request = $this->getRequest();
 		$createFileRequest = new CreateFileRequest();
 		$form = $this->createForm(new CreateFileRequestType(), $createFileRequest);
 
-		$request = $this->getRequest();
 		if ($request->getMethod() == 'POST') {
 			$form->bindRequest($request);
 			if ($form->isValid()) {
 				$this->getHook()
-					->touch($createFileRequest->getFilename());
+					->touch($request->get('path').$createFileRequest->getFilename());
 			}
 		}
 
@@ -44,10 +44,11 @@ class FileController extends HelioPanelAbstractController
 	 */
 	public function renameAction()
 	{
-		$renameFileRequest = RenameFileRequest();
+		$request = $this->getRequest();
+		$renameFileRequest = new RenameFileRequest();
+		$renameFileRequest->setOldname($request->get('path'));
 		$form = $this->createForm(new RenameFileRequestType(), $renameFileRequest);
 
-		$request = $this->getRequest();
 		if ($request->getMethod() == 'POST') {
 			$form->bindRequest($request);
 			if ($form->isValid()) {
@@ -56,7 +57,7 @@ class FileController extends HelioPanelAbstractController
 			}
 		}
 
-		return array();
+		return array('form' => $form->createView());
 	}
 
 	/**
@@ -65,10 +66,10 @@ class FileController extends HelioPanelAbstractController
 	*/
 	public function deleteAction()
 	{
-		$deleteFileRequest = new DeleteFileRequest();
-		$form = $this->deleteForm(new DeleteFileRequestType(), $deleteFileRequest);
-
 		$request = $this->getRequest();
+		$deleteFileRequest = new DeleteFileRequest();
+		$form = $this->createForm(new DeleteFileRequestType(), $deleteFileRequest);
+
 		if ($request->getMethod() == 'POST') {
 			$form->bindRequest($request);
 			if ($form->isValid()) {
@@ -77,7 +78,7 @@ class FileController extends HelioPanelAbstractController
 			}
 		}
 
-		return array();
+		return array('form' => $form->createView());
 	}
 
 	//TODO: saveAction
