@@ -31,6 +31,7 @@ class FileController extends HelioPanelAbstractController
 		}
 	}
 
+	//Note: moveAction will not be created in favor of renameAction
 	//TODO: renameAction
 
 	//TODO: deleteAction

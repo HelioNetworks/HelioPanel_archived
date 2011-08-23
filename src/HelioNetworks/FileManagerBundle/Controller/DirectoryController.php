@@ -20,6 +20,7 @@ class DirectoryController extends HelioPanelAbstractController
 		return array('files' => $files, 'path' => $path);
 	}
 
+	//Note: moveAction will not be created in favor of renameAction
 	//TODO: renameAction
 
 	//TODO: createAction
