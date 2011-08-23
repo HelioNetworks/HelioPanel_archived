@@ -2,8 +2,9 @@
 
 namespace HelioNetworks\FileManagerBundle\Controller;
 
+use HelioNetworks\FileManagerBundle\Form\Type\DeleteFileRequestType;
+use HelioNetworks\FileManagerBundle\Form\Model\DeleteFileRequest;
 use HelioNetworks\FileManagerBundle\Form\Type\RenameFileRequestType;
-
 use HelioNetworks\FileManagerBundle\Form\Model\RenameFileRequest;
 use HelioNetworks\HelioPanelBundle\Controller\HelioPanelAbstractController;
 use HelioNetworks\HelioPanelBundle\Entity\Account;
@@ -58,7 +59,26 @@ class FileController extends HelioPanelAbstractController
 		return array();
 	}
 
-	//TODO: deleteAction
+	/**
+	* @Route("/file/delete", name="file_delete")
+	* @Template()
+	*/
+	public function deleteAction()
+	{
+		$deleteFileRequest = new DeleteFileRequest();
+		$form = $this->deleteForm(new DeleteFileRequestType(), $deleteFileRequest);
+
+		$request = $this->getRequest();
+		if ($request->getMethod() == 'POST') {
+			$form->bindRequest($request);
+			if ($form->isValid()) {
+				$this->getHook()
+					->rm($deleteFileRequest->getFilename());
+			}
+		}
+
+		return array();
+	}
 
 	//TODO: saveAction
 }
