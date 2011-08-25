@@ -60,6 +60,11 @@ class Account
 		return new FileRepository($this->hookfile, $this->hookfileauth);
 	}
 
+	public function __toString()
+	{
+		return $this->getUsername();
+	}
+
     /**
      * Get id
      *

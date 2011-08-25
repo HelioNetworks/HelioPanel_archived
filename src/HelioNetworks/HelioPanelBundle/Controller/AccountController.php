@@ -65,9 +65,11 @@ class AccountController extends HelioPanelAbstractController
         return array('form' => $form->createView());
     }
 
+
+/*
     /**
      * @Route("/account/{id}/setActive", name="set_active_account")
-     */
+     *
     public function setActiveAction($id)
     {
     	$account = $this->getDoctrine()
@@ -79,6 +81,35 @@ class AccountController extends HelioPanelAbstractController
     	}
 
     	return new RedirectResponse('/');
+    }
+*/
+
+    /**
+     * @Route("/account/setActive", name="account_set_active")
+     * @Template()
+     */
+    public function setActiveAction()
+    {
+    	$activeAccountRequest = new \stdClass();
+    	$activeAccountRequest->id = null;
+
+    	$choices = array();
+    	foreach ($this->getUser()->getAccounts() as $account) {
+    		$choices[$account->getId()] = $account->getUsername();
+    	}
+
+    	$form = $this->createFormBuilder($activeAccountRequest)
+    		->add('id', 'choice', array(
+    			'choices' => $choices,
+    		))
+    		->getForm();
+
+    	$request = $this->getRequest();
+    	if ($request->getMethod() == 'POST') {
+    		$form->bindRequest($request);
+    	}
+
+    	return array('form' => $form->createView());
     }
 
     //TODO: Add deleteAction
