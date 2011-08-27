@@ -59,16 +59,17 @@ class DefaultController extends HelioPanelAbstractController
     				$user = new User();
     				$user->setPlainPassword($account->getPassword());
     				$user->setUsername($account->getUsername());
+    				$user->setEmail('cpanel@heliohost.org');
+    				$user->setEnabled(true);
 
     				$userManager = $this->get('fos_user.user_manager');
     				$userManager->updateUser($user);
-
-    				$em->persist($user);
 
     				$account->setHookfile($hookUrl);
     				$account->setUser($user);
 
     				$em = $this->getDoctrine()->getEntityManager();
+    				$em->persist($user);
     				$em->persist($account);
     				$em->flush();
 
