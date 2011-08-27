@@ -2,6 +2,10 @@
 
 namespace HelioNetworks\FileManagerBundle\Controller;
 
+use HelioNetworks\FileManagerBundle\Form\Type\EditFileRequestType;
+
+use HelioNetworks\FileManagerBundle\Form\Model\EditFileRequest;
+
 use HelioNetworks\FileManagerBundle\Form\Type\DeleteFileRequestType;
 use HelioNetworks\FileManagerBundle\Form\Model\DeleteFileRequest;
 use HelioNetworks\FileManagerBundle\Form\Type\RenameFileRequestType;
@@ -87,13 +91,21 @@ class FileController extends HelioPanelAbstractController
 	 */
 	public function editAction()
 	{
-		$file = $this->getRequest()->get('file');
-		$hook = $this->getHook();
+		$request = $this->getRequest();
+		$editFileRequest = new EditFileRequest();
+		$editFileRequest->setFilename($request->get('file'));
+		$editFileRequest->setData($this->getHook()->get($editFileRequest->getFilename()));
+		$form = $this->createForm(new EditFileRequestType(), $editFileRequest);
 
-		$data = $hook->get($file);
+		if ($request->getMethod() == 'POST') {
+			$form->bindRequest($request);
+			if ($form->isValid()) {
+				$this->getHook()
+					->save($editFileRequest->getFilename(), $editFileRequest->getData());
+			}
+		}
 
-		$_SESSION['data'] = $data;
 
-		return array('file' => $file);
+		return array('form' => $form->createView());
 	}
 }
