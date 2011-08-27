@@ -81,5 +81,19 @@ class FileController extends HelioPanelAbstractController
 		return array('form' => $form->createView());
 	}
 
-	//TODO: saveAction
+	/**
+	 * @Route("/file/edit", name="file_edit")
+	 * @Template()
+	 */
+	public function editAction()
+	{
+		$file = $this->getRequest()->get('file');
+		$hook = $this->getHook();
+
+		$data = $hook->get($file);
+
+		$_SESSION['data'] = $data;
+
+		return array('file' => $file);
+	}
 }
