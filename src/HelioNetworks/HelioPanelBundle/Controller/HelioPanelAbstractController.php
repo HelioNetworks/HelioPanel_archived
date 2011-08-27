@@ -2,12 +2,16 @@
 
 namespace HelioNetworks\HelioPanelBundle\Controller;
 
+use HelioNetworks\HelioPanelBundle\Entity\User;
 use HelioNetworks\HelioPanelBundle\FileRepository;
 use HelioNetworks\HelioPanelBundle\Entity\Account;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 abstract class HelioPanelAbstractController extends Controller
 {
+	/**
+	 * @return User
+	 */
 	protected function getUser()
 	{
 		return $this->get('security.context')
@@ -34,6 +38,11 @@ abstract class HelioPanelAbstractController extends Controller
 			return $this->getDoctrine()
 				->getRepository('HelioNetworksHelioPanelBundle:Account')
 				->findOneById($id);
+		} else {
+
+			return $this->getUser()
+				->getAccounts()
+				->first();
 		}
 	}
 
