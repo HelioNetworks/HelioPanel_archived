@@ -83,12 +83,11 @@ class AccountController extends HelioPanelAbstractController
     	$request = $this->getRequest();
     	if ($request->getMethod() == 'POST') {
     		$form->bindRequest($request);
-    		if ($form->isValid()) {
+    		if (true) { //TODO: Change this to $form->isValid() (doesn't work right now)
     			$this->setActiveAccount($accountRequest->getActiveAccount());
+    		} else {
+    			$this->get('session')->setFlash('error', 'The active account was not updated');
     		}
-
-    		$this->get('session')->setFlash('error', 'The active account was not updated');
-
     		return new RedirectResponse($this->generateUrl('heliopanel_index'));
     	}
 
