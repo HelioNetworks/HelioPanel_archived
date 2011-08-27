@@ -1,7 +1,7 @@
 {% extends '::heliopanel.html.twig' %}
 
 {% block content %}
-	<form method=post action="{{ url('file_edit') }}">
+	<form method=post action="{{ url('file_edit') }}" {{ form_enctype(form) }} name="file_edit">
 		<input type=hidden name=file value="<?php echo $_GET['file']; ?>">
 
 		<table class="filestoolbar"><tr>

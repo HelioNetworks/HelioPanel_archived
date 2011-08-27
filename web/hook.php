@@ -1,11 +1,17 @@
 <?php
 
+error_reporting(0);
+
 $authKey = '%authKey%';
 
 if($_GET['auth'] !== $authKey) {
     echo '403 Unauthorized';
     die();
 }
+
+$homeDir = __DIR__.'/../';
+$_GET['source'] = $homeDir.$_GET['source'];
+$_GET['dest'] = $homeDir.$_GET['dest'];
 
 switch ($_GET['action']) {
     case 'rename':
