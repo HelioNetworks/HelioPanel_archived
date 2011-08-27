@@ -10,7 +10,7 @@ class EditFileRequestType extends AbstractType
 	public function buildForm(FormBuilder $builder, array $options)
 	{
 		$builder->add('filename');
-		$builder->add('data', 'textarea');
+		$builder->add('data', 'hidden');
 	}
 
 	public function getDefaultOptions(array $options)

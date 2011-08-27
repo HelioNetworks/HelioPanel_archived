@@ -1,6 +1,6 @@
 	[Current Account: {{ activeAccount.username }}]
 
-	<form action="{{ path('account_set_active') }}" method="post" {{ form_enctype(form) }} style="display:inline;">
+	<form action="{{ path('account_set_active') }}" method="post" {{ form_enctype(form) }} name="account_set_active" style="display:inline;">
 		{{ form_widget(form.activeAccount) }}
 
 		<input type="submit" />

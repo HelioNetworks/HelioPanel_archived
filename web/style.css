@@ -58,9 +58,8 @@ body {
 	margin-right:0px;
 }
 
-#textarea {
+#editor, #spacer {
 	
     width: 500px;
     height: 400px;
-	postition:relative;
 }
