@@ -2,6 +2,9 @@
 
 namespace HelioNetworks\HelioPanelBundle\Controller;
 
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use HelioNetworks\HelioPanelBundle\Form\Type\SetActiveAccountRequestType;
+use HelioNetworks\HelioPanelBundle\Form\Model\SetActiveAccountRequest;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use HelioNetworks\HelioPanelBundle\Request;
 use HelioNetworks\HelioPanelBundle\Form\Type\AccountType;
@@ -65,48 +68,26 @@ class AccountController extends HelioPanelAbstractController
         return array('form' => $form->createView());
     }
 
-
-/*
-    /**
-     * @Route("/account/{id}/setActive", name="set_active_account")
-     *
-    public function setActiveAction($id)
-    {
-    	$account = $this->getDoctrine()
-    		->getRepository('HelioNetworksHelioPanelBundle:Account')
-    		->findOneById($id);
-
-    	if ($account) {
-    		$this->setActiveAccount($account);
-    	}
-
-    	return new RedirectResponse('/');
-    }
-*/
-
     /**
      * @Route("/account/setActive", name="account_set_active")
+     * @Method({"POST"})
      * @Template()
      */
     public function setActiveAction()
     {
-    	$activeAccountRequest = new \stdClass();
-    	$activeAccountRequest->id = null;
-
-    	$choices = array();
-    	foreach ($this->getUser()->getAccounts() as $account) {
-    		$choices[$account->getId()] = $account->getUsername();
-    	}
-
-    	$form = $this->createFormBuilder($activeAccountRequest)
-    		->add('id', 'choice', array(
-    			'choices' => $choices,
-    		))
-    		->getForm();
+    	$accountRequest = new SetActiveAccountRequest();
+    	$form = $this->createForm(new SetActiveAccountRequestType(), $accountRequest, array(
+    		'user' => $this->getUser(),
+    	));
 
     	$request = $this->getRequest();
     	if ($request->getMethod() == 'POST') {
     		$form->bindRequest($request);
+    		if ($form->isValid()) {
+    			$this->setActiveAccount($accountRequest->getActiveAccount());
+    		}
+
+    		return new RedirectResponse($this->generateUrl('heliopanel_index'));
     	}
 
     	return array('form' => $form->createView());
