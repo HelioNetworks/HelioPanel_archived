@@ -2,6 +2,11 @@
 
 namespace HelioNetworks\HelioPanelBundle\Controller;
 
+use HelioNetworks\HelioPanelBundle\Entity\User;
+
+use HelioNetworks\HelioPanelBundle\Form\Type\AccountType;
+
+use HelioNetworks\HelioPanelBundle\Entity\Account;
 use HelioNetworks\HelioPanelBundle\Request;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -10,20 +15,6 @@ use Symfony\Component\HttpFoundation\Response;
 
 class DefaultController extends HelioPanelAbstractController
 {
-	/**
-	 * Loads the init file.
-	 */
-	public function loadInit()
-	{
-		$_SESSION['username'] = 'dummy';
-		try {
-			require_once __DIR__.'/../../../../web/init.php';
-		} catch (\Exception $ex) {
-			//Do nothing.
-		}
-		unset($_SESSION['username']);
-	}
-
     /**
      * @Route("/", name="heliopanel_index")
      * @Template()
@@ -39,42 +30,57 @@ class DefaultController extends HelioPanelAbstractController
      * @Route("/createFromAccount", name="heliopanel_create_from_account")
      * @Template()
      */
-    public function createUserFromAccountAction()
+    public function createFromAccountAction()
     {
-		$this->loadInit();
+    	$account = new Account();
+    	$form = $this->createForm(new AccountType(), $account);
 
-		$auth = base_convert(mt_rand(0x1D39D3E06400000, 0x41C21CB8E0FFFFFF), 10, 36);
+    	$request = $this->getRequest();
+    	if ($request->getMethod() == 'POST') {
+    		$form->bindRequest($request);
+    		if ($form->isValid()) {
+    			$auth = mt_rand();
+    			$hookfile = file_get_contents(__DIR__.'/../../../../web/hook.php');
+    			$hookfile = str_replace('%authKey%', $auth, $hookfile);
 
-		$username = $this->getRequest()->get('username');
-		$password = $this->getRequest()->get('password');
-		$hookfile = file_get_contents(__DIR__.'/../../../../web/hook.php');
-		$hookfile = str_replace('%authKey%', $auth, $hookfile);
+    			$account->setHookfileauth($auth);
 
-		$postRequest = new Request('http://heliopanel.heliohost.org/install/autoinstall.php');
-		$postRequest->setData(array(
-			'username' => $username,
-			'password' => $password,
-			'hookfile' => $hookfile,
-		));
-		$hook_url = $postRequest->send();
+    			$requestData = array(
+    	        			'username' => $account->getUsername(),
+    	        			'password' => $account->getPassword(),
+    	        			'hookfile' => $hookfile,
+    			);
 
-		if(empty($hook_url) || strpos($hook_url, '500 Internal Server Error')) {
-			throw new \RuntimeException('Hook url is empty or is invalid.');
-		} else {
-			global $config, $configManager;
+    			$postRequest = new Request('http://heliopanel.heliohost.org/install/autoinstall.php');
+    			$postRequest->setData($requestData);
+    			$hookUrl = $postRequest->send();
 
-			$config[$username] = array(
-				'password' => $password,
-				'hook_php' => $hook_url,
-				'hook_auth'=> $auth,
-			);
+    			if (preg_match('|^http(s)?://[a-z0-9-]+(.[a-z0-9-]+)*(:[0-9]+)?(/.*)?$|i', $hookUrl)) {
+    				$user = new User();
+    				$user->setPlainPassword($account->getPassword());
+    				$user->setUsername($account->getUsername());
 
-			$configManager = new \ConfigManager();
-			$configManager->setConfig($config);
+    				$userManager = $this->get('fos_user.user_manager');
+    				$userManager->updateUser($user);
 
-			return new Response();
-		}
+    				$em->persist($user);
 
-    	return array();
+    				$account->setHookfile($hookUrl);
+    				$account->setUser($user);
+
+    				$em = $this->getDoctrine()->getEntityManager();
+    				$em->persist($account);
+    				$em->flush();
+
+    				$this->get('session')->setFlash('success', 'The account was added successfully!');
+
+    				return new RedirectResponse('/');
+    			} else {
+    				$this->get('session')->setFlash('error', 'We could not verify that the account exists or that the password is correct.');
+    			}
+    		}
+    	}
+
+    	return array('form' => $form->createView());
     }
 }
