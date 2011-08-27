@@ -29,7 +29,7 @@ abstract class HelioPanelAbstractController extends Controller
 	 */
 	protected function getActiveAccount()
 	{
-		if ($id = $this->getRequest()->getSession()->get('active_account_id')) {
+		if ($id = $this->get('session')->get('active_account_id')) {
 
 			return $this->getDoctrine()
 				->getRepository('HelioNetworksHelioPanelBundle:Account')
@@ -44,8 +44,7 @@ abstract class HelioPanelAbstractController extends Controller
 			throw new \UnexpectedValueException('Account is not owned by current user.');
 		}
 
-		$this->getRequest()
-			->getSession()
+		$this->get('session')
 			->set('active_account_id', $account->getId());
 	}
 }

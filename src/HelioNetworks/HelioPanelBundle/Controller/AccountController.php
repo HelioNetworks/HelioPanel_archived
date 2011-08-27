@@ -87,10 +87,12 @@ class AccountController extends HelioPanelAbstractController
     			$this->setActiveAccount($accountRequest->getActiveAccount());
     		}
 
+    		$this->get('session')->setFlash('error', 'The active account was not updated');
+
     		return new RedirectResponse($this->generateUrl('heliopanel_index'));
     	}
 
-    	return array('form' => $form->createView());
+    	return array('form' => $form->createView(), 'activeAccount' => $this->getActiveAccount());
     }
 
     //TODO: Add deleteAction
