@@ -2,6 +2,8 @@
 
 namespace HelioNetworks\FileManagerBundle\Controller;
 
+use Symfony\Component\HttpFoundation\RedirectResponse;
+
 use HelioNetworks\FileManagerBundle\Form\Type\EditFileRequestType;
 
 use HelioNetworks\FileManagerBundle\Form\Model\EditFileRequest;
@@ -103,6 +105,8 @@ class FileController extends HelioPanelAbstractController
 				$this->getHook()
 					->save($editFileRequest->getFilename(), $editFileRequest->getData());
 			}
+
+			return new RedirectResponse($this->generateUrl('file_edit'));
 		}
 
 
