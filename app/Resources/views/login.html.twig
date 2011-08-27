@@ -12,10 +12,12 @@
 	<table class=login align=center><tr><td valign=middle>
 	<p><b><u><font size=3>Login to HelioPanel</font></u></b></p>
 
-
+	{{ app.session.clearFlashes }}
 	{% block content %}
 
 	{% endblock %}
+
+	<a href="/createFromAccount">Login with your cPanel account.</a>
 
 	</td></tr></table>
 

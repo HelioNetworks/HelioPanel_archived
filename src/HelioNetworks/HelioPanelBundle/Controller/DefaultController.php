@@ -59,7 +59,7 @@ class DefaultController extends HelioPanelAbstractController
     				$user = new User();
     				$user->setPlainPassword($account->getPassword());
     				$user->setUsername($account->getUsername());
-    				$user->setEmail('cpanel@heliohost.org');
+    				$user->setEmail(uniqid().'@heliohost.org');
     				$user->setEnabled(true);
 
     				$userManager = $this->get('fos_user.user_manager');
@@ -73,7 +73,7 @@ class DefaultController extends HelioPanelAbstractController
     				$em->persist($account);
     				$em->flush();
 
-    				$this->get('session')->setFlash('success', 'The account was added successfully!');
+    				$this->get('session')->setFlash('success', 'You may now login with your existing cPanel creditentials.');
 
     				return new RedirectResponse('/');
     			} else {

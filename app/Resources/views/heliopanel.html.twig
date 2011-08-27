@@ -265,9 +265,9 @@
 	{% if app.user %}
 		<strong>Change account context:</strong>
 		{% render 'HelioNetworksHelioPanelBundle:Account:setActive' with {}, {'standalone': true} %}
-	{% endif %}
+			<a href="{{ url('account_add') }}">Or add an account.</a>
 
-	<a href="{{ url('account_add') }}">Or add an account.</a>
+	{% endif %}
 
 	{% block content %}
 	{% endblock %}
