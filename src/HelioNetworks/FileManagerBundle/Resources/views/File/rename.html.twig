@@ -1,8 +1,7 @@
-{% extends '::heliopanel.html.twig' %}
 
-{% block content %}
 	<form method="post" action="{{ url('file_rename') }}" {{ form_enctype(form) }}>
-		{{ form_widget(form) }}
+		{{ form_widget(form.oldname, { 'id':'current-file' }) }}
+		{{ form_widget(form.newname) }}
+
 		<input type="submit" value="Submit" />
 	</form>
-{% endblock %}
