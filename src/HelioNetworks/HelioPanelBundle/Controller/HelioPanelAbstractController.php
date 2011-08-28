@@ -35,15 +35,20 @@ abstract class HelioPanelAbstractController extends Controller
 	{
 		if ($id = $this->get('session')->get('active_account_id')) {
 
-			return $this->getDoctrine()
+			$account = $this->getDoctrine()
 				->getRepository('HelioNetworksHelioPanelBundle:Account')
 				->findOneById($id);
-		} else {
 
-			return $this->getUser()
-				->getAccounts()
-				->first();
+			if ($account) {
+
+				return $account;
+			}
+
 		}
+
+		return $this->getUser()
+			->getAccounts()
+			->first();
 	}
 
 	protected function setActiveAccount(Account $account)

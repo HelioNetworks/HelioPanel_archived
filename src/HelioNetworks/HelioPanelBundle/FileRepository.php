@@ -97,7 +97,7 @@ class FileRepository
      */
     public function ls($source)
     {
-        return unserialize($this->call(array(
+        return @unserialize($this->call(array(
             'action' => 'ls',
             'source' =>$source,
         )));
