@@ -1,26 +1,32 @@
-$( "#dialog-box" ).dialog({
+$( '#dialog-box' ).dialog({
 	autoOpen: false,
 	height: 300,
 	width: 350,
 	modal: true,
 	buttons: {
-		"Submit": function() {
-
+		'Submit': function() {
+			$form = $('#dialog-box').find('form');
+			$form.hide();
+			$('<div />').html('Loading...').appendTo('#dialog-box');
+			$.post($form.attr('action'), $form.serialize(), function () {
+				location.reload();
+			});
 		},
-		Cancel: function() {
-			$( this ).dialog( "close" );
+		'Cancel': function() {
+			$( this ).dialog( 'close' );
 		}
 	},
 	close: function() {
-		allFields.val( "" ).removeClass( "ui-state-error" );
+		allFields.val( '' ).removeClass( 'ui-state-error' );
 	}
 });
 
-$( ".modal-form" ).each(function () {
+$( '.modal-form' ).each(function () {
 	
 	var $this = $(this);
 	$this.click(function () {
-		$('#dialog-box').html('Loading...');
+		$('#dialog-box').html('');
+		$('<div />').html('Loading...').appendTo('#dialog-box');
 		$('#dialog-box').dialog('open');
 		
 		$('#dialog-box').load($this.attr('form-src'), function () {
