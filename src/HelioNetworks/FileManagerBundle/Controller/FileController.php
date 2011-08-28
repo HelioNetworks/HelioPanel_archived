@@ -49,18 +49,17 @@ class FileController extends HelioPanelAbstractController
 	 */
 	public function renameAction()
 	{
-		$request = $this->getRequest();
 		$renameFileRequest = new RenameFileRequest();
-		$renameFileRequest->setOldname($request->get('path'));
 		$form = $this->createForm(new RenameFileRequestType(), $renameFileRequest);
 
+		$request = $this->getRequest();
 		if ($request->getMethod() == 'POST') {
 			$form->bindRequest($request);
 			if ($form->isValid()) {
 				$this->getHook()
 					->rename($renameFileRequest->getOldname(), $renameFileRequest->getNewName());
 
-				return new RedirectResponse('/directory/list?path=/');
+				return new Response();
 			}
 		}
 
