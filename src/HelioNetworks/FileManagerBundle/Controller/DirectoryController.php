@@ -14,10 +14,9 @@ class DirectoryController extends HelioPanelAbstractController
 	 */
 	public function listAction()
 	{
-		$path = $this->getRequest()->get('path');
-		$files = $this->getHook()->ls($path);
+		$files = $this->getHook()->ls($this->getRequest()->get('path'));
 
-		return array('files' => $files, 'path' => $path);
+		return array('files' => $files);
 	}
 
 	//Note: moveAction will not be created in favor of renameAction
