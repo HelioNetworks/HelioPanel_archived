@@ -2,6 +2,8 @@
 
 namespace HelioNetworks\FileManagerBundle\Controller;
 
+use HelioNetworks\FileManagerBundle\Form\Type\CreateFileRequestType;
+use HelioNetworks\FileManagerBundle\Form\Model\CreateFileRequest;
 use HelioNetworks\HelioPanelBundle\Controller\HelioPanelAbstractController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -22,7 +24,26 @@ class DirectoryController extends HelioPanelAbstractController
 	//Note: moveAction will not be created in favor of renameAction
 	//TODO: renameAction
 
-	//TODO: createAction
+	/**
+	 * @Route("/directory/create", name="directory_create")
+	 * @Template()
+	 */
+	public function createAction()
+	{
+		$createFileRequest = new CreateFileRequest();
+		$form = $this->createForm(new CreateFileRequestType(), $createFileRequest);
+
+		$request = $this->getRequest();
+		if ($request->getMethod() == 'POST') {
+			$form->bindRequest($request);
+			if ($form->isValid()) {
+				$this->getHook()
+					->mkdir($createFileRequest->getFilename());
+			}
+		}
+
+		return array('form' => $form->createView());
+	}
 
 	//TODO: deleteAction
 }
