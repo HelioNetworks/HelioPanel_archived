@@ -96,7 +96,7 @@ class FileController extends HelioPanelAbstractController
 	{
 		$request = $this->getRequest();
 		$editFileRequest = new EditFileRequest();
-		$editFileRequest->setFilename($request->get('file'));
+		$editFileRequest->setFilename($request->get('path'));
 		$editFileRequest->setData($this->getHook()->get($editFileRequest->getFilename()));
 		$form = $this->createForm(new EditFileRequestType(), $editFileRequest);
 
@@ -107,7 +107,7 @@ class FileController extends HelioPanelAbstractController
 					->save($editFileRequest->getFilename(), $editFileRequest->getData());
 			}
 
-			return new RedirectResponse($this->generateUrl('file_edit'));
+			return new RedirectResponse($this->generateUrl('directory_list').'?path='.dirname($editFileRequest->getFilename()));
 		}
 
 

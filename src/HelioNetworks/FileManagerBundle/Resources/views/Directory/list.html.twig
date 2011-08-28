@@ -5,7 +5,7 @@
 			<td width=40 valign=middle><img border=0 src="/images/files/addfile.png" style="cursor:pointer; opacity:0.5;filter:alpha(opacity=50)" onmouseover="this.style.opacity=1;this.filters.alpha.opacity=100" onmouseout="this.style.opacity=0.5;this.filters.alpha.opacity=50" onClick="window.location=\'files/newfile.php?path=<?php echo $path; ?>\'"></td>
 			<td width=40 valign=middle><img border=0 src="/images/files/addfolder.png" style="cursor:pointer; opacity:0.5;filter:alpha(opacity=50)" onmouseover="this.style.opacity=1;this.filters.alpha.opacity=100" onmouseout="this.style.opacity=0.5;this.filters.alpha.opacity=50" onClick="window.location=\'files/newdirectory.php?path=<?php echo $path; ?>\'"></td>
 			<td width=40 valign=middle><img border=0 src="/images/files/upload.png" style="cursor:pointer; opacity:0.5;filter:alpha(opacity=50)" onmouseover="this.style.opacity=1;this.filters.alpha.opacity=100" onmouseout="this.style.opacity=0.5;this.filters.alpha.opacity=50" onClick="window.location=\'files/uploadfile.php?path=<?php echo $path; ?>\'"></td>
-			<td valign=middle><form method=get action=files.php><font size=1><br></font><input type=text name=path value="<?php echo $_GET['path']; ?>"><input type=submit></form></td>
+			<td valign=middle><form method=get action=#<font size=1><br></font><input type=text name=path value="{{ path }}"><input type=submit></form></td>
 		</tr></table>
 
 		<table width="100%">
@@ -25,7 +25,7 @@
 		<tr>
 	         		<td align=left width=40><img src="/images/files/{{ file.type }}.png"></td>
 	         		<td align=left><a href="/directory/list?path={{ file.path }}"/><font face=Verdana color=black>{{ file.name }}</font></a></td>
-	         		<td align=left width=40><a href="/file/edit?file={{ file.path }}"><img style="opacity:0.5;filter:alpha(opacity=50)" src=/images/files/edit{{ file.type }}.png onmouseover="this.style.opacity=1;this.filters.alpha.opacity=100" onmouseout="this.style.opacity=0.5;this.filters.alpha.opacity=50"></a></td>
+	         		<td align=left width=40><a href="/file/edit?path={{ file.path }}"><img style="opacity:0.5;filter:alpha(opacity=50)" src=/images/files/edit{{ file.type }}.png onmouseover="this.style.opacity=1;this.filters.alpha.opacity=100" onmouseout="this.style.opacity=0.5;this.filters.alpha.opacity=50"></a></td>
 	         		<td align=left width=40><a href=files.php?r=wysiwyg&file='.$path.''.$file.'><img style="opacity:0.5;filter:alpha(opacity=50)" src=/images/files/wysiwyg{{ file.type }}.png onmouseover="this.style.opacity=1;this.filters.alpha.opacity=100" onmouseout="this.style.opacity=0.5;this.filters.alpha.opacity=50"></a></td>
 					<td align=left width=40><a href="/file/rename?path={{ file.path }}"><img style="cursor:pointer; opacity:0.5;filter:alpha(opacity=50)" src=/images/files/rename.png onmouseover="this.style.opacity=1;this.filters.alpha.opacity=100" onmouseout="this.style.opacity=0.5;this.filters.alpha.opacity=50"></a></td>
 					<td align=left width=40><img onClick="window.location=\'files/copy.php?path='.$path.'&file='.$file.'\'" style="cursor:pointer; opacity:0.5;filter:alpha(opacity=50)" src=/images/files/copy.png onmouseover="this.style.opacity=1;this.filters.alpha.opacity=100" onmouseout="this.style.opacity=0.5;this.filters.alpha.opacity=50"></a></td>
