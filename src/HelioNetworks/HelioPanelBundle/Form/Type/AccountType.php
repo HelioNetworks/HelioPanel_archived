@@ -10,7 +10,7 @@ class AccountType extends AbstractType
 	public function buildForm(FormBuilder $builder, array $options)
 	{
 		$builder->add('username');
-		$builder->add('password');
+		$builder->add('password', 'password');
 	}
 
 	public function getDefaultOptions(array $options)

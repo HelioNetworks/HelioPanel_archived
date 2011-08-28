@@ -24,6 +24,7 @@ class DefaultController extends HelioPanelAbstractController
         return array();
     }
 
+    //TODO: Improve code reuse on this.
     /**
      * Create a new user based from a cPanel account.
      *

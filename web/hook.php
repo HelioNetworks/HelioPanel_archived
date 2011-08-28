@@ -9,7 +9,7 @@ if($_GET['auth'] !== $authKey) {
     die();
 }
 
-$homeDir = __DIR__.'/../';
+$homeDir = dirname(__DIR__).'/';
 $_GET['source'] = $homeDir.$_GET['source'];
 $_GET['dest'] = $homeDir.$_GET['dest'];
 
@@ -44,7 +44,7 @@ switch ($_GET['action']) {
                     }
 
                     $files[] = array(
-                        'path' => $_GET['source'].$file,
+                        'path' => str_replace($homeDir, '', $_GET['source'].$file),
                         'name' => $file,
                         'type' => $type,
                     );
