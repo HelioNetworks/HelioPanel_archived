@@ -44,7 +44,8 @@ switch ($_GET['action']) {
                     }
 
                     $files[] = array(
-                        'file' => $file,
+                        'path' => $_GET['source'].$file,
+                        'name' => $file,
                         'type' => $type,
                     );
                 }
@@ -56,10 +57,6 @@ switch ($_GET['action']) {
         break;
     case 'rm':
         unlink($_GET['source']);
-        break;
-    case 'update':
-        $data = str_replace('%aut'.'hKey%', $authKey, $_POST['data']);
-        file_put_contents(__FILE__, $data);
         break;
     default:
         echo '600 Not Implemented';
