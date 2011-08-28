@@ -24,7 +24,7 @@ class Account
 	 * The hookfile allows HelioPanel to execute
 	 * actions from the user's UNIX account.
 	 *
-	 * @ORM\Column(type="string")
+	 * @ORM\Column(type="string", unique=true)
 	 */
 	protected $hookfile;
 
@@ -36,7 +36,7 @@ class Account
 	protected $hookfileauth;
 
 	/**
-	 * @ORM\Column(type="string")
+	 * @ORM\Column(type="string", unique=true)
 	 */
 	protected $username;
 
