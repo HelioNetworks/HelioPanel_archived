@@ -1,8 +1,6 @@
-{% extends '::heliopanel.html.twig' %}
 
-{% block content %}
 	<form method="post" action="{{ url('file_create') }}" {{ form_enctype(form) }}>
-		{{ form_widget(form) }}
-		<input type="submit" value="Submit" />
+		{{ form_widget(form.filename, { 'id':'current-file' }) }}
+
+		{{ form_rest(form) }}
 	</form>
-{% endblock %}

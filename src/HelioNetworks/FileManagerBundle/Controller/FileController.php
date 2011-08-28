@@ -26,15 +26,15 @@ class FileController extends HelioPanelAbstractController
 	 */
 	public function createAction()
 	{
-		$request = $this->getRequest();
 		$createFileRequest = new CreateFileRequest();
 		$form = $this->createForm(new CreateFileRequestType(), $createFileRequest);
 
+		$request = $this->getRequest();
 		if ($request->getMethod() == 'POST') {
 			$form->bindRequest($request);
 			if ($form->isValid()) {
 				$this->getHook()
-					->touch($request->get('path').$createFileRequest->getFilename());
+					->touch($createFileRequest->getFilename());
 			}
 		}
 
