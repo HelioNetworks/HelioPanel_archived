@@ -1,5 +1,7 @@
 
 	<form method="post" action="{{ url('file_delete') }}" {{ form_enctype(form) }}>
+
+	Are you sure?
 		{{ form_widget(form.path, { 'id':'current-file' }) }}
 
 		{{ form_rest(form) }}

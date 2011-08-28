@@ -9,7 +9,7 @@ class RenameFileRequestType extends AbstractType
 {
 	public function buildForm(FormBuilder $builder, array $options)
 	{
-		$builder->add('path');
+		$builder->add('path', 'hidden');
 		$builder->add('newPath');
 	}
 
