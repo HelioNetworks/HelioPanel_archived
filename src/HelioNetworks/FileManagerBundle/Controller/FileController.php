@@ -60,6 +60,8 @@ class FileController extends HelioPanelAbstractController
 			if ($form->isValid()) {
 				$this->getHook()
 					->rename($renameFileRequest->getOldname(), $renameFileRequest->getNewName());
+
+				return new RedirectResponse('/directory/list?path=/');
 			}
 		}
 
