@@ -63,3 +63,12 @@ body {
     width: 500px;
     height: 400px;
 }
+
+.file-edit-link {
+    opacity:0.5;
+    filter:alpha(opacity=50);
+}
+.file-edit-link:hover {
+    opacity:1;
+    filter:alpha(opacity=100);
+}
