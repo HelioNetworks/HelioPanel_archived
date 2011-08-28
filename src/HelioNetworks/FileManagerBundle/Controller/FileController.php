@@ -2,12 +2,12 @@
 
 namespace HelioNetworks\FileManagerBundle\Controller;
 
+use HelioNetworks\FileManagerBundle\Form\Type\UploadFileRequestType;
+
+use HelioNetworks\FileManagerBundle\Form\Model\UploadFileRequest;
 use Symfony\Component\HttpFoundation\RedirectResponse;
-
 use HelioNetworks\FileManagerBundle\Form\Type\EditFileRequestType;
-
 use HelioNetworks\FileManagerBundle\Form\Model\EditFileRequest;
-
 use HelioNetworks\FileManagerBundle\Form\Type\DeleteFileRequestType;
 use HelioNetworks\FileManagerBundle\Form\Model\DeleteFileRequest;
 use HelioNetworks\FileManagerBundle\Form\Type\RenameFileRequestType;
@@ -113,5 +113,27 @@ class FileController extends HelioPanelAbstractController
 
 
 		return array('form' => $form->createView());
+	}
+
+	/**
+	 * @Route("/file/upload", name="file_upload")
+	 * @Template()
+	 */
+	public function uploadAction()
+	{
+		$request = $this->getRequest();
+		$uploadFileRequest = new UploadFileRequest();
+		$form = $this->createForm(new UploadFileRequestType(), $uploadFileRequest);
+
+		if ($request->getMethod() == 'POST') {
+			$form->bindRequest($request);
+			if ($form->isValid()) {
+				$id = uniqid();
+				$uploadFileRequest->getUploadedFile()
+					->move('/tmp', $id);
+				$this->getHook()
+					->save($editFileRequest->getFilename(), file_get_contents('/tmp/'.$id));
+			}
+		}
 	}
 }
