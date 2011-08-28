@@ -16,18 +16,9 @@ if (!isset($_POST['newfilename'])) {
 <html>
 
 <head>
-	<link rel="stylesheet" href="../jquery/themes/base/jquery.ui.all.css">
-	<script src="../jquery/jquery-1.6.2.js"></script>
-	<script src="../jquery/external/jquery.bgiframe-2.1.2.js"></script>
-	<script src="../jquery/ui/jquery.ui.core.js"></script>
-	<script src="../jquery/ui/jquery.ui.widget.js"></script>
-	<script src="../jquery/ui/jquery.ui.mouse.js"></script>
-	<script src="../jquery/ui/jquery.ui.button.js"></script>
-	<script src="../jquery/ui/jquery.ui.draggable.js"></script>
-	<script src="../jquery/ui/jquery.ui.position.js"></script>
-	<script src="../jquery/ui/jquery.ui.resizable.js"></script>
-	<script src="../jquery/ui/jquery.ui.dialog.js"></script>
-	<script src="../jquery/ui/jquery.effects.core.js"></script>
+	<link rel="stylesheet" href="../jquery-optimized/css/ui-lightness/jquery-ui-1.8.15.custom.css">
+	<script src="../jquery-optimized/js/jquery-1.6.2.min.js"></script>
+	<script src="../jquery-optimized/js/jquery-ui-1.8.15.custom.min.js"></script>
 
 	<style>
 		body { font-size: 62.5%; }
