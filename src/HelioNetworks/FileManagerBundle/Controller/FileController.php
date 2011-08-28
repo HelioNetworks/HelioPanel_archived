@@ -128,12 +128,11 @@ class FileController extends HelioPanelAbstractController
 		if ($request->getMethod() == 'POST') {
 			$form->bindRequest($request);
 			if ($form->isValid()) {
-				//TODO: This is messy
-				$id = uniqid();
+				$tempName = tempnam(sys_get_temp_dir(), 'uploaded_file_');
 				$uploadFileRequest->getUploadedFile()
-					->move('/tmp', $id);
+					->move(dirname($tempName), basename($tempName));
 				$this->getHook()
-					->save($editFileRequest->getFilename(), file_get_contents('/tmp/'.$id));
+					->save($editFileRequest->getFilename(), file_get_contents($tempName));
 			}
 		}
 	}
