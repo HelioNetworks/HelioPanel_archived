@@ -9,14 +9,14 @@ class RenameFileRequestType extends AbstractType
 {
 	public function buildForm(FormBuilder $builder, array $options)
 	{
-		$builder->add('oldname');
-		$builder->add('newname');
+		$builder->add('path');
+		$builder->add('newPath');
 	}
 
 	public function getDefaultOptions(array $options)
 	{
 		return array(
-			'data_class' => 'HelioNetworks\FileManagerBundle\Form\Model\RenameFileRequest',
+			'data_class' => 'HelioNetworks\FileManagerBundle\Form\Model\FileRequest',
 		);
 	}
 

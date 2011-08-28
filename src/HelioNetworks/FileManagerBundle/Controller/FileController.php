@@ -2,6 +2,8 @@
 
 namespace HelioNetworks\FileManagerBundle\Controller;
 
+use HelioNetworks\FileManagerBundle\Form\Model\FileRequest;
+
 use HelioNetworks\FileManagerBundle\Form\Type\UploadFileRequestType;
 use HelioNetworks\FileManagerBundle\Form\Model\UploadFileRequest;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -26,15 +28,15 @@ class FileController extends HelioPanelAbstractController
 	 */
 	public function createAction()
 	{
-		$createFileRequest = new CreateFileRequest();
-		$form = $this->createForm(new CreateFileRequestType(), $createFileRequest);
+		$fileRequest = new FileRequest();
+		$form = $this->createForm(new CreateFileRequestType(), $fileRequest);
 
 		$request = $this->getRequest();
 		if ($request->getMethod() == 'POST') {
 			$form->bindRequest($request);
 			if ($form->isValid()) {
 				$this->getHook()
-					->touch($createFileRequest->getFilename());
+					->touch($fileRequest->getPath());
 			}
 		}
 
@@ -49,15 +51,15 @@ class FileController extends HelioPanelAbstractController
 	 */
 	public function renameAction()
 	{
-		$renameFileRequest = new RenameFileRequest();
-		$form = $this->createForm(new RenameFileRequestType(), $renameFileRequest);
+		$fileRequest = new FileRequest();
+		$form = $this->createForm(new RenameFileRequestType(), $fileRequest);
 
 		$request = $this->getRequest();
 		if ($request->getMethod() == 'POST') {
 			$form->bindRequest($request);
 			if ($form->isValid()) {
 				$this->getHook()
-					->rename($renameFileRequest->getOldname(), $renameFileRequest->getNewName());
+					->rename($fileRequest->getPath(), $fileRequest->getNewPath());
 
 				return new Response();
 			}
@@ -73,14 +75,14 @@ class FileController extends HelioPanelAbstractController
 	public function deleteAction()
 	{
 		$request = $this->getRequest();
-		$deleteFileRequest = new DeleteFileRequest();
-		$form = $this->createForm(new DeleteFileRequestType(), $deleteFileRequest);
+		$fileRequest = new FileRequest();
+		$form = $this->createForm(new DeleteFileRequestType(), $fileRequest);
 
 		if ($request->getMethod() == 'POST') {
 			$form->bindRequest($request);
 			if ($form->isValid()) {
 				$this->getHook()
-					->rm($deleteFileRequest->getFilename());
+					->rm($fileRequest->getPath());
 			}
 		}
 
@@ -93,20 +95,22 @@ class FileController extends HelioPanelAbstractController
 	 */
 	public function editAction()
 	{
+		//TODO: Cleanup
+
 		$request = $this->getRequest();
-		$editFileRequest = new EditFileRequest();
-		$editFileRequest->setFilename($request->get('path'));
-		$editFileRequest->setData($this->getHook()->get($editFileRequest->getFilename()));
+		$editFileRequest = new FileRequest();
+		$editFileRequest->setPath($request->get('path'));
+		$editFileRequest->setData($this->getHook()->get($editFileRequest->getPath()));
 		$form = $this->createForm(new EditFileRequestType(), $editFileRequest);
 
 		if ($request->getMethod() == 'POST') {
 			$form->bindRequest($request);
 			if ($form->isValid()) {
 				$this->getHook()
-					->save($editFileRequest->getFilename(), $editFileRequest->getData());
+					->save($editFileRequest->getPath(), $editFileRequest->getData());
 			}
 
-			return new RedirectResponse($this->generateUrl('directory_list').'?path='.dirname($editFileRequest->getFilename()));
+			return new RedirectResponse($this->generateUrl('directory_list').'?path='.dirname($editFileRequest->getPath()));
 		}
 
 

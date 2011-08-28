@@ -9,14 +9,14 @@ class EditFileRequestType extends AbstractType
 {
 	public function buildForm(FormBuilder $builder, array $options)
 	{
-		$builder->add('filename');
+		$builder->add('path');
 		$builder->add('data', 'hidden');
 	}
 
 	public function getDefaultOptions(array $options)
 	{
 		return array(
-			'data_class' => 'HelioNetworks\FileManagerBundle\Form\Model\EditFileRequest',
+			'data_class' => 'HelioNetworks\FileManagerBundle\Form\Model\FileRequest',
 		);
 	}
 

@@ -1,6 +1,6 @@
 
 	<form method="post" action="{{ url('file_delete') }}" {{ form_enctype(form) }}>
-		{{ form_widget(form.filename, { 'id':'current-file' }) }}
+		{{ form_widget(form.path, { 'id':'current-file' }) }}
 
 		{{ form_rest(form) }}
 	</form>

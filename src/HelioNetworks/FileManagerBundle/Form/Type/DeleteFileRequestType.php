@@ -9,13 +9,13 @@ class DeleteFileRequestType extends AbstractType
 {
 	public function buildForm(FormBuilder $builder, array $options)
 	{
-		$builder->add('filename');
+		$builder->add('path');
 	}
 
 	public function getDefaultOptions(array $options)
 	{
 		return array(
-			'data_class' => 'HelioNetworks\FileManagerBundle\Form\Model\DeleteFileRequest',
+			'data_class' => 'HelioNetworks\FileManagerBundle\Form\Model\FileRequest',
 		);
 	}
 
