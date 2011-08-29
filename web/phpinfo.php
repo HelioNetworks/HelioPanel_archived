@@ -1,5 +1,5 @@
 <?php
 echo "<title>PHP Info</title>";
-echo "<a href='/heliopanel/'>&larr; Return to HelioPanel</a>";
+echo "<a href='/'>&larr; Return to HelioPanel</a>";
 phpinfo();
 ?>
