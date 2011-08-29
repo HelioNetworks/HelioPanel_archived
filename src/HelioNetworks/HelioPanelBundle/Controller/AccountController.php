@@ -15,6 +15,9 @@ use HelioNetworks\HelioPanelBundle\Entity\Account;
 
 class AccountController extends HelioPanelAbstractController
 {
+    //TODO: Move createFromAccount action to this
+    public function createUserAction() {}
+    
     /**
      * Adds an account to the logged in user.
      *
