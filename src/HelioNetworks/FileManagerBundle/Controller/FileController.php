@@ -3,20 +3,15 @@
 namespace HelioNetworks\FileManagerBundle\Controller;
 
 use HelioNetworks\FileManagerBundle\Form\Model\FileRequest;
-
 use HelioNetworks\FileManagerBundle\Form\Type\UploadFileRequestType;
 use HelioNetworks\FileManagerBundle\Form\Model\UploadFileRequest;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use HelioNetworks\FileManagerBundle\Form\Type\EditFileRequestType;
-use HelioNetworks\FileManagerBundle\Form\Model\EditFileRequest;
 use HelioNetworks\FileManagerBundle\Form\Type\DeleteFileRequestType;
-use HelioNetworks\FileManagerBundle\Form\Model\DeleteFileRequest;
 use HelioNetworks\FileManagerBundle\Form\Type\RenameFileRequestType;
-use HelioNetworks\FileManagerBundle\Form\Model\RenameFileRequest;
 use HelioNetworks\HelioPanelBundle\Controller\HelioPanelAbstractController;
 use HelioNetworks\HelioPanelBundle\Entity\Account;
 use HelioNetworks\FileManagerBundle\Form\Type\CreateFileRequestType;
-use HelioNetworks\FileManagerBundle\Form\Model\CreateFileRequest;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
