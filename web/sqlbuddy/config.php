@@ -14,13 +14,12 @@ MIT license
 */
 
 // Include the HelioPanel Configuration file
-require __DIR__.'/../init.php';
 
 /* The values below are for the login.php page */
 
 $sbconfig['DefaultAdapter'] = "mysql";
 $sbconfig['DefaultHost'] = "localhost";
-$sbconfig['DefaultUser'] = $username."_";
+$sbconfig['DefaultUser'] = "";
 
 /*
 * If you want to enable automatic login, you can include your password below. To 
@@ -46,7 +45,7 @@ $sbconfig['DefaultUser'] = $username."_";
 * always check the projects website at http://www.sqlbuddy.com/
 */
 
-$sbconfig['EnableUpdateCheck'] = true;
+$sbconfig['EnableUpdateCheck'] = false;
 
 /*
 * This controls how many rows are displayed at once on the browse tab. If you are on a local
