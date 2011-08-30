@@ -1,0 +1,3 @@
+services:
+    heliopanel.hook_manager:
+        class: HelioNetworks\HelioPanelBundle\Hook\HookManager
