@@ -17,7 +17,7 @@ class Request
 		$this->data = $data;
 	}
 
-   /**
+       /**
 	* Make a POST request.
 	*/
 	public function send()
