@@ -19,7 +19,7 @@ class AccountController extends HelioPanelAbstractController
 	/**
 	 * Create a new user based from a cPanel account.
 	 *
-	 * @Route("/account/createUser", name="account_create_user)
+	 * @Route("/account/createUser", name="account_create_user")
 	 * @Template()
 	 */
     public function createUserAction() {
