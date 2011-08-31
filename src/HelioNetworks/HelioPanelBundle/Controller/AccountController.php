@@ -15,9 +15,68 @@ use HelioNetworks\HelioPanelBundle\Entity\Account;
 
 class AccountController extends HelioPanelAbstractController
 {
-    //TODO: Move createFromAccount action to this
-    public function createUserAction() {}
-    
+
+	/**
+	 * Create a new user based from a cPanel account.
+	 *
+	 * @Route("/account/createUser", name="account_create_user)
+	 * @Template()
+	 */
+    public function createUserAction() {
+    	$account = new Account();
+    	$form = $this->createForm(new AccountType(), $account);
+
+    	$request = $this->getRequest();
+    	if ($request->getMethod() == 'POST') {
+    		$form->bindRequest($request);
+    		if ($form->isValid()) {
+    			$auth = mt_rand();
+    			$hookfile = file_get_contents(__DIR__.'/../../../../web/hook.php');
+    			$hookfile = str_replace('%authKey%', $auth, $hookfile);
+
+    			$account->setHookfileauth($auth);
+
+    			$requestData = array(
+    	    	    'username' => $account->getUsername(),
+    	    	    'passsword' => $account->getPassword(),
+    	    		'hookfile' => $hookfile,
+    			);
+
+    			$postRequest = new Request('http://heliopanel.heliohost.org/install/autoinstall.php');
+    			$postRequest->setData($requestData);
+    			$hookUrl = $postRequest->send();
+
+    			if (preg_match('|^http(s)?://[a-z0-9-]+(.[a-z0-9-]+)*(:[0-9]+)?(/.*)?$|i', $hookUrl)) {
+    				$user = new User();
+    				$user->setPlainPassword($account->getPassword());
+    				$user->setUsername($account->getUsername());
+    				$user->setEmail(uniqid().'@heliohost.org');
+    				$user->setEnabled(true);
+
+    				$userManager = $this->get('fos_user.user_manager');
+   					$userManager->updateUser($user);
+
+   					$account->setHookfile($hookUrl);
+   					$account->setUser($user);
+
+   					$em = $this->getDoctrine()->getEntityManager();
+    				$em->persist($user);
+    				$em->persist($account);
+    				$em->flush();
+
+    				$this->get('session')->setFlash('success', 'You may now login with your existing cPanel creditentials.');
+
+    				return new RedirectResponse('/');
+    			} else {
+    					$this->get('session')->setFlash('error', 'We could not verify that the account exists or that the password is correct.');
+    			}
+    		}
+    	}
+
+    	return array('form' => $form->createView());
+
+    }
+
     /**
      * Adds an account to the logged in user.
      *

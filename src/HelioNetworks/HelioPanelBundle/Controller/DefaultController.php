@@ -28,6 +28,7 @@ class DefaultController extends HelioPanelAbstractController
      *
      * @Route("/createFromAccount", name="heliopanel_create_from_account")
      * @Template()
+     * @deprecated see Account::createUserAction instead.
      */
     public function createFromAccountAction()
     {
