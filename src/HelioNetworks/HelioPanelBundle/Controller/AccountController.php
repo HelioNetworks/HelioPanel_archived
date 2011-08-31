@@ -44,7 +44,17 @@ class AccountController extends HelioPanelAbstractController
 
     			$postRequest = new Request('http://heliopanel.heliohost.org/install/autoinstall.php');
     			$postRequest->setData($requestData);
-    			$hookUrl = $postRequest->send();
+
+    			try {
+    				$hookUrl = $postRequest->send();
+    			} catch (\Exception $ex) {
+    				$this->get('session')->setFlash('error','An error occurred while verifying your account.');
+    				$this->get('logger')->err($ex->getMessage());
+
+    				return array('form' => $form->createView());
+    			}
+
+    			$this->get('logger')->debug(sprintf('Hook URL: %s', $hookUrl));
 
     			if (preg_match('|^http(s)?://[a-z0-9-]+(.[a-z0-9-]+)*(:[0-9]+)?(/.*)?$|i', $hookUrl)) {
     				$user = new User();
@@ -74,7 +84,6 @@ class AccountController extends HelioPanelAbstractController
     	}
 
     	return array('form' => $form->createView());
-
     }
 
     /**
