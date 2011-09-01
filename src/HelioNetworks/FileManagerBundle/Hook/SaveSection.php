@@ -11,7 +11,7 @@ class SaveSection implements HookSectionInterface
 		return 'save($source, $data)';
 	}
 
-	public function getSource()
+	public function getCode()
 	{
 		return <<<'PHP'
 return file_put_contents(dirname(__DIR__).'/'.$source, $data);

@@ -11,7 +11,7 @@ class RenameSection implements HookSectionInterface
 		return 'rename($source, $dest)';
 	}
 
-	public function getSource()
+	public function getCode()
 	{
 		return <<<'PHP'
 return rename(dirname(__DIR__).'/'.$source, dirname(__DIR__).'/'.$dest);

@@ -11,7 +11,7 @@ class CopySection implements HookSectionInterface
 		return 'copy($source, $dest)';
 	}
 
-	public function getSource()
+	public function getCode()
 	{
 		return <<<'PHP'
 return copy(dirname(__DIR__).'/'.$source, dirname(__DIR__).'/'.$dest);

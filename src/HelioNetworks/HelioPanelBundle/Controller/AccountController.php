@@ -15,7 +15,15 @@ use HelioNetworks\HelioPanelBundle\Entity\Account;
 
 class AccountController extends HelioPanelAbstractController
 {
+	/**
+	 * @Route("/account/getHookSource")
+	 */
+	public function getHookSource()
+	{
+		return new Response($this->get('heliopanel.hook_manager')->getSource(mt_rand()));
+	}
 
+	//TODO: Duplicates code with addAction
 	/**
 	 * Create a new user based from a cPanel account.
 	 *

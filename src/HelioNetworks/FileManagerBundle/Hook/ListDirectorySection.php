@@ -11,7 +11,7 @@ class ListDirectorySection implements HookSectionInterface
 		return 'listDirectory($source)';
 	}
 
-	public function getSource()
+	public function getCode()
 	{
 		return <<<'PHP'
 $files = array();

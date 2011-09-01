@@ -33,9 +33,10 @@ echo serialize($result);
 PHP;
 	}
 
-	public function getSource()
+	public function getSource($auth)
 	{
 		$source = $this->getStart();
+		$source = str_replace('%auth%', $auth, $source);
 		foreach ($this->sections as $section) {
 			$source .= sprintf('function %s {', $section->getName());
 			$source .= $section->getCode();

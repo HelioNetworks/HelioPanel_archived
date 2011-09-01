@@ -11,7 +11,7 @@ class RemoveSection implements HookSectionInterface
 		return 'remove($source)';
 	}
 
-	public function getSource()
+	public function getCode()
 	{
 		return <<<'PHP'
 	return unlink(dirname(__DIR__).'/'.$source);
