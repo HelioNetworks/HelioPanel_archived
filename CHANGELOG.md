@@ -1,3 +1,23 @@
+## 0.5 BETA ##
+- Feature: The project has been converted to use Symfony2
+- Feature #40: Store users in a database
+- Feature #41: Automatically detect Ace values
+- Feature #43: Link to the PHP Info page from the homepage
+- Feature #46: Use an optimized version of jQuery
+- Feature #47: Manage multiple accounts with one login
+- Bug #44: Cannot create file or directory
+- Bug #45: Cannot upload file
+- Bug #49: Initial file manager path is <?php
+- Bug #55: Login script doesn't work
+- Bug #56: Icons are missing from file manager
+- Bug #57: Ace editor is not working on hosted version
+- Bug #58: Whitespace above menu bar in Google Chrome
+- Bug #61: Twig runtime error
+- Bug #63: Remove Symfony2 developers toolbar
+- Bug #64: Files are appearing as directories
+- Bug #65: SQL Buddy is showing an error
+- Bug #66: Unable to save file
+
 ## 0.4 BETA ##
 - Feature #30: Labelled buttons in file listing
 - Feature #31: Automatically install via login.php instead of /install
