@@ -1,7 +1,7 @@
 {% extends '::heliopanel.html.twig' %}
 
 {% block content %}
-	<form method=post action="{{ url('file_edit') }}" {{ form_enctype(form) }} name="file_edit">
+	<form method=post action="{{ url('file_edit') }}" {{ form_enctype(form) }} name="file_edit" id="file_edit">
 
 		{{ form_widget(form) }}
 
