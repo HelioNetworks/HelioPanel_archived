@@ -9,7 +9,7 @@ class CreateFileRequestType extends AbstractType
 {
 	public function buildForm(FormBuilder $builder, array $options)
 	{
-		$builder->add('path');
+		$builder->add('source');
 	}
 
 	public function getDefaultOptions(array $options)

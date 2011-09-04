@@ -9,7 +9,7 @@ class EditFileRequestType extends AbstractType
 {
 	public function buildForm(FormBuilder $builder, array $options)
 	{
-		$builder->add('path');
+		$builder->add('source');
 		$builder->add('data', 'hidden');
 	}
 

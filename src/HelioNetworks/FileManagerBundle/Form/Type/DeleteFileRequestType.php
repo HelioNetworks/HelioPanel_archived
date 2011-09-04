@@ -9,7 +9,7 @@ class DeleteFileRequestType extends AbstractType
 {
 	public function buildForm(FormBuilder $builder, array $options)
 	{
-		$builder->add('path', 'hidden');
+		$builder->add('source', 'hidden');
 	}
 
 	public function getDefaultOptions(array $options)

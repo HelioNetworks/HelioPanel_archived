@@ -36,7 +36,7 @@ class FileController extends HelioPanelAbstractController
 			$form->bindRequest($request);
 			if ($form->isValid()) {
 				$this->getHook()
-					->touch($fileRequest->getPath());
+					->touch($fileRequest->getSource());
 			}
 		}
 
@@ -59,7 +59,7 @@ class FileController extends HelioPanelAbstractController
 			$form->bindRequest($request);
 			if ($form->isValid()) {
 				$this->getHook()
-					->rename($fileRequest->getPath(), $fileRequest->getNewPath());
+					->rename($fileRequest->getSource(), $fileRequest->getDest());
 
 				return new Response();
 			}
@@ -82,7 +82,7 @@ class FileController extends HelioPanelAbstractController
 			$form->bindRequest($request);
 			if ($form->isValid()) {
 				$this->getHook()
-					->rm($fileRequest->getPath());
+					->rm($fileRequest->getSource());
 			}
 		}
 
@@ -99,8 +99,8 @@ class FileController extends HelioPanelAbstractController
 
 		$request = $this->getRequest();
 		$editFileRequest = new FileRequest();
-		$editFileRequest->setPath($request->get('path'));
-		$editFileRequest->setData($this->getHook()->get($editFileRequest->getPath()));
+		$editFileRequest->setSource($request->get('path'));
+		$editFileRequest->setData($this->getHook()->get($editFileRequest->getSource()));
 		$form = $this->createForm(new EditFileRequestType(), $editFileRequest);
 
 		if ($request->getMethod() == 'POST') {
@@ -108,13 +108,13 @@ class FileController extends HelioPanelAbstractController
 			if ($form->isValid()) {
 
 				$this->getHook()
-					->save($editFileRequest->getPath(), $editFileRequest->getData());
+					->save($editFileRequest->getSource(), $editFileRequest->getData());
 			}
 
-			return new RedirectResponse($this->generateUrl('directory_list').'?path='.dirname($editFileRequest->getPath()));
+			return new RedirectResponse($this->generateUrl('directory_list').'?path='.dirname($editFileRequest->getSource()));
 		}
 
-		$extension = substr(strrchr($editFileRequest->getPath(), '.'), 1);
+		$extension = substr(strrchr($editFileRequest->getSource(), '.'), 1);
 		if(!$mode = @$this->aceMappings[$extension]) {
 			$mode = 'ace/mode/text';
 		}

@@ -1,7 +1,7 @@
 
 	<form method="post" action="{{ url('file_rename') }}" {{ form_enctype(form) }}>
 		{{ form_widget(form.path, { 'id':'current-file' }) }}
-		New file name:{{ form_widget(form.newPath) }}
+		New file name:{{ form_widget(form.dest) }}
 
 		{{ form_rest(form) }}
 	</form>
