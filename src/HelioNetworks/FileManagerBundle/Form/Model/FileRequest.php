@@ -4,28 +4,28 @@ namespace HelioNetworks\FileManagerBundle\Form\Model;
 
 class FileRequest
 {
-	protected $path;
-	protected $newPath;
+	protected $source;
+	protected $dest;
 	protected $data;
 
-	public function setPath($path)
+	public function setSource($source)
 	{
-		$this->path = $path;
+		$this->source = $source;
 	}
 
-	public function getPath()
+	public function getSource()
 	{
-		return $this->path;
+		return $this->source;
 	}
 
-	public function setNewPath($newPath)
+	public function setDest($dest)
 	{
-		$this->newPath = $newPath;
+		$this->dest = $dest;
 	}
 
-	public function getNewPath()
+	public function getDest()
 	{
-		return $this->newPath;
+		return $this->dest;
 	}
 
 	public function setData($data)
