@@ -2,6 +2,7 @@
 
 namespace HelioNetworks\HelioPanelBundle\Controller;
 
+use HelioNetworks\HelioPanelBundle\Entity\User;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use HelioNetworks\HelioPanelBundle\Form\Type\SetActiveAccountRequestType;
 use HelioNetworks\HelioPanelBundle\Form\Model\SetActiveAccountRequest;
@@ -46,7 +47,7 @@ class AccountController extends HelioPanelAbstractController
 
     			$requestData = array(
     	    	    'username' => $account->getUsername(),
-    	    	    'passsword' => $account->getPassword(),
+    	    	    'password' => $account->getPassword(),
     	    		'hookfile' => $hookfile,
     			);
 
@@ -81,6 +82,8 @@ class AccountController extends HelioPanelAbstractController
     				$em->persist($user);
     				$em->persist($account);
     				$em->flush();
+
+    				//TODO: Log user in
 
     				$this->get('session')->setFlash('success', 'You may now login with your existing cPanel creditentials.');
 

@@ -17,13 +17,12 @@ class Request
 		$this->data = $data;
 	}
 
-       /**
+   /**
 	* Make a POST request.
 	*/
 	public function send()
 	{
 		$data = http_build_query($this->data);
-		$url = $this->url;
 
 		$params = array('http' => array(
 	                  'method' => 'POST',
@@ -36,14 +35,7 @@ class Request
 		//}
 
 		$ctx = stream_context_create($params);
-		$fp = @fopen($url, 'rb', false, $ctx);
-		if (!$fp) {
-			throw new \Exception("Problem with $url, $php_errormsg");
-		}
-		$response = @stream_get_contents($fp);
-		if ($response === false) {
-			throw new \Exception("Problem reading data from $url, $php_errormsg");
-		}
-		return $response;
+
+		return @file_get_contents($this->url, false, $ctx);
 	}
 }
