@@ -4,20 +4,9 @@ namespace HelioNetworks\FileManagerBundle\Form\Model;
 
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
-class UploadFileRequest
+class UploadFileRequest extends FileRequest
 {
-	protected $path;
 	protected $uploadedFile;
-
-	public function getPath()
-	{
-		return $this->path;
-	}
-
-	public function setPath($path)
-	{
-		$this->path = $path;
-	}
 
 	public function getUploadedFile()
 	{

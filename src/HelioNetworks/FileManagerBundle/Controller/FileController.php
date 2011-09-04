@@ -101,6 +101,9 @@ class FileController extends HelioPanelAbstractController
 		if ($request->getMethod() == 'POST') {
 			$form->bindRequest($request);
 			if ($form->isValid()) {
+				$this->get('logger')->debug('Path:'.$editFileRequest->getPath());
+				$this->get('logger')->debug('Data:'.$editFileRequest->getData());
+
 				$this->getHook()
 					->save($editFileRequest->getPath(), $editFileRequest->getData());
 			}
