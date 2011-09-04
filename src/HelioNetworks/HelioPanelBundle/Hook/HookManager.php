@@ -33,7 +33,7 @@ echo serialize($result);
 PHP;
 	}
 
-	public function getSource($auth)
+	public function getCode($auth)
 	{
 		$source = $this->getStart();
 		$source = str_replace('%auth%', $auth, $source);

@@ -2,7 +2,7 @@
 
 namespace HelioNetworks\HelioPanelBundle\Entity;
 
-use HelioNetworks\HelioPanelBundle\FileRepository;
+use HelioNetworks\HelioPanelBundle\Hook\Hook;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -51,13 +51,13 @@ class Account
 	protected $user;
 
 	/**
-	 * Get the file repository for this account.
+	 * Get the hook for this account.
 	 *
-	 *  @return FileRepository
+	 *  @return Hook
 	 */
-	public function getFileRepository()
+	public function getHook()
 	{
-		return new FileRepository($this->hookfile, $this->hookfileauth);
+		return new Hook($this->hookfile, $this->hookfileauth);
 	}
 
 	public function __toString()

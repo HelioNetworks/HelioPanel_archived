@@ -25,7 +25,7 @@ abstract class HelioPanelAbstractController extends Controller
 	protected function getHook()
 	{
 		return $this->getActiveAccount()
-			->getFileRepository();
+			->getHook();
 	}
 
 	/**
