@@ -17,6 +17,11 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 class FileController extends HelioPanelAbstractController
 {
+	protected $aceMappings = array(
+		'php' => 'ace/mode/php',
+		'js' => 'ace/mode/javascript',
+	);
+
 	/**
 	 * @Route("/file/create", name="file_create")
 	 * @Template()
@@ -109,8 +114,12 @@ class FileController extends HelioPanelAbstractController
 			return new RedirectResponse($this->generateUrl('directory_list').'?path='.dirname($editFileRequest->getPath()));
 		}
 
+		$extension = substr(strrchr($editFileRequest->getPath(), '.'), 1);
+		if(!$mode = @$this->aceMappings[$extension]) {
+			$mode = 'ace/mode/text';
+		}
 
-		return array('form' => $form->createView());
+		return array('form' => $form->createView(), 'mode' => $mode);
 	}
 
 	/**

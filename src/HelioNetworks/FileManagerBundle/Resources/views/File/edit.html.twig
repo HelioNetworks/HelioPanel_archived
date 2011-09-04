@@ -25,8 +25,8 @@
 		$(document).ready(function () {
     		var editor = ace.edit("editor");
 	        editor.setTheme("ace/theme/twilight");
-	        var PHPMode = require("ace/mode/php").Mode;
-	        editor.getSession().setMode(new PHPMode());
+	        var Mode = require("{{ mode }}").Mode;
+	        editor.getSession().setMode(new Mode());
 
 	        window.ace = editor;
 
