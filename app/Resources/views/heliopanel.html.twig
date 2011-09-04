@@ -266,7 +266,6 @@
 	<a href="https://github.com/HelioNetworks/HelioPanel/issues/new">Report a bug! Request a feature! Make HelioPanel better!</a>
 	<br />
 	{% if app.user %}
-		<strong>Change account context:</strong>
 		{% render 'HelioNetworksHelioPanelBundle:Account:setActive' with {}, {'standalone': true} %}
 			<a href="{{ url('account_add') }}">Or add an account.</a>
 

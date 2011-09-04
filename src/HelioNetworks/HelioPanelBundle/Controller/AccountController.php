@@ -127,7 +127,8 @@ class AccountController extends HelioPanelAbstractController
     {
     	$accountRequest = new SetActiveAccountRequest();
     	$form = $this->createForm(new SetActiveAccountRequestType(), $accountRequest, array(
-    		'user' => $this->getUser(),
+    		'accounts' => $this->getUser()->getAccounts()->toArray(),
+    		'current_account' => $this->getActiveAccount(),
     	));
 
     	$request = $this->getRequest();
@@ -141,7 +142,7 @@ class AccountController extends HelioPanelAbstractController
     		return new RedirectResponse($this->generateUrl('heliopanel_index'));
     	}
 
-    	return array('form' => $form->createView(), 'activeAccount' => $this->getActiveAccount());
+    	return array('form' => $form->createView());
     }
 
     //TODO: Add deleteAction

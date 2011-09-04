@@ -2,6 +2,7 @@
 
 namespace HelioNetworks\HelioPanelBundle\Form\Type;
 
+use HelioNetworks\HelioPanelBundle\Entity\Account;
 use Doctrine\ORM\EntityRepository;
 use HelioNetworks\HelioPanelBundle\Entity\User;
 use Symfony\Component\Form\FormBuilder;
@@ -11,21 +12,10 @@ class SetActiveAccountRequestType extends AbstractType
 {
 	public function buildForm(FormBuilder $builder, array $options)
 	{
-		global $options;
-
 		$builder->add('activeAccount', 'entity', array(
 			'class' => 'HelioNetworks\HelioPanelBundle\Entity\Account',
-			'query_builder' => function(EntityRepository $er) {
-				global $options;
-
-				$qb = $er->createQueryBuilder('a');
-				if ($options['user']) {
-					$qb->where('a.user = :user')
-						->setParameter(':user', $options['user']->getId());
-				}
-
-				return $qb;
-			},
+			'choices' => $options['accounts'],
+			'preferred_choices' => array($options['current_account']->getId()),
 		));
 	}
 
@@ -33,12 +23,13 @@ class SetActiveAccountRequestType extends AbstractType
 	{
 		return array(
 			'data_class' => 'HelioNetworks\HelioPanelBundle\Form\Model\SetActiveAccountRequest',
-			'user' => null,
+			'accounts' => array(),
+			'current_account' => new Account(),
 		);
 	}
 
 	public function getName()
 	{
-		return 'account';
+		return 'account_set_active';
 	}
 }
