@@ -20,29 +20,13 @@ class DefaultController extends Controller
 	}
 
     /**
-     * @Route("/sqlbuddy/{file}")
+     * @Route("/sqlbuddy/(.*)")
      */
-    public function indexAction($file)
+    public function indexAction()
     {
     	ob_start();
     	require $this->getSQLBuddyDir().'/'.$file;
 
         return new Response(ob_get_clean());
-    }
-
-    /**
-     * @Route("/sqlbuddy/js/{file}")
-     */
-    public function jsAction($file)
-    {
-    	return new Response(file_get_contents($this->getSQLBuddyDir().'/js/'.$file));
-    }
-
-   	/**
-     * @Route("/sqlbuddy/css/{file}")
-     */
-    public function cssAction($file)
-    {
-    	return new Response(file_get_contents($this->getSQLBuddyDir().'/css/'.$file));
     }
 }
