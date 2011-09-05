@@ -35,13 +35,13 @@
 	         			<img src="/images/files/{{ file.type }}.png">
          			</td>
 	         		<td align=left>
-	         			<a href="/directory/list?path={{ file.path }}/"/>
+	         			<a href="{{ url('directory_list', { 'path':file.path }) }}"/>
 	         				<font face=Verdana color=black>{{ file.name }}</font>
          				</a>
          			</td>
 	         		<td align=left width=40>
-	         			<a href="/file/edit?path={{ file.path }}">
-	         				<img class="file-edit-link" src="/images/files/edit{{ file.type }}.png">
+	         			<a href="{{ url('file_edit', { 'path':file.path }) }}">
+	         				<img class="file-edit-link" src="/images/files/editfile.png">
          				</a>
          			</td>
 	         		<td align=left width=40>

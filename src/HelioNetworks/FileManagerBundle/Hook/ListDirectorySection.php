@@ -18,16 +18,10 @@ $files = array();
 if ($handle = opendir(dirname(__DIR__).'/'.$source)) {
 	while (false !== ($file = readdir($handle))) {
     	if ($file != "." && $file != "..") {
-        	if(is_file(dirname(__DIR__).'/'.$source.''.$file.'')) {
-            	$type = 'file';
-            }else{
-                $type = 'folder';
-            }
-
             $files[] = array(
-            	'path' => str_replace(dirname(__DIR__).'/'.$source, '', dirname(__DIR__).'/'.$source.$file),
+            	'source' => str_replace(dirname(__DIR__).'/', '', dirname(__DIR__).'/'.$source.'/'.$file),
                 'name' => $file,
-                'type' => $type,
+                'is_file' => is_file(dirname(__DIR__).'/'.$source.'/'.$file.''),
             );
         }
     }
