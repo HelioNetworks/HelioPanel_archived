@@ -21,8 +21,6 @@
 		<tr>
 			<td align=left width=40></td>
 			<td align=left><font face="Trebuchet MS" size=2><b>File Name</b></font></td>
-			<td align=left width=40><center><font face="Trebuchet MS" size=2><b>Edit Code</b></font></center></td>
-			<td align=left width=40><center><font face="Trebuchet MS" size=2><b>WYSIWYG</b></font></center></td>
 			<td align=left width=40><center><font face="Trebuchet MS" size=2><b>Rename</b></font></center></td>
 			<td align=left width=40><center><font face="Trebuchet MS" size=2><b>Copy</b></font></center></td>
 			<td align=left width=40><center><font face="Trebuchet MS" size=2><b>Delete</b></font></center></td>
@@ -39,21 +37,15 @@
          				{% endif %}
          			</td>
 	         		<td align=left>
-	         			<a href="{{ url('directory_list', { 'path':file.source }) }}"/>
-	         				<font face=Verdana color=black>{{ file.name }}</font>
-         				</a>
-         			</td>
-	         		<td align=left width=40>
-	         			<a href="{{ url('file_edit', { 'path':file.source }) }}">
-	         				{% if file.is_file %}
-	         					<img class="file-edit-link" src="/images/files/editfile.png">
-         					{% endif %}
-         				</a>
-         			</td>
-	         		<td align=left width=40>
-	         			<a href=files.php?r=wysiwyg&file='.$path.''.$file.'>
-	         				<img class="file-edit-link" src="/images/files/wysiwygfile.png" />
-         				</a>
+	         			{% if file.is_file %}
+          					<a href="{{ url('file_edit', { 'path':file.source }) }}">
+		         				<font face="Verdana" color="black">{{ file.name }}</font>
+         					</a>
+         				{% else %}
+							<a href="{{ url('directory_list', { 'path':file.source }) }}"/>
+		         				<font face="Verdana" color="black">{{ file.name }}</font>
+	         				</a>
+         				{% endif %}
          			</td>
 					<td align=left width=40>
 						<a class="modal-form" href="#" current-file="{{ file.source }}" form-src="/file/rename">
