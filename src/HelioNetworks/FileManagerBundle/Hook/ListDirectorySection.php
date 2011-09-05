@@ -25,7 +25,7 @@ if ($handle = opendir(dirname(__DIR__).'/'.$source)) {
             }
 
             $files[] = array(
-            	'path' => str_replace($dirname(__DIR__).'/'.$source, '', dirname(__DIR__).'/'.$source.$file),
+            	'path' => str_replace(dirname(__DIR__).'/'.$source, '', dirname(__DIR__).'/'.$source.$file),
                 'name' => $file,
                 'type' => $type,
             );
@@ -34,7 +34,7 @@ if ($handle = opendir(dirname(__DIR__).'/'.$source)) {
     closedir($handle);
 }
 
-return $files
+return $files;
 PHP;
 	}
 }
