@@ -10,4 +10,9 @@ class Dashboard
 	{
 		$this->icons[] = $icon;
 	}
+    
+    public function getIcons()
+    {
+        return $this->icons;
+    }
 }
