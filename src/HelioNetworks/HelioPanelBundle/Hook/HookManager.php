@@ -52,11 +52,10 @@ PHP;
 
 	public function getCode($auth)
 	{
-		$body = $this->getBody();
 		$source = $this->getStart();
 		$source = str_replace('%auth%', $auth, $source);
-		$source = str_replace('%hash%', md5($body), $source);
-		$source .= $body;
+		$source = str_replace('%hash%', $this->getHash(), $source);
+		$source .= $this->getBody();
 		$source .= $this->getEnd();
 
 		return $source;
