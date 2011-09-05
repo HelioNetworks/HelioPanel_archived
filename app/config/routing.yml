@@ -1,3 +1,8 @@
+HelioNetworksSQLBuddyBundle:
+    resource: "@HelioNetworksSQLBuddyBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 HelioNetworksFileManagerBundle:
     resource: "@HelioNetworksFileManagerBundle/Controller/"
     type:     annotation
