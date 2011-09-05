@@ -21,4 +21,12 @@ class DefaultController extends HelioPanelAbstractController
     {
         return array();
     }
+
+    /**
+     * @Route("/phpinfo", name="heliopanel_phpinfo")
+     */
+    public function phpInfoAction()
+    {
+    	return new Response($this->getHook()->getPhpInfo());
+    }
 }
