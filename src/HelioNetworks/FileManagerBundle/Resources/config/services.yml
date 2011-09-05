@@ -1,6 +1,6 @@
 services:
-  heliopanel.hook.section.copy:
-    class: HelioNetworks\FileManagerBundle\Hook\CopySection
+  heliopanel.hook.section.copy_file:
+    class: HelioNetworks\FileManagerBundle\Hook\CopyFileSection
     tags:
       - { name: heliopanel.hook_manager }
   heliopanel.hook.section.create:
@@ -19,8 +19,8 @@ services:
     class: HelioNetworks\FileManagerBundle\Hook\RemoveSection
     tags:
       - { name: heliopanel.hook_manager }
-  heliopanel.hook.section.rename:
-    class: HelioNetworks\FileManagerBundle\Hook\RenameSection
+  heliopanel.hook.section.rename_file:
+    class: HelioNetworks\FileManagerBundle\Hook\RenameFileSection
     tags:
       - { name: heliopanel.hook_manager }
   heliopanel.hook.section.save:
