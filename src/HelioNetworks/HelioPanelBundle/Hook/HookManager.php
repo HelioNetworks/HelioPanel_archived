@@ -14,7 +14,7 @@ class HookManager
 error_reporting(0);
 
 if($_POST['__auth'] !== '%auth%') {
-    echo '403 Unauthorized';
+    echo '%hash%';
     die();
 }
 
@@ -33,15 +33,30 @@ echo serialize($result);
 PHP;
 	}
 
-	public function getCode($auth)
+	protected function getBody()
 	{
-		$source = $this->getStart();
-		$source = str_replace('%auth%', $auth, $source);
+		$source = '';
 		foreach ($this->sections as $section) {
 			$source .= sprintf('function %s {', $section->getName());
 			$source .= $section->getCode();
 			$source .= '}';
 		}
+
+		return $source;
+	}
+
+	public function getHash()
+	{
+		return md5($this->getBody());
+	}
+
+	public function getCode($auth)
+	{
+		$body = $this->getBody();
+		$source = $this->getStart();
+		$source = str_replace('%auth%', $auth, $source);
+		$source = str_replace('%hash%', md5($body), $source);
+		$source .= $body;
 		$source .= $this->getEnd();
 
 		return $source;

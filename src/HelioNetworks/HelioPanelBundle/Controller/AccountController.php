@@ -95,32 +95,6 @@ class AccountController extends HelioPanelAbstractController
         return array('form' => $form->createView());
     }
 
-    protected function installHook(Account $account)
-    {
-    	$auth = mt_rand();
-    	$hookfile = $this->get('heliopanel.hook_manager')->getCode($auth);
-
-    	$request = new Request('http://heliopanel.heliohost.org/install/autoinstall.php');
-    	$request->setData(array(
-    		'username' => $account->getUsername(),
-    	    'password' => $account->getPassword(),
-    	    'hookfile' => $hookfile,
-    	));
-    	$request->setMethod('POST');
-
-    	$url = $request->send()->getData();
-    	if (preg_match('|^http(s)?://[a-z0-9-]+(.[a-z0-9-]+)*(:[0-9]+)?(/.*)?$|i', $url)) {
-    		$hook = new Hook();
-    		$hook->setAuth($auth);
-    		$hook->setUrl($url);
-
-    		$account->setHook($hook);
-    		$this->getDoctrine()->getEntityManager()->persist($hook);
-
-    		return $account;
-    	}
-    }
-
     /**
      * @Route("/account/setActive", name="account_set_active")
      * @Method({"POST"})
