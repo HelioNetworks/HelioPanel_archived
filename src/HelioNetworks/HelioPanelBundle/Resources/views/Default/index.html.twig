@@ -15,7 +15,10 @@
 	<a href=sqlbuddy/><img src="/images/sqlbuddybutton.png"></a>
 	<a href=/phpinfo.php><img src="/images/phpbutton.png"></a>
 	<a href="http://heliopanel.heliohost.org/support.php"><img src="/images/helpbutton.png"></a>
-	</center>
+    {% foreach icon in dashboard.icons %}
+        <a href="{{ url(icon.route) }}"><img src="{{ icon.image }}"/></a>
+    {% endforeach %}
+    </center>
 	</td>
 
 
