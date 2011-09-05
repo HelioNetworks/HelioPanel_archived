@@ -19,7 +19,7 @@ class DefaultController extends HelioPanelAbstractController
      */
     public function indexAction()
     {
-        return array();
+        return array('dashboard' => $this->get('heliopanel.dashboard'));
     }
 
     /**
