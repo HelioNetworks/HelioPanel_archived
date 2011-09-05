@@ -1,7 +1,7 @@
 services:
     heliopanel.hook_manager:
-        class: HelioNetworks\HelioPanelBundle\Hook\HookManager
+      class: HelioNetworks\HelioPanelBundle\Hook\HookManager
     heliopanel.hook.section.get_php_info:
-      class: HelioNetworks\FileManagerBundle\Hook\GetPhpInfoSection
+      class: HelioNetworks\HelioPanelBundle\Hook\GetPhpInfoSection
       tags:
         - { name: heliopanel.hook_manager }
