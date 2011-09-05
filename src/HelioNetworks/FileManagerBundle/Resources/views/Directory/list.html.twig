@@ -32,25 +32,31 @@
 
 		<tr>
 	         		<td align=left width=40>
-	         			<img src="/images/files/{{ file.type }}.png">
+	         			{% if file.is_file %}
+	         				<img src="/images/files/file.png">
+         				{% else %}
+         					<img src="/images/files/folder.png">
+         				{% endif %}
          			</td>
 	         		<td align=left>
-	         			<a href="{{ url('directory_list', { 'path':file.path }) }}"/>
+	         			<a href="{{ url('directory_list', { 'path':file.source }) }}"/>
 	         				<font face=Verdana color=black>{{ file.name }}</font>
          				</a>
          			</td>
 	         		<td align=left width=40>
-	         			<a href="{{ url('file_edit', { 'path':file.path }) }}">
-	         				<img class="file-edit-link" src="/images/files/editfile.png">
+	         			<a href="{{ url('file_edit', { 'path':file.source }) }}">
+	         				{% if file.is_file %}
+	         					<img class="file-edit-link" src="/images/files/editfile.png">
+         					{% endif %}
          				</a>
          			</td>
 	         		<td align=left width=40>
 	         			<a href=files.php?r=wysiwyg&file='.$path.''.$file.'>
-	         				<img class="file-edit-link" src="/images/files/wysiwyg{{ file.type }}.png" />
+	         				<img class="file-edit-link" src="/images/files/wysiwygfile.png" />
          				</a>
          			</td>
 					<td align=left width=40>
-						<a class="modal-form" href="#" current-file="{{ file.path }}" form-src="/file/rename">
+						<a class="modal-form" href="#" current-file="{{ file.source }}" form-src="/file/rename">
 							<img class="file-edit-link" src=/images/files/rename.png />
 						</a>
 					</td>
@@ -60,7 +66,7 @@
 						</a>
 					</td>
 	         		<td align=left width=40>
-						<a class="modal-form" href="#" current-file="{{ file.path }}" form-src="/file/delete">
+						<a class="modal-form" href="#" current-file="{{ file.source }}" form-src="/file/delete">
 	         				<img class="file-edit-link" src=/images/files/deletefile.png >
          				</a>
          			</td>
