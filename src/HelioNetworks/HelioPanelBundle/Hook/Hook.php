@@ -7,17 +7,7 @@ use HelioNetworks\HelioPanelBundle\Request;
 class Hook
 {
     protected $auth;
-
-    /**
-     * Path to hook.php (No question mark!)
-     */
     protected $url;
-
-    public function __construct($url, $auth)
-    {
-        $this->url = $url;
-        $this->auth = $auth;
-    }
 
     /**
      * Call hook.php.

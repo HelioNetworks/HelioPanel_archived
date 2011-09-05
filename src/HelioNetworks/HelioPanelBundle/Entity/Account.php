@@ -17,23 +17,6 @@ class Account
 	*/
 	protected $id;
 
-	//TODO: Make this a separate entity
-	/**
-	 * The URL to the hookfile of this account.
-	 *
-	 * The hookfile allows HelioPanel to execute
-	 * actions from the user's UNIX account.
-	 *
-	 * @ORM\Column(type="string", unique=true)
-	 */
-	protected $hookfile;
-
-	/**
-	 * Auth to the hookfile.
-	 *
-	 * @ORM\Column(type="string")
-	 */
-	protected $hookfileauth;
 
 	/**
 	 * @ORM\Column(type="string", unique=true)
@@ -51,14 +34,9 @@ class Account
 	protected $user;
 
 	/**
-	 * Get the hook for this account.
-	 *
-	 *  @return Hook
+	 * @ORM\OneToOne(targetEntity="Hook")
 	 */
-	public function getHook()
-	{
-		return new Hook($this->hookfile, $this->hookfileauth);
-	}
+	protected $hook;
 
 	public function __toString()
 	{
@@ -73,26 +51,6 @@ class Account
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set hookfile
-     *
-     * @param string $hookfile
-     */
-    public function setHookfile($hookfile)
-    {
-        $this->hookfile = $hookfile;
-    }
-
-    /**
-     * Get hookfile
-     *
-     * @return string
-     */
-    public function getHookfile()
-    {
-        return $this->hookfile;
     }
 
     /**
@@ -156,22 +114,22 @@ class Account
     }
 
     /**
-     * Set hookfileauth
+     * Set hook
      *
-     * @param string $hookfileauth
+     * @param HelioNetworks\HelioPanelBundle\Entity\Hook $hook
      */
-    public function setHookfileauth($hookfileauth)
+    public function setHook(\HelioNetworks\HelioPanelBundle\Entity\Hook $hook)
     {
-        $this->hookfileauth = $hookfileauth;
+        $this->hook = $hook;
     }
 
     /**
-     * Get hookfileauth
+     * Get hook
      *
-     * @return string
+     * @return HelioNetworks\HelioPanelBundle\Entity\Hook 
      */
-    public function getHookfileauth()
+    public function getHook()
     {
-        return $this->hookfileauth;
+        return $this->hook;
     }
 }
