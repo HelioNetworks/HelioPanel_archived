@@ -2,7 +2,7 @@
 
 namespace HelioNetworks\HelioPanelBundle\Hook;
 
-use HelioNetworks\HelioPanelBundle\Request;
+use HelioNetworks\HelioPanelBundle\HTTP\Request;
 
 class Hook
 {
@@ -21,8 +21,8 @@ class Hook
 
         $request = new Request($this->url);
         $request->setData($arguments);
-        $response = $request->send();
+        $request->setMethod('POST');
 
-        return @unserialize($response);
+        return @unserialize($request->send()->getData());
     }
 }

@@ -16,7 +16,7 @@ class DirectoryController extends HelioPanelAbstractController
 	 */
 	public function listAction()
 	{
-		$files = $this->getHook()->ls($this->getRequest()->get('path'));
+		$files = $this->getHook()->listDirectory($this->getRequest()->get('path'));
 
 		return array('files' => $files, 'path' => $this->getRequest()->get('path'));
 	}
