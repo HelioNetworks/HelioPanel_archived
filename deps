@@ -39,6 +39,7 @@
 
 [sqlbuddy]
     git=git://github.com/HelioNetworks/sqlbuddy.git
+    target=../web/sqlbuddy
 
 [SensioFrameworkExtraBundle]
     git=git://github.com/sensio/SensioFrameworkExtraBundle.git
