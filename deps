@@ -37,6 +37,9 @@
     git=git://github.com/schmittjoh/metadata.git
     version=1.0.0
 
+[sqlbuddy]
+    git=git://github.com/HelioNetworks/sqlbuddy.git
+
 [SensioFrameworkExtraBundle]
     git=git://github.com/sensio/SensioFrameworkExtraBundle.git
     target=bundles/Sensio/Bundle/FrameworkExtraBundle
