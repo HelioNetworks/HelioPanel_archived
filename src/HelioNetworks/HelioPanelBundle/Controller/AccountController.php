@@ -2,8 +2,8 @@
 
 namespace HelioNetworks\HelioPanelBundle\Controller;
 
+use HelioNetworks\HelioPanelBundle\Entity\Hook;
 use HelioNetworks\HelioPanelBundle\HTTP\Request;
-
 use HelioNetworks\HelioPanelBundle\Entity\User;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use HelioNetworks\HelioPanelBundle\Form\Type\SetActiveAccountRequestType;
@@ -100,8 +100,6 @@ class AccountController extends HelioPanelAbstractController
     	$auth = mt_rand();
     	$hookfile = $this->get('heliopanel.hook_manager')->getCode($auth);
 
-    	$account->setHookfileauth($auth);
-
     	$request = new Request('http://heliopanel.heliohost.org/install/autoinstall.php');
     	$request->setData(array(
     		'username' => $account->getUsername(),
@@ -110,9 +108,14 @@ class AccountController extends HelioPanelAbstractController
     	));
     	$request->setMethod('POST');
 
-    	$hookUrl = $request->send()->getData();
-    	if (preg_match('|^http(s)?://[a-z0-9-]+(.[a-z0-9-]+)*(:[0-9]+)?(/.*)?$|i', $hookUrl)) {
-    		$account->setHookfile($hookUrl);
+    	$url = $request->send()->getData();
+    	if (preg_match('|^http(s)?://[a-z0-9-]+(.[a-z0-9-]+)*(:[0-9]+)?(/.*)?$|i', $url)) {
+    		$hook = new Hook();
+    		$hook->setAuth($auth);
+    		$hook->setUrl($url);
+
+    		$account->setHook($hook);
+    		$this->getDoctrine()->getEntityManager()->persist($hook);
 
     		return $account;
     	}

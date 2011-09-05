@@ -2,8 +2,8 @@
 
 namespace HelioNetworks\HelioPanelBundle\Controller;
 
+use HelioNetworks\HelioPanelBundle\Entity\Hook;
 use HelioNetworks\HelioPanelBundle\Entity\User;
-use HelioNetworks\HelioPanelBundle\FileRepository;
 use HelioNetworks\HelioPanelBundle\Entity\Account;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
@@ -20,7 +20,7 @@ abstract class HelioPanelAbstractController extends Controller
 	}
 
 	/**
-	 * @return FileRepository
+	 * @return Hook
 	 */
 	protected function getHook()
 	{
