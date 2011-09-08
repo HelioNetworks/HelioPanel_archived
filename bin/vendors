@@ -1,4 +1,4 @@
-#!/usr/bin/php -c /home1/panel/php.ini
+#!/usr/bin/env php
 <?php
 
 /*
