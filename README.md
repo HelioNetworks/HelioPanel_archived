@@ -19,7 +19,7 @@ Please follow our [Issue fixing strategy][1] when reporting issues.
 ## Access ##
 
 To access HelioPanel, simply login with your existing cPanel creditentials to 
-http://central.heliopanel.heliohost.org/.
+http://panel.helionet.org/.
 
 ## Updates ##
 The central HelioPanel installation used in 0.3BETA and above 
