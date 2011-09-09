@@ -72,3 +72,11 @@ body {
     opacity:1;
     filter:alpha(opacity=100);
 }
+
+.no-padding-bottom {
+    padding-bottom:0;	
+}
+
+.no-margin-bottom {
+    margin-bottom:0;	
+}
