@@ -26,4 +26,8 @@ services:
   heliopanel.hook.section.save:
     class: HelioNetworks\FileManagerBundle\Hook\SaveSection
     tags:
-      - { name: heliopanel.hook_manager }     
+      - { name: heliopanel.hook_manager }   
+  heliopanel.dashboard.icon.filemanager:
+    class: HelioNetworks\FileManagerBundle\Dashboard\FileManagerIcon
+    tags:
+      - { name: heliopanel.dashboard.icon }  
