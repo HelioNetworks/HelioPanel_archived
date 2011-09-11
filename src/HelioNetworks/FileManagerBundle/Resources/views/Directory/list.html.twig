@@ -3,12 +3,12 @@
 {% block content %}
 		<table class="filestoolbar"><tr>
 			<td width=40 valign=middle>
-				<a class="modal-form" href="#" current-file="{{ path }}" form-src="/file/create">
+				<a class="modal-form" href="#" current-file="{{ path }}" form-src="{{ url('file_create') }}">
 					<img class="file-edit-link" border=0 src="/images/files/addfile.png">
 				</a>
 			</td>
 			<td width=40 valign=middle>
-				<a class="modal-form" href="#" current-file="{{ path }}" form-src="/directory/create">
+				<a class="modal-form" href="#" current-file="{{ path }}" form-src="{{ url('directory_create') }}">
 					<img class="file-edit-link" border=0 src="/images/files/addfolder.png">
 				</a>
 			</td>
