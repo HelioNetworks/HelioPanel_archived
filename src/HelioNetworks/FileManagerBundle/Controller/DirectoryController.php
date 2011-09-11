@@ -11,14 +11,15 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 class DirectoryController extends HelioPanelAbstractController
 {
 	/**
-	 * @Route("/directory/list", name="directory_list")
+	 * @Route("/directory/list/{path}", name="directory_list", requirements={"path" = ".+"}, defaults={"path" = "/"})
+	 * @Route("/directory/list/", defaults={"path" = "/"})
 	 * @Template()
 	 */
-	public function listAction()
+	public function listAction($path)
 	{
-		$files = $this->getHook()->listDirectory($this->getRequest()->get('path'));
+		$files = $this->getHook()->listDirectory($path);
 
-		return array('files' => $files, 'path' => $this->getRequest()->get('path'));
+		return array('files' => $files, 'path' => $path);
 	}
 
 	//Note: moveAction will not be created in favor of renameAction
