@@ -1,0 +1,5 @@
+services:
+  heliopanel.dashboard.icon.sqlbuddy:
+    class: HelioNetworks\SQLBuddyBundle\Dashboard\SQLBuddyIcon
+    tags:
+      - { name: heliopanel.dashboard.icon }
