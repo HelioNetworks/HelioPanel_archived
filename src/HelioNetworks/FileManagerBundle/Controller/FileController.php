@@ -142,5 +142,7 @@ class FileController extends HelioPanelAbstractController
 					->save($editFileRequest->getFilename(), file_get_contents($tempName));
 			}
 		}
+
+		return array('form' => $form->createView());
 	}
 }

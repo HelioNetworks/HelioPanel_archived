@@ -12,7 +12,11 @@
 					<img class="file-edit-link" border=0 src="/images/files/addfolder.png">
 				</a>
 			</td>
-			<td width=40 valign=middle><img border=0 src="/images/files/upload.png" style="cursor:pointer; opacity:0.5;filter:alpha(opacity=50)" onmouseover="this.style.opacity=1;this.filters.alpha.opacity=100" onmouseout="this.style.opacity=0.5;this.filters.alpha.opacity=50" onClick="window.location=\'files/uploadfile.php?path=<?php echo $path; ?>\'"></td>
+			<td width=40 valign=middle>
+				<a href="{{ url('file_upload') }}">
+					<img border=0 src="/images/files/upload.png" class="file-edit-link">
+				</a>
+			</td>
 			<td valign=middle><form method=get action=#><font size=1><br></font><input type=text name=path value="{{ path }}"><input type=submit></form></td>
 		</tr></table>
 
