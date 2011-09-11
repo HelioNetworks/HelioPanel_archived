@@ -26,8 +26,36 @@ class InstallSQLBuddyCommand extends ContainerAwareCommand
 		$installDir = $input->getArgument('target').'/sqlbuddy';
 		$sourceDir = dirname($this->getContainer()->get('kernel')->getRootDir()).'/vendor/sqlbuddy';
 
-		$filesystem->mirror($sourceDir, $installDir);
+		try {
+			$filesystem->mirror($sourceDir, $installDir);
+		} catch (\Exception $ex) {
+			$output->writeln($ex->getMessage());
+		}
+
+		file_put_contents($installDir.'/config.php', $this->getConfigFile());
 
 		$output->writeln('SQLBuddy installed.');
+	}
+
+	protected function getConfigFile()
+	{
+		return <<<'PHP'
+<?php
+
+session_start();
+
+if(!$_SESSION['DefaultUser']) {
+	header("Location: /sqlbuddy/");
+	die();
+}
+
+$sbconfig['DefaultAdapter'] = "mysql";
+$sbconfig['DefaultHost'] = $_SESSION['DefaultHost'];
+$sbconfig['DefaultUser'] = $_SESSION['DefaultUser'];
+$sbconfig['DefaultPass'] = $_SESSION['DefaultPass'];
+$sbconfig['EnableUpdateCheck'] = false;
+$sbconfig['RowsPerPage'] = 100;
+$sbconfig['EnableGzip'] = true;
+PHP;
 	}
 }
