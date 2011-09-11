@@ -11,6 +11,11 @@ class AceEditor implements EditorInterface
 
 	public function getAssets()
 	{
-		return array();
+		return array(
+			'bundles/helionetworksfilemanager/js/ace/src/ace.js',
+			'bundles/helionetworksfilemanager/js/ace/src/theme-twilight.js',
+			'bundles/helionetworksfilemanager/js/ace/src/mode-php.js',
+			'bundles/helionetworksfilemanager/js/ace.js',
+		);
 	}
 }

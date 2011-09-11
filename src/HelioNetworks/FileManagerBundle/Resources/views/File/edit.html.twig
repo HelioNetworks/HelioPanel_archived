@@ -3,7 +3,8 @@
 {% block content %}
 	<form method=post action="#" {{ form_enctype(form) }} id="file_edit">
 
-		{{ form_widget(form) }}
+		{{ form_widget(form.source, { 'id':'file_name' }) }}
+		{{ form_widget(form.data, { 'id':'file_data' }) }}
 
 		<div id="editor"></div>
 		<div id="spacer"></div>
@@ -16,6 +17,6 @@
 {% block javascripts %}
 	{{ parent() }}
 	{% for script in editor.assets %}
-		{{ asset(script) }}
+		<script defer src="{{ asset(script) }}" type="text/javascript"></script>
 	{% endfor %}
 {% endblock %}
