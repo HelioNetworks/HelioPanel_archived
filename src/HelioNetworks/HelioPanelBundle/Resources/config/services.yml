@@ -6,4 +6,12 @@ services:
       tags:
         - { name: heliopanel.hook_manager }
     heliopanel.dashboard:
-        class: HelioNetworks\HelioPanelBundle\Dashboard\Dashboard
+      class: HelioNetworks\HelioPanelBundle\Dashboard\Dashboard
+    heliopanel.dashboard.icon.phpinfo:
+      class: HelioNetworks\HelioPanelBundle\Dashboard\PHPInfoIcon
+      tags:
+        - { name: heliopanel.dashboard.icon }
+    heliopanel.dashboard.icon.help:
+      class: HelioNetworks\HelioPanelBundle\Dashboard\HelpIcon
+      tags:
+        - { name: heliopanel.dashboard.icon }

@@ -29,4 +29,12 @@ class DefaultController extends HelioPanelAbstractController
     {
     	return new Response($this->getHook()->getPhpInfo());
     }
+
+    /**
+     * @Route("/help", name="heliopanel_help")
+     */
+    public function helpAction()
+    {
+    	return new RedirectResponse('http://heliopanel.heliohost.org/support.php');
+    }
 }

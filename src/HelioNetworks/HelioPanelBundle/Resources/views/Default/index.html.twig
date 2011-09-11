@@ -10,14 +10,11 @@
 	<td valign=top width=15%><div class="homeheader"><a href=/logout><font color=black>Logout</font></a></div></td>
 	</tr></table>
 
-	<center>
-	<a href="{{ url('directory_list') }}?path=/"/><img src="/images/filemanagerbutton.png"></a>
-	<a href=/phpinfo.php><img src="/images/phpbutton.png"></a>
-	<a href="http://heliopanel.heliohost.org/support.php"><img src="/images/helpbutton.png"></a>
-    {% for icon in dashboard.icons %}
-        <a href="{{ url(icon.route) }}"><img src="{{ asset(icon.image) }}"/></a>
-    {% endfor %}
-    </center>
+		<center>
+		    {% for icon in dashboard.icons %}
+		        <a href="{{ url(icon.route) }}"><img src="{{ asset(icon.image) }}"/></a>
+		    {% endfor %}
+	    </center>
 	</td>
 
 
