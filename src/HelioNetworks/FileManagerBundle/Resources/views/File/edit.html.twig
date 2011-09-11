@@ -1,7 +1,7 @@
 {% extends '::heliopanel.html.twig' %}
 
 {% block content %}
-	<form method=post action="{{ url('file_edit') }}" {{ form_enctype(form) }} name="file_edit" id="file_edit">
+	<form method=post action="#" {{ form_enctype(form) }} id="file_edit">
 
 		{{ form_widget(form) }}
 
@@ -15,28 +15,7 @@
 
 {% block javascripts %}
 	{{ parent() }}
-
-	<script src="/ace/src/ace.js" type="text/javascript" charset="utf-8"></script>
-    <script src="/ace/src/theme-twilight.js" type="text/javascript" charset="utf-8"></script>
-    <script src="/ace/src/mode-php.js" type="text/javascript" charset="utf-8"></script>
-
-
-    <script>
-		$(document).ready(function () {
-    		var editor = ace.edit("editor");
-	        editor.setTheme("ace/theme/twilight");
-	        var Mode = require("{{ mode }}").Mode;
-	        editor.getSession().setMode(new Mode());
-
-	        window.ace = editor;
-
-	        editor.getSession().setValue($('#edit_file_request_data').val());
-
-	        $('#file_edit').submit(function () {
-				$('#edit_file_request_data').val(editor.getSession().getValue());
-
-				return true;
-        	});
-	    });
-    </script>
+	{% for script in editor.assets %}
+		{{ asset(script) }}
+	{% endfor %}
 {% endblock %}

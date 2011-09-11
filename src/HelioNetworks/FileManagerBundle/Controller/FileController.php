@@ -104,18 +104,16 @@ class FileController extends HelioPanelAbstractController
 			if ($form->isValid()) {
 
 				$this->getHook()
-					->save($editFileRequest->getSource(), $editFileRequest->getData());
+					->save($fileRequest->getSource(), $fileRequest->getData());
 			}
 
-			return new RedirectResponse($this->generateUrl('directory_list').'?path='.dirname($editFileRequest->getSource()));
+			return new RedirectResponse($this->generateUrl('directory_list', array('path' => dirname($fileRequest->getSource()))));
 		}
 
-		$extension = substr(strrchr($editFileRequest->getSource(), '.'), 1);
-		if(!$mode = @$this->aceMappings[$extension]) {
-			$mode = 'ace/mode/text';
-		}
+		$editors = $this->get('heliopanel.editor_manager')->getEditors();
+		$editor = $editors[(int)$request->query->get('editor')];
 
-		return array('form' => $form->createView(), 'mode' => $mode);
+		return array('form' => $form->createView(), 'editor' => $editor);
 	}
 
 	/**

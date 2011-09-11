@@ -6,7 +6,7 @@ class EditorManager
 {
 	protected $editors;
 
-	public function add(EditorInterface $editor)
+	public function addEditor(EditorInterface $editor)
 	{
 		$this->editors[] = $editor;
 	}

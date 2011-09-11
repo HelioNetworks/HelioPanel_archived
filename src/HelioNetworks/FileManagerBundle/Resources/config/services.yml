@@ -33,3 +33,7 @@ services:
       - { name: heliopanel.dashboard.icon }  
   heliopanel.editor_manager:
     class: HelioNetworks\FileManagerBundle\Editor\EditorManager
+  heliopanel.editor_manager.editor.ace:
+    class: HelioNetworks\FileManagerBundle\Editor\AceEditor
+    tags:
+      - { name: heliopanel.editor_manager.editor }
