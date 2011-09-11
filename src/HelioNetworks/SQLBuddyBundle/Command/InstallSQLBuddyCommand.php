@@ -34,7 +34,7 @@ class InstallSQLBuddyCommand extends ContainerAwareCommand
 
 		file_put_contents($installDir.'/config.php', $this->getConfigFile());
 
-		$output->writeln('SQLBuddy installed.');
+		$output->writeln('SQLBuddy installed');
 	}
 
 	protected function getConfigFile()

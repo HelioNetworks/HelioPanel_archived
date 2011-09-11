@@ -132,7 +132,7 @@ system(sprintf('%s %s assets:install %s', $interpreter, escapeshellarg($rootDir.
 system(sprintf('%s %s cache:clear --no-warmup', $interpreter, escapeshellarg($rootDir.'/app/console')));
 
 // Install SQLBuddy
-system(sprintf('%s %s sqlbuddy:install', $interpreter, escapeshellarg($rootDir.'/app/console')));
+system(sprintf('%s %s sqlbuddy:install web', $interpreter, escapeshellarg($rootDir.'/app/console')));
 
 // Update the DB
 system(sprintf('%s %s doctrine:schema:update --force', $interpreter, escapeshellarg($rootDir.'/app/console')));
