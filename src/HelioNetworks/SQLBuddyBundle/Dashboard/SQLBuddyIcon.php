@@ -8,7 +8,7 @@ class SQLBuddyIcon implements IconInterface
 {
 	public function getImage()
 	{
-		return 'bundles/sqlbuddy/images/icon.png';
+		return 'bundles/helionetworkssqlbuddy/images/icon.png';
 	}
 
 	public function getRoute()
