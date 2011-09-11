@@ -42,10 +42,8 @@ class InstallSQLBuddyCommand extends ContainerAwareCommand
 		return <<<'PHP'
 <?php
 
-session_start();
-
-if(!$_SESSION['DefaultUser']) {
-	header("Location: /sqlbuddy/");
+if(!$_SESSION['DefaultUser'] || !$_SESSION['DefaultPass']) {
+	header("Location: /".(@$_GET['dev'] ? 'app_dev.php' : '')."/sqlbuddy/");
 	die();
 }
 
@@ -55,7 +53,7 @@ $sbconfig['DefaultUser'] = $_SESSION['DefaultUser'];
 $sbconfig['DefaultPass'] = $_SESSION['DefaultPass'];
 $sbconfig['EnableUpdateCheck'] = false;
 $sbconfig['RowsPerPage'] = 100;
-$sbconfig['EnableGzip'] = true;
+$sbconfig['EnableGzip'] = false;
 PHP;
 	}
 }

@@ -19,7 +19,7 @@ class DefaultController extends HelioPanelAbstractController
     	$account = $this->getActiveAccount();
 
     	$_SESSION['DefaultUser'] = $account->getUsername();
-    	$_SESSION['DefaultPassword'] = $account->getPassword();
+    	$_SESSION['DefaultPass'] = $account->getPassword();
     	$_SESSION['DefaultHost'] = parse_url($this->getHook()->getUrl(), PHP_URL_HOST);
 
     	return new RedirectResponse('/sqlbuddy/index.php');
