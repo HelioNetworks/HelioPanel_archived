@@ -31,3 +31,5 @@ services:
     class: HelioNetworks\FileManagerBundle\Dashboard\FileManagerIcon
     tags:
       - { name: heliopanel.dashboard.icon }  
+  heliopanel.editor_manager:
+    class: HelioNetworks\FileManagerBundle\Editor\EditorManager
