@@ -1,6 +1,6 @@
 <?php
 
-namespace HelioNetworks\HelioPanelBundle\DependencyInjection\Compiler;
+namespace HelioNetworks\FileManagerBundle\DependencyInjection\Compiler;
 
 use Symfony\Component\DependencyInjection\Reference;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -14,7 +14,7 @@ class EditorPass implements CompilerPassInterface
             return;
         }
 
-        $manager = $container->getDefinition('heliopanel.editor_maanger');
+        $manager = $container->getDefinition('heliopanel.editor_manager');
         $editors = array();
 
         foreach ($container->findTaggedServiceIds('heliopanel.editor_manager.editor') as $id => $tags) {

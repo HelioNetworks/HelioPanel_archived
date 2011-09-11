@@ -2,6 +2,8 @@
 
 namespace HelioNetworks\FileManagerBundle\Form\Model;
 
+use HelioNetworks\HelioPanelBundle\Entity\Hook;
+
 class FileRequest
 {
 	protected $source;
@@ -36,5 +38,10 @@ class FileRequest
 	public function getData()
 	{
 		return $this->data;
+	}
+
+	public function setHook(Hook $hook)
+	{
+		$this->data = $hook->getContents($this->getSource());
 	}
 }

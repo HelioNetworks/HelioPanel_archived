@@ -17,11 +17,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 class FileController extends HelioPanelAbstractController
 {
-	protected $aceMappings = array(
-		'php' => 'ace/mode/php',
-		'js' => 'ace/mode/javascript',
-	);
-
 	/**
 	 * @Route("/file/create", name="file_create")
 	 * @Template()
@@ -90,19 +85,20 @@ class FileController extends HelioPanelAbstractController
 	}
 
 	/**
-	 * @Route("/file/edit", name="file_edit")
+	 * @Route("/file/edit/{path}", name="file_edit", requirements={"path" = ".+"})
 	 * @Template()
 	 */
-	public function editAction()
+	public function editAction($path)
 	{
 		//TODO: Cleanup
 
-		$request = $this->getRequest();
-		$editFileRequest = new FileRequest();
-		$editFileRequest->setSource($request->get('path'));
-		$editFileRequest->setData($this->getHook()->get($editFileRequest->getSource()));
-		$form = $this->createForm(new EditFileRequestType(), $editFileRequest);
+		$fileRequest = new FileRequest();
+		$fileRequest->setSource($path);
+		$fileRequest->setHook($this->getHook());
 
+		$form = $this->createForm(new EditFileRequestType(), $fileRequest);
+
+		$request = $this->getRequest();
 		if ($request->getMethod() == 'POST') {
 			$form->bindRequest($request);
 			if ($form->isValid()) {

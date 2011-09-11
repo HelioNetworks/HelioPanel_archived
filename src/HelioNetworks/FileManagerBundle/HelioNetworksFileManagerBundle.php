@@ -2,7 +2,7 @@
 
 namespace HelioNetworks\FileManagerBundle;
 
-use HelioNetworks\HelioPanelBundle\DependencyInjection\Compiler\EditorPass;
+use HelioNetworks\FileManagerBundle\DependencyInjection\Compiler\EditorPass;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
