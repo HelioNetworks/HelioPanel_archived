@@ -116,7 +116,12 @@ class AccountController extends HelioPanelAbstractController
     		} else {
     			$this->get('session')->setFlash('error', 'The active account was not updated');
     		}
-    		return new RedirectResponse($this->generateUrl('heliopanel_index'));
+
+    		if(!$url = $this->getRequest()->server->get('HTTP_REFERER')) {
+    			$url = $this->generateUrl('heliopanel_index');
+    		}
+
+    		return new RedirectResponse($url);
     	}
 
     	return array('form' => $form->createView());

@@ -89,7 +89,12 @@ abstract class HelioPanelAbstractController extends Controller
 			throw new \UnexpectedValueException('Account is not owned by current user.');
 		}
 
-		if ($this->get('heliopanel.hook_manager')->getHash() !== file_get_contents($account->getHook()->getUrl())) {
+
+		$request = new Request($account->getHook()->getUrl());
+		$request->setMethod('GET');
+		$request->setData(array());
+
+		if ($this->get('heliopanel.hook_manager')->getHash() !== $request->send()->getData()) {
 			//Hook is not up to date
 			$this->installHook($account);
 

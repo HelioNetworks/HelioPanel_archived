@@ -23,6 +23,12 @@ class Hook
         $request->setData($arguments);
         $request->setMethod('POST');
 
-        return @unserialize($request->send()->getData());
+        try	{
+        	$contents = @unserialize($request->send()->getData());
+        } catch (\Exception $ex) {
+        	$contents = null;
+        }
+
+        return $contents;
     }
 }

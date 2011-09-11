@@ -31,6 +31,7 @@ class Request
 		$params = array('http' => array(
                   'method' => $this->method,
                   'content' => http_build_query($this->data),
+                  'timeout' => '5',
 		));
 
 		$ctx = stream_context_create($params);
