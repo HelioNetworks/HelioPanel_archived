@@ -5,6 +5,7 @@ namespace HelioNetworks\HelioPanelBundle\Hook;
 class HookManager
 {
 	protected $sections;
+	protected $body;
 
 	protected function getStart()
 	{
@@ -35,14 +36,16 @@ PHP;
 
 	protected function getBody()
 	{
-		$source = '';
-		foreach ($this->sections as $section) {
-			$source .= sprintf('function %s {', $section->getName());
-			$source .= $section->getCode();
-			$source .= '}';
+		if(!$this->body) {
+		    $this->body = '';
+                    foreach ($this->sections as $section) {
+		        $this->body .= sprintf('function %s {', $section->getName());
+		        $this->body .= $section->getCode();
+		        $this->body .= '}';
+		    }
 		}
 
-		return $source;
+		return $this->body;
 	}
 
 	public function getHash()
