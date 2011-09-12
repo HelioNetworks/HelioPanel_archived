@@ -41,3 +41,7 @@ services:
     class: HelioNetworks\FileManagerBundle\Editor\AceEditor
     tags:
       - { name: heliopanel.editor_manager.editor }
+  heliopanel.editor_manager.editor.ckeditor:
+    class: HelioNetworks\FileManagerBundle\Editor\CKEditor
+    tags:
+      - { name: heliopanel.editor_manager.editor }
