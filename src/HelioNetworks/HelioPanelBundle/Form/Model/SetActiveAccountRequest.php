@@ -6,15 +6,15 @@ use HelioNetworks\HelioPanelBundle\Entity\Account;
 
 class SetActiveAccountRequest
 {
-	protected $activeAccount;
+    protected $activeAccount;
 
-	public function getActiveAccount()
-	{
-		return $this->activeAccount;
-	}
+    public function getActiveAccount()
+    {
+        return $this->activeAccount;
+    }
 
-	public function setActiveAccount(Account $activeAccount)
-	{
-		$this->activeAccount = $activeAccount;
-	}
+    public function setActiveAccount(Account $activeAccount)
+    {
+        $this->activeAccount = $activeAccount;
+    }
 }

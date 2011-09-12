@@ -8,10 +8,10 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 class HelioNetworksFileManagerBundle extends Bundle
 {
-	public function build(ContainerBuilder $container)
-	{
-		parent::build($container);
+    public function build(ContainerBuilder $container)
+    {
+        parent::build($container);
 
-		$container->addCompilerPass(new EditorPass());
-	}
+        $container->addCompilerPass(new EditorPass());
+    }
 }

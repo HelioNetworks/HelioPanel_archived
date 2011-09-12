@@ -7,21 +7,21 @@ use Symfony\Component\Form\AbstractType;
 
 class RenameFileRequestType extends AbstractType
 {
-	public function buildForm(FormBuilder $builder, array $options)
-	{
-		$builder->add('source', 'hidden');
-		$builder->add('dest');
-	}
+    public function buildForm(FormBuilder $builder, array $options)
+    {
+        $builder->add('source', 'hidden');
+        $builder->add('dest');
+    }
 
-	public function getDefaultOptions(array $options)
-	{
-		return array(
-			'data_class' => 'HelioNetworks\FileManagerBundle\Form\Model\FileRequest',
-		);
-	}
+    public function getDefaultOptions(array $options)
+    {
+        return array(
+            'data_class' => 'HelioNetworks\FileManagerBundle\Form\Model\FileRequest',
+        );
+    }
 
-	public function getName()
-	{
-		return 'rename_file_request';
-	}
+    public function getName()
+    {
+        return 'rename_file_request';
+    }
 }

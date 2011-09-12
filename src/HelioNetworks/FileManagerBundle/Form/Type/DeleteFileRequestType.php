@@ -7,20 +7,20 @@ use Symfony\Component\Form\AbstractType;
 
 class DeleteFileRequestType extends AbstractType
 {
-	public function buildForm(FormBuilder $builder, array $options)
-	{
-		$builder->add('source', 'hidden');
-	}
+    public function buildForm(FormBuilder $builder, array $options)
+    {
+        $builder->add('source', 'hidden');
+    }
 
-	public function getDefaultOptions(array $options)
-	{
-		return array(
-			'data_class' => 'HelioNetworks\FileManagerBundle\Form\Model\FileRequest',
-		);
-	}
+    public function getDefaultOptions(array $options)
+    {
+        return array(
+            'data_class' => 'HelioNetworks\FileManagerBundle\Form\Model\FileRequest',
+        );
+    }
 
-	public function getName()
-	{
-		return 'delete_file_request';
-	}
+    public function getName()
+    {
+        return 'delete_file_request';
+    }
 }

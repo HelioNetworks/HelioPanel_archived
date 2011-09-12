@@ -10,38 +10,38 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Account
 {
-	/**
-	* @ORM\Id
-	* @ORM\Column(type="integer")
-	* @ORM\GeneratedValue(strategy="AUTO")
-	*/
-	protected $id;
+    /**
+    * @ORM\Id
+    * @ORM\Column(type="integer")
+    * @ORM\GeneratedValue(strategy="AUTO")
+    */
+    protected $id;
 
 
-	/**
-	 * @ORM\Column(type="string", unique=true)
-	 */
-	protected $username;
+    /**
+     * @ORM\Column(type="string", unique=true)
+     */
+    protected $username;
 
-	/**
-	 * @ORM\Column(type="string")
-	 */
-	protected $password;
+    /**
+     * @ORM\Column(type="string")
+     */
+    protected $password;
 
-	/**
-	 * @ORM\ManyToOne(targetEntity="User", inversedBy="accounts")
-	 */
-	protected $user;
+    /**
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="accounts")
+     */
+    protected $user;
 
-	/**
-	 * @ORM\OneToOne(targetEntity="Hook")
-	 */
-	protected $hook;
+    /**
+     * @ORM\OneToOne(targetEntity="Hook")
+     */
+    protected $hook;
 
-	public function __toString()
-	{
-		return $this->getUsername();
-	}
+    public function __toString()
+    {
+        return $this->getUsername();
+    }
 
     /**
      * Get id
@@ -126,7 +126,7 @@ class Account
     /**
      * Get hook
      *
-     * @return HelioNetworks\HelioPanelBundle\Entity\Hook 
+     * @return HelioNetworks\HelioPanelBundle\Entity\Hook
      */
     public function getHook()
     {

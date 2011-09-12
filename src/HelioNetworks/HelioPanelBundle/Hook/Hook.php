@@ -24,9 +24,9 @@ class Hook
         $request->setMethod('POST');
 
         try	{
-        	$contents = @unserialize($request->send()->getData());
+            $contents = @unserialize($request->send()->getData());
         } catch (\Exception $ex) {
-        	$contents = null;
+            $contents = null;
         }
 
         return $contents;

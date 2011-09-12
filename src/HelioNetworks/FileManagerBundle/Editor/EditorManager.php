@@ -4,12 +4,12 @@ namespace HelioNetworks\FileManagerBundle\Editor;
 
 class EditorManager
 {
-	protected $editors;
+    protected $editors;
 
-	public function addEditor(EditorInterface $editor)
-	{
-		$this->editors[] = $editor;
-	}
+    public function addEditor(EditorInterface $editor)
+    {
+        $this->editors[] = $editor;
+    }
 
     public function getEditors()
     {

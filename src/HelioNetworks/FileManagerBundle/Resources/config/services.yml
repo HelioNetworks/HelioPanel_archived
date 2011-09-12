@@ -30,11 +30,11 @@ services:
   heliopanel.hook.section.get_contents:
     class: HelioNetworks\FileManagerBundle\Hook\GetContentsSection
     tags:
-      - { name: heliopanel.hook_manager }     
+      - { name: heliopanel.hook_manager }
   heliopanel.dashboard.icon.filemanager:
     class: HelioNetworks\FileManagerBundle\Dashboard\FileManagerIcon
     tags:
-      - { name: heliopanel.dashboard.icon }  
+      - { name: heliopanel.dashboard.icon }
   heliopanel.editor_manager:
     class: HelioNetworks\FileManagerBundle\Editor\EditorManager
   heliopanel.editor_manager.editor.ace:
