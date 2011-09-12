@@ -1,22 +1,22 @@
 {% extends '::heliopanel.html.twig' %}
 
 {% block content %}
-	<form method=post action="#" {{ form_enctype(form) }} id="file_edit">
+    <form method=post action="#" {{ form_enctype(form) }} id="file_edit">
 
-		{{ form_widget(form.source, { 'id':'file_name' }) }}
-		{{ form_widget(form.data, { 'id':'file_data' }) }}
+        {{ form_widget(form.source, { 'id':'file_name' }) }}
+        {{ form_widget(form.data, { 'id':'file_data' }) }}
 
-		<div id="editor"></div>
-		<div id="spacer"></div>
+        <div id="editor"></div>
+        <div id="spacer"></div>
 
-		<input type="submit" />
+        <input type="submit" />
 
-	</form>
+    </form>
 {% endblock %}
 
 {% block javascripts %}
-	{{ parent() }}
-	{% for script in editor.assets %}
-		<script defer src="{{ asset(script) }}" type="text/javascript"></script>
-	{% endfor %}
+    {{ parent() }}
+    {% for script in editor.assets %}
+        <script defer src="{{ asset(script) }}" type="text/javascript"></script>
+    {% endfor %}
 {% endblock %}

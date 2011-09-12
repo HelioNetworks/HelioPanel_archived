@@ -27,7 +27,7 @@ class DefaultController extends HelioPanelAbstractController
      */
     public function phpInfoAction()
     {
-    	return new Response($this->getHook()->getPhpInfo());
+        return new Response($this->getHook()->getPhpInfo());
     }
 
     /**
@@ -35,6 +35,6 @@ class DefaultController extends HelioPanelAbstractController
      */
     public function helpAction()
     {
-    	return new RedirectResponse('http://heliopanel.heliohost.org/support.php');
+        return new RedirectResponse('http://heliopanel.heliohost.org/support.php');
     }
 }

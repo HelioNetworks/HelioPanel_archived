@@ -30,14 +30,18 @@ services:
   heliopanel.hook.section.get_contents:
     class: HelioNetworks\FileManagerBundle\Hook\GetContentsSection
     tags:
-      - { name: heliopanel.hook_manager }     
+      - { name: heliopanel.hook_manager }
   heliopanel.dashboard.icon.filemanager:
     class: HelioNetworks\FileManagerBundle\Dashboard\FileManagerIcon
     tags:
-      - { name: heliopanel.dashboard.icon }  
+      - { name: heliopanel.dashboard.icon }
   heliopanel.editor_manager:
     class: HelioNetworks\FileManagerBundle\Editor\EditorManager
   heliopanel.editor_manager.editor.ace:
     class: HelioNetworks\FileManagerBundle\Editor\AceEditor
+    tags:
+      - { name: heliopanel.editor_manager.editor }
+  heliopanel.editor_manager.editor.ckeditor:
+    class: HelioNetworks\FileManagerBundle\Editor\CKEditor
     tags:
       - { name: heliopanel.editor_manager.editor }

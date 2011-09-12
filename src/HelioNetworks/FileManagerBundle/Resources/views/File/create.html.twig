@@ -1,6 +1,6 @@
 
-	<form method="post" action="{{ url('file_create') }}" {{ form_enctype(form) }}>
-		New file name:{{ form_widget(form.source, { 'id':'current-file' }) }}
+    <form method="post" action="{{ url('file_create') }}" {{ form_enctype(form) }}>
+        New file name:{{ form_widget(form.source, { 'id':'current-file' }) }}
 
-		{{ form_rest(form) }}
-	</form>
+        {{ form_rest(form) }}
+    </form>

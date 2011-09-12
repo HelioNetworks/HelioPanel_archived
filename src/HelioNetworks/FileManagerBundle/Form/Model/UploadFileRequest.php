@@ -6,15 +6,15 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class UploadFileRequest extends FileRequest
 {
-	protected $uploadedFile;
+    protected $uploadedFile;
 
-	public function getUploadedFile()
-	{
-		return $this->uploadedFile;
-	}
+    public function getUploadedFile()
+    {
+        return $this->uploadedFile;
+    }
 
-	public function setUploadedFile(UploadedFile $uploadedFile)
-	{
-		$this->uploadedFile = $uploadedFile;
-	}
+    public function setUploadedFile(UploadedFile $uploadedFile)
+    {
+        $this->uploadedFile = $uploadedFile;
+    }
 }

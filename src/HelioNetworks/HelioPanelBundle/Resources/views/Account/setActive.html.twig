@@ -1,3 +1,3 @@
-	<form action="{{ path('account_set_active') }}" method="post" {{ form_enctype(form) }} name="account_set_active" style="display:inline;">
-		<strong>Current Account:</strong> {{ form_widget(form.activeAccount, { 'attr':{ 'onchange':'this.form.submit()' } }) }}
-	</form>
+    <form action="{{ path('account_set_active') }}" method="post" {{ form_enctype(form) }} name="account_set_active" style="display:inline;">
+        <strong>Current Account:</strong> {{ form_widget(form.activeAccount, { 'attr':{ 'onchange':'this.form.submit()' } }) }}
+    </form>

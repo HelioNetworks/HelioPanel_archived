@@ -1,9 +1,9 @@
 {% extends '::heliopanel.html.twig' %}
 
 {% block content %}
-	<form action="{{ path('account_create_user') }}" method="post" {{ form_enctype(form) }}>
-		{{ form_widget(form) }}
+    <form action="{{ path('account_create_user') }}" method="post" {{ form_enctype(form) }}>
+        {{ form_widget(form) }}
 
-		<input type="submit" />
-	</form>
+        <input type="submit" />
+    </form>
 {% endblock %}

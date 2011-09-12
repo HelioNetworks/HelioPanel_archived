@@ -1,86 +1,86 @@
 {% extends '::heliopanel.html.twig' %}
 
 {% block content %}
-		<table class="filestoolbar"><tr>
-			<td width=40 valign=middle>
-				<a class="modal-form" href="#" current-file="{{ path }}" form-src="{{ url('file_create') }}">
-					<img class="file-edit-link" border=0 src="/images/files/addfile.png">
-				</a>
-			</td>
-			<td width=40 valign=middle>
-				<a class="modal-form" href="#" current-file="{{ path }}" form-src="{{ url('directory_create') }}">
-					<img class="file-edit-link" border=0 src="/images/files/addfolder.png">
-				</a>
-			</td>
-			<td width=40 valign=middle>
-				<a href="{{ url('file_upload') }}">
-					<img border=0 src="/images/files/upload.png" class="file-edit-link">
-				</a>
-			</td>
-			<td valign=middle><form method=get action=#><font size=1><br></font><input type=text name=path value="{{ path }}"><input type=submit></form></td>
-		</tr></table>
+        <table class="filestoolbar"><tr>
+            <td width=40 valign=middle>
+                <a class="modal-form" href="#" current-file="{{ path }}" form-src="{{ url('file_create') }}">
+                    <img class="file-edit-link" border=0 src="/images/files/addfile.png">
+                </a>
+            </td>
+            <td width=40 valign=middle>
+                <a class="modal-form" href="#" current-file="{{ path }}" form-src="{{ url('directory_create') }}">
+                    <img class="file-edit-link" border=0 src="/images/files/addfolder.png">
+                </a>
+            </td>
+            <td width=40 valign=middle>
+                <a href="{{ url('file_upload') }}">
+                    <img border=0 src="/images/files/upload.png" class="file-edit-link">
+                </a>
+            </td>
+            <td valign=middle><form method=get action=#><font size=1><br></font><input type=text name=path value="{{ path }}"><input type=submit></form></td>
+        </tr></table>
 
-		<table width="100%">
+        <table width="100%">
 
-		<tr>
-			<td align=left width=40></td>
-			<td align=left><font face="Trebuchet MS" size=2><b>File Name</b></font></td>
-			<td align=left width=40><center><font face="Trebuchet MS" size=2><b>Rename</b></font></center></td>
-			<td align=left width=40><center><font face="Trebuchet MS" size=2><b>Copy</b></font></center></td>
-			<td align=left width=40><center><font face="Trebuchet MS" size=2><b>Delete</b></font></center></td>
-			<td align=left width=40><center><font face="Trebuchet MS" size=2><b>Extract</b></font></center></td>
-		</tr>
-	{% for file in files %}
+        <tr>
+            <td align=left width=40></td>
+            <td align=left><font face="Trebuchet MS" size=2><b>File Name</b></font></td>
+            <td align=left width=40><center><font face="Trebuchet MS" size=2><b>Rename</b></font></center></td>
+            <td align=left width=40><center><font face="Trebuchet MS" size=2><b>Copy</b></font></center></td>
+            <td align=left width=40><center><font face="Trebuchet MS" size=2><b>Delete</b></font></center></td>
+            <td align=left width=40><center><font face="Trebuchet MS" size=2><b>Extract</b></font></center></td>
+        </tr>
+    {% for file in files %}
 
-		<tr>
-	         		<td align=left width=40>
-	         			{% if file.is_file %}
-	         				<img src="/images/files/file.png">
-         				{% else %}
-         					<img src="/images/files/folder.png">
-         				{% endif %}
-         			</td>
-	         		<td align=left>
-	         			{% if file.is_file %}
-          					<a href="{{ url('file_edit', { 'path':file.source }) }}">
-		         				<font face="Verdana" color="black">{{ file.name }}</font>
-         					</a>
-         				{% else %}
-							<a href="{{ url('directory_list', { 'path':file.source }) }}"/>
-		         				<font face="Verdana" color="black">{{ file.name }}</font>
-	         				</a>
-         				{% endif %}
-         			</td>
-					<td align=left width=40>
-						<a class="modal-form" href="#" current-file="{{ file.source }}" form-src="/file/rename">
-							<img class="file-edit-link" src=/images/files/rename.png />
-						</a>
-					</td>
-					<td align=left width=40>
-						<a href="">
-							<img class="file-edit-link" src=/images/files/copy.png>
-						</a>
-					</td>
-	         		<td align=left width=40>
-						<a class="modal-form" href="#" current-file="{{ file.source }}" form-src="/file/delete">
-	         				<img class="file-edit-link" src=/images/files/deletefile.png >
-         				</a>
-         			</td>
-	         		<td align=left width=40>
-	         			<a href="">
-	         				<img class="file-edit-link" src=/images/files/extract.png>
-         				</a>
-         			</td>
+        <tr>
+                     <td align=left width=40>
+                         {% if file.is_file %}
+                             <img src="/images/files/file.png">
+                         {% else %}
+                             <img src="/images/files/folder.png">
+                         {% endif %}
+                     </td>
+                     <td align=left>
+                         {% if file.is_file %}
+                              <a href="{{ url('file_edit', { 'path':file.source }) }}">
+                                 <font face="Verdana" color="black">{{ file.name }}</font>
+                             </a>
+                         {% else %}
+                            <a href="{{ url('directory_list', { 'path':file.source }) }}"/>
+                                 <font face="Verdana" color="black">{{ file.name }}</font>
+                             </a>
+                         {% endif %}
+                     </td>
+                    <td align=left width=40>
+                        <a class="modal-form" href="#" current-file="{{ file.source }}" form-src="/file/rename">
+                            <img class="file-edit-link" src=/images/files/rename.png />
+                        </a>
+                    </td>
+                    <td align=left width=40>
+                        <a href="">
+                            <img class="file-edit-link" src=/images/files/copy.png>
+                        </a>
+                    </td>
+                     <td align=left width=40>
+                        <a class="modal-form" href="#" current-file="{{ file.source }}" form-src="/file/delete">
+                             <img class="file-edit-link" src=/images/files/deletefile.png >
+                         </a>
+                     </td>
+                     <td align=left width=40>
+                         <a href="">
+                             <img class="file-edit-link" src=/images/files/extract.png>
+                         </a>
+                     </td>
          </tr>
 
-	{% endfor %}
+    {% endfor %}
 
-	</table>
+    </table>
 
-	<div id="dialog-box"></div>
+    <div id="dialog-box"></div>
 {% endblock %}
 
 {% block javascripts %}
-	{{ parent() }}
-	<script type="text/javascript" src="{{ asset('/bundles/helionetworksfilemanager/js/directorylist.js') }}"></script>
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset('/bundles/helionetworksfilemanager/js/directorylist.js') }}"></script>
 {% endblock %}

@@ -7,21 +7,21 @@ use Symfony\Component\Form\AbstractType;
 
 class UploadFileRequestType extends AbstractType
 {
-	public function buildForm(FormBuilder $builder, array $options)
-	{
-		$builder->add('source');
-		$builder->add('uploadedFile', 'file');
-	}
+    public function buildForm(FormBuilder $builder, array $options)
+    {
+        $builder->add('source');
+        $builder->add('uploadedFile', 'file');
+    }
 
-	public function getDefaultOptions(array $options)
-	{
-		return array(
-			'data_class' => 'HelioNetworks\FileManagerBundle\Form\Model\UploadFileRequest',
-		);
-	}
+    public function getDefaultOptions(array $options)
+    {
+        return array(
+            'data_class' => 'HelioNetworks\FileManagerBundle\Form\Model\UploadFileRequest',
+        );
+    }
 
-	public function getName()
-	{
-		return 'upload_file_request';
-	}
+    public function getName()
+    {
+        return 'upload_file_request';
+    }
 }

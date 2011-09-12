@@ -9,11 +9,11 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 class HelioNetworksHelioPanelBundle extends Bundle
 {
-	public function build(ContainerBuilder $container)
-	{
-		parent::build($container);
+    public function build(ContainerBuilder $container)
+    {
+        parent::build($container);
 
-		$container->addCompilerPass(new HookManagerPass());
+        $container->addCompilerPass(new HookManagerPass());
         $container->addCompilerPass(new DashboardPass());
-	}
+    }
 }

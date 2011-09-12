@@ -16,12 +16,12 @@ class DefaultController extends HelioPanelAbstractController
      */
     public function indexAction()
     {
-    	$account = $this->getActiveAccount();
+        $account = $this->getActiveAccount();
 
-    	$_SESSION['DefaultUser'] = $account->getUsername();
-    	$_SESSION['DefaultPass'] = $account->getPassword();
-    	$_SESSION['DefaultHost'] = parse_url($this->getHook()->getUrl(), PHP_URL_HOST);
+        $_SESSION['DefaultUser'] = $account->getUsername();
+        $_SESSION['DefaultPass'] = $account->getPassword();
+        $_SESSION['DefaultHost'] = parse_url($this->getHook()->getUrl(), PHP_URL_HOST);
 
-    	return new RedirectResponse('/sqlbuddy/index.php');
+        return new RedirectResponse('/sqlbuddy/index.php');
     }
 }
