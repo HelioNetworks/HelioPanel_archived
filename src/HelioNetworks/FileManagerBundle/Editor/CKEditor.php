@@ -13,8 +13,8 @@ class CKEditor implements EditorInterface
     {
         return array(
             'bundles/helionetworksfilemanager/js/ckeditor/ckeditor.js',
-        	'bundles/helionetworksfilemanager/js/ckeditor/adapters/jquery.js',
-        	'bundles/helionetworksfilemanager/js/ckeditor.js',
+            'bundles/helionetworksfilemanager/js/ckeditor/adapters/jquery.js',
+            'bundles/helionetworksfilemanager/js/ckeditor.js',
         );
     }
 }

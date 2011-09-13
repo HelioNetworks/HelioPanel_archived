@@ -43,11 +43,11 @@
                      <td align=left>
                          {% if file.is_file %}
                               <div class="edit-file" >
-								 <div class="edit-file-choices" style="display:none;">
-								 	{% for key, editor in editors %}
-								 		<a href="{{ url('file_edit', { 'path':file.source, 'editor':key }) }}">{{ editor.name }}</a>
-								 	{% endfor %}
-								 </div>
+                                 <div class="edit-file-choices" style="display:none;">
+                                 	{% for key, editor in editors %}
+                                 		<a href="{{ url('file_edit', { 'path':file.source, 'editor':key }) }}">{{ editor.name }}</a>
+                                 	{% endfor %}
+                                 </div>
                                  <font face="Verdana" color="black"><a href="#">{{ file.name }}</a></font>
                              </div>
                          {% else %}
