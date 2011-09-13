@@ -21,6 +21,16 @@ $( '#dialog-box' ).dialog({
 	}
 });
 
+$('.edit-file').each(function () {
+	var $edit = $(this);
+	$edit.children('font').children('a').click(function () {
+		$edit.find('.edit-file-choices').dialog({
+			height: 140,
+			modal: true,
+		});
+	});
+});
+
 $( '.modal-form' ).each(function () {
 	
 	var $this = $(this);
