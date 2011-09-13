@@ -1,3 +1,18 @@
+## 0.6 BETA ##
+- Feature #59: Remove jquery folder in favor of jquery-opimized folder
+- Feature #60: Users can select account they do not own
+- Feature #62: Automatically login user after account creation
+- Feature #69: Reinstall invalid or old hook file
+- Feature #71: Automatically submit when the account dropdown is changed
+- Feature #53: Show PHP Configuration for the specified server
+- Feature #67: Change the button text to something other than 'Submit Query'
+- Bug #81: Fix SQLBuddy automatic login
+- Bug #72: CKEditor does not work
+- Bug #77: Upload file button doesn't work
+- Bug #74: Update the version in the footer
+- Bug #76: Correct file manager path
+- Bug #81: Fix the line at the bottom of the footer
+
 ## 0.5 BETA ##
 - Feature: The project has been converted to use Symfony2
 - Feature #40: Store users in a database
