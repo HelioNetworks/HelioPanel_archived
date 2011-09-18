@@ -43,7 +43,7 @@ class InstallSQLBuddyCommand extends ContainerAwareCommand
 <?php
 
 if(!$_SESSION['DefaultUser'] || !$_SESSION['DefaultPass']) {
-    header("Location: /".(@$_GET['dev'] ? 'app_dev.php' : '')."/sqlbuddy/");
+    header('Location: '.(@$_GET['dev'] ? '/app_dev.php' : '').'/sqlbuddy/');
     die();
 }
 
