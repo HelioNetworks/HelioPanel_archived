@@ -31,7 +31,11 @@ abstract class HelioPanelAbstractController extends Controller
 
     protected function installHook(Account $account)
     {
-    	$this->get('logger')->debug(sprintf('Installing hook on account with ID %s.', $account->getId()));
+        if ($hook = $account->getHook()) {
+            $hook->delete();
+        }
+
+        $this->get('logger')->debug(sprintf('Installing hook on account with ID %s.', $account->getId()));
 
         $auth = mt_rand();
         $hookfile = $this->get('heliopanel.hook_manager')->getCode($auth);
@@ -62,7 +66,7 @@ abstract class HelioPanelAbstractController extends Controller
      */
     protected function getActiveAccount()
     {
-    	$this->get('logger')->debug('Fetching active account...');
+        $this->get('logger')->debug('Fetching active account...');
 
         if ($id = $this->get('session')->get('active_account_id')) {
 
