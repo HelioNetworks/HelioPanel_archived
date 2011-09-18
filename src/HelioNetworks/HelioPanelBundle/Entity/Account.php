@@ -2,7 +2,6 @@
 
 namespace HelioNetworks\HelioPanelBundle\Entity;
 
-use HelioNetworks\HelioPanelBundle\Hook\Hook;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
