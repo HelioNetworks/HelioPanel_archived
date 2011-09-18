@@ -12,12 +12,28 @@
     <table class=login align=center><tr><td valign=middle>
     <p><b><u><font size=3>Login to HelioPanel</font></u></b></p>
 
+	{% if app.session.flash('success') %}
+        <div class="flash-message success" style="font-size:small;">
+            <p>{{ app.session.flash('success') }}</p>
+        </div>
+    {% endif %}
+    {% if app.session.flash('error') %}
+        <div class="flash-message error" style="font-size:small;">
+            <p>{{ app.session.flash('error') }}</p>
+        </div>
+    {% endif %}
     {{ app.session.clearFlashes }}
+
     {% block content %}
 
     {% endblock %}
 
-    <a href="{{ url('account_create_user') }}">Login with your cPanel account.</a>
+	<br />
+
+    New User? Type in your
+    <br />existing cPanel creditentials:
+
+	{% render 'HelioNetworksHelioPanelBundle:Account:createUser' %}
 
     </td></tr></table>
 

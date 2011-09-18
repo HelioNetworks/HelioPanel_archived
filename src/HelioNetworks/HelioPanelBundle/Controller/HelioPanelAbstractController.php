@@ -25,8 +25,11 @@ abstract class HelioPanelAbstractController extends Controller
      */
     protected function getHook()
     {
-        return $this->getActiveAccount()
+        $hook = $this->getActiveAccount()
             ->getHook();
+        $hook->setLogger($this->get('logger'));
+
+        return $hook;
     }
 
     protected function installHook(Account $account)

@@ -17,10 +17,25 @@ use HelioNetworks\HelioPanelBundle\Entity\Account;
 
 class AccountController extends HelioPanelAbstractController
 {
+	protected function createUser($username, $password)
+	{
+		$user = new User();
+		$user->setPlainPassword($password);
+		$user->setUsername($username);
+		$user->setEmail(uniqid().'@heliohost.org');
+		$user->setEnabled(true);
+
+		$this->get('fos_user.user_manager')
+			->updateUser($user);
+
+		return $user;
+	}
+
     /**
      * Create a new user based from a cPanel account.
      *
      * @Route("/account/createUser", name="account_create_user")
+     * @Method({"POST"})
      * @Template()
      */
     public function createUserAction() {
@@ -32,17 +47,10 @@ class AccountController extends HelioPanelAbstractController
             $form->bindRequest($request);
             if ($form->isValid()) {
                 if ($this->installHook($account)) {
-                    $user = new User();
-                    $user->setPlainPassword($account->getPassword());
-                    $user->setUsername($account->getUsername());
-                    $user->setEmail(uniqid().'@heliohost.org');
-                    $user->setEnabled(true);
-
-                    $this->get('fos_user.user_manager')
-                        ->updateUser($user);
+                	$user = $this->createUser($account->getUsername(), $account->getPassword());
                     $account->setUser($user);
 
-                       $em = $this->getDoctrine()->getEntityManager();
+                    $em = $this->getDoctrine()->getEntityManager();
                     $em->persist($user);
                     $em->persist($account);
                     $em->flush();
@@ -51,10 +59,11 @@ class AccountController extends HelioPanelAbstractController
 
                     $this->get('session')->setFlash('success', 'You may now login with your existing cPanel creditentials.');
 
-                    return new RedirectResponse('/');
                 } else {
                         $this->get('session')->setFlash('error', 'We could not verify that the account exists or that the password is correct.');
                 }
+
+                return new RedirectResponse($this->generateUrl('fos_user_security_login'));
             }
         }
 

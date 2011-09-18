@@ -32,7 +32,7 @@ unset($_POST['__auth']);
 unset($_POST['__name']);
 
 ob_start();
-$result = call_user_func_array($_POST['__name'], $_POST);
+$result = call_user_func_array($__name, $_POST);
 ob_get_clean();
 
 echo serialize($result);
