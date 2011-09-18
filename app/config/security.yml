@@ -4,9 +4,9 @@ security:
             id: fos_user.user_manager
 
     firewalls:
-        assets: 
-            pattern:  ^/(_(profiler|wdt)|css|images|js|favicon.ico)/ 
-            security: false 
+        assets:
+            pattern:  ^/(_(profiler|wdt)|css|images|js|favicon.ico)/
+            security: false
         main:
             pattern: ^/
             form_login:

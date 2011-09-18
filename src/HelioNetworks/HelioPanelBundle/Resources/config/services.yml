@@ -5,6 +5,10 @@ services:
       class: HelioNetworks\HelioPanelBundle\Hook\GetPhpInfoSection
       tags:
         - { name: heliopanel.hook_manager }
+    heliopanel.hook.section.delete:
+      class: HelioNetworks\HelioPanelBundle\Hook\DeleteSection
+      tags:
+        - { name: heliopanel.hook_manager }
     heliopanel.dashboard:
       class: HelioNetworks\HelioPanelBundle\Dashboard\Dashboard
     heliopanel.dashboard.icon.phpinfo:
