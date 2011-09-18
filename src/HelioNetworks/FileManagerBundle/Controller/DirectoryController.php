@@ -17,10 +17,41 @@ class DirectoryController extends HelioPanelAbstractController
      */
     public function listAction($path)
     {
+        $path = preg_replace('{\/+}', '/', $path);
+
         $files = $this->getHook()->listDirectory($path);
         $editors = $this->get('heliopanel.editor_manager')->getEditors();
+        $breadcrumbs = $this->getBreadcrumbs($path);
 
-        return array('files' => $files, 'path' => $path, 'editors' => $editors);
+        return array('files' => $files, 'path' => $path, 'editors' => $editors, 'breadcrumbs' => $breadcrumbs);
+    }
+
+    /**
+     * Get a list of breadcrumbs for a path
+     *
+     * @var string $path The path to get breadcrumbs for
+     */
+    protected function getBreadcrumbs($path)
+    {
+        $crumbs = array(
+            array(
+                'name' => 'home',
+                'source' => '/',
+            )
+        );
+        $bits = explode('/', $path);
+        $currentPath = '';
+        foreach ($bits as $bit) {
+            $currentPath .= '/'.$bit;
+            if ($bit) {
+                $crumbs[] = array(
+                    'name' => $bit,
+                    'source' => $currentPath,
+                );
+            }
+        }
+
+        return $crumbs;
     }
 
     //Note: moveAction will not be created in favor of renameAction

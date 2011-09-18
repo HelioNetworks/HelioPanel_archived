@@ -12,7 +12,7 @@
     <table class=login align=center><tr><td valign=middle>
     <p><b><u><font size=3>Login to HelioPanel</font></u></b></p>
 
-	{% if app.session.flash('success') %}
+    {% if app.session.flash('success') %}
         <div class="flash-message success" style="font-size:small;">
             <p>{{ app.session.flash('success') }}</p>
         </div>
@@ -28,12 +28,12 @@
 
     {% endblock %}
 
-	<br />
+    <br />
 
     New User? Type in your
     <br />existing cPanel creditentials:
 
-	{% render 'HelioNetworksHelioPanelBundle:Account:createUser' %}
+    {% render 'HelioNetworksHelioPanelBundle:Account:createUser' %}
 
     </td></tr></table>
 

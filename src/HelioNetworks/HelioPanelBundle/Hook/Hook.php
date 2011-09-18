@@ -13,14 +13,14 @@ class Hook
 
     public function setLogger(LoggerInterface $logger)
     {
-    	$this->logger = $logger;
+        $this->logger = $logger;
     }
 
     protected function debug($message)
     {
-    	if ($logger = $this->logger) {
-    		$logger->debug($message);
-    	}
+        if ($logger = $this->logger) {
+            $logger->debug($message);
+        }
     }
 
     /**

@@ -17,19 +17,19 @@ use HelioNetworks\HelioPanelBundle\Entity\Account;
 
 class AccountController extends HelioPanelAbstractController
 {
-	protected function createUser($username, $password)
-	{
-		$user = new User();
-		$user->setPlainPassword($password);
-		$user->setUsername($username);
-		$user->setEmail(uniqid().'@heliohost.org');
-		$user->setEnabled(true);
+    protected function createUser($username, $password)
+    {
+        $user = new User();
+        $user->setPlainPassword($password);
+        $user->setUsername($username);
+        $user->setEmail(uniqid().'@heliohost.org');
+        $user->setEnabled(true);
 
-		$this->get('fos_user.user_manager')
-			->updateUser($user);
+        $this->get('fos_user.user_manager')
+            ->updateUser($user);
 
-		return $user;
-	}
+        return $user;
+    }
 
     /**
      * Create a new user based from a cPanel account.
@@ -47,7 +47,7 @@ class AccountController extends HelioPanelAbstractController
             $form->bindRequest($request);
             if ($form->isValid()) {
                 if ($this->installHook($account)) {
-                	$user = $this->createUser($account->getUsername(), $account->getPassword());
+                    $user = $this->createUser($account->getUsername(), $account->getPassword());
                     $account->setUser($user);
 
                     $em = $this->getDoctrine()->getEntityManager();

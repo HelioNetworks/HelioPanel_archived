@@ -17,7 +17,11 @@
                     <img border=0 src="/images/files/upload.png" class="file-edit-link">
                 </a>
             </td>
-            <td valign=middle><form method=get action=#><font size=1><br></font><input type=text name=path value="{{ path }}"><input type=submit></form></td>
+            <td valign=middle>
+                {% for breadcrumb in breadcrumbs %}
+                    / <a href="{{ url('directory_list', { 'path':breadcrumb.source }) }}">{{ breadcrumb.name }}</a>
+                {% endfor %}
+            </td>
         </tr></table>
 
         <table width="100%">
@@ -44,9 +48,14 @@
                          {% if file.is_file %}
                               <div class="edit-file" >
                                  <div class="edit-file-choices" style="display:none;">
+                                     <strong>Please choose an editor below:</strong>
+                                     <ul>
                                      {% for key, editor in editors %}
-                                         <a href="{{ url('file_edit', { 'path':file.source, 'editor':key }) }}">{{ editor.name }}</a>
+                                         <li>
+                                             <a href="{{ url('file_edit', { 'path':file.source, 'editor':key }) }}">{{ editor.name }}</a>
+                                         </li>
                                      {% endfor %}
+                                     </ul>
                                  </div>
                                  <font face="Verdana" color="black"><a href="#">{{ file.name }}</a></font>
                              </div>
@@ -77,6 +86,8 @@
                          </a>
                      </td>
          </tr>
+    {% else %}
+        <tr><td colspan=6><center>This directory appears to be empty.</center></td></tr>
 
     {% endfor %}
 
