@@ -100,7 +100,7 @@ class AccountController extends HelioPanelAbstractController
      * @Method({"POST"})
      * @Template()
      */
-    public function setActiveAction()
+    public function setActiveAction($_route)
     {
         $accountRequest = new SetActiveAccountRequest();
         $form = $this->createForm(new SetActiveAccountRequestType(), $accountRequest, array(
@@ -109,7 +109,7 @@ class AccountController extends HelioPanelAbstractController
         ));
 
         $request = $this->getRequest();
-        if ($request->getMethod() == 'POST') {
+        if ($request->getMethod() == 'POST' && $_route == 'account_set_active') {
             $form->bindRequest($request);
             if ($form->isValid()) {
                 $this->setActiveAccount($accountRequest->getActiveAccount());

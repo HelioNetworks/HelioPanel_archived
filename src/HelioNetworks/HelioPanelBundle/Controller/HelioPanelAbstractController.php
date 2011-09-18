@@ -31,6 +31,8 @@ abstract class HelioPanelAbstractController extends Controller
 
     protected function installHook(Account $account)
     {
+    	$this->get('logger')->debug(sprintf('Installing hook on account with ID %s.', $account->getId()));
+
         $auth = mt_rand();
         $hookfile = $this->get('heliopanel.hook_manager')->getCode($auth);
 
@@ -60,6 +62,8 @@ abstract class HelioPanelAbstractController extends Controller
      */
     protected function getActiveAccount()
     {
+    	$this->get('logger')->debug('Fetching active account...');
+
         if ($id = $this->get('session')->get('active_account_id')) {
 
             $account = $this->getDoctrine()
@@ -79,6 +83,8 @@ abstract class HelioPanelAbstractController extends Controller
 
         $this->setActiveAccount($account);
 
+        $this->get('logger')->debug(sprintf('Got account with id %s.', $account->getId()));
+
         return $account;
     }
 
@@ -89,6 +95,7 @@ abstract class HelioPanelAbstractController extends Controller
             throw new \UnexpectedValueException('Account is not owned by current user.');
         }
 
+        $this->get('logger')->debug(sprintf('Setting active account with id %s.', $account->getId()));
 
         $request = new Request($account->getHook()->getUrl());
         $request->setMethod('GET');
