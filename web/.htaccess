@@ -1,9 +1,9 @@
+<IfModule mod_access.c>
+    Allow from all
+</IfModule>
 <IfModule mod_rewrite.c>
     Options +FollowSymlinks
     RewriteEngine On
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^(.*)$ app.php [QSA,L]
 </IfModule>
-
-Order Allow, Deny
-Allow from all
