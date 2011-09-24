@@ -2,6 +2,8 @@
 ; by enclosing the key with % (like %database_user%)
 ; Comments start with ';', as in php.ini
 [parameters]
+
+; Fill in the details to connect to the database below
     database_driver   = pdo_mysql
     database_host     = localhost
     database_port     =
@@ -9,6 +11,7 @@
     database_user     = root
     database_password =
 
+; Fill in the mail server details
     mailer_transport  = smtp
     mailer_host       = localhost
     mailer_user       =
@@ -17,3 +20,7 @@
     locale            = en
 
     secret            = ThisTokenIsNotSoSecretChangeIt
+    
+; Details to connect to the HelioHost API
+    api_key = 
+    api_url = 

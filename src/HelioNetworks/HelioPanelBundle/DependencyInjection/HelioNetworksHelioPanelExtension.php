@@ -22,6 +22,9 @@ class HelioNetworksHelioPanelExtension extends Extension
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
 
+        $container->setParameter('heliohost.api.key', $config['api']['key']);
+        $container->setParameter('heliohost.api.url', $config['api']['url']);
+
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');
     }

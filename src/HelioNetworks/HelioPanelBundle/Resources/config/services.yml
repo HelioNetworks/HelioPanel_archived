@@ -19,3 +19,6 @@ services:
       class: HelioNetworks\HelioPanelBundle\Dashboard\HelpIcon
       tags:
         - { name: heliopanel.dashboard.icon }
+    heliohost.api:
+      class: HelioNetworks\HelioPanelBundle\HelioHost\API
+      arguments: [%heliohost.api.url%, %heliohost.api.key%]

@@ -34,6 +34,8 @@ abstract class HelioPanelAbstractController extends Controller
 
     protected function installHook(Account $account)
     {
+    	$this->get('logger')->debug(print_r($this->get('heliohost.api'), true));
+
         if ($hook = $account->getHook()) {
             $hook->delete();
         }

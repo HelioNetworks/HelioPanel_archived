@@ -20,9 +20,26 @@ class Configuration implements ConfigurationInterface
         $treeBuilder = new TreeBuilder();
         $rootNode = $treeBuilder->root('helio_networks_helio_panel');
 
-        // Here you should define the parameters that are allowed to
-        // configure your bundle. See the documentation linked above for
-        // more information on that topic.
+        $rootNode
+        	->children()
+        		->arrayNode('api')
+        			->cannotBeOverwritten()
+        			->isRequired()
+        			->cannotBeEmpty()
+        			->children()
+        				->scalarNode('url')
+        					->cannotBeOverwritten()
+		        			->isRequired()
+		        			->cannotBeEmpty()
+		        			->end()
+	        			->scalarNode('key')
+	        				->cannotBeOverwritten()
+	        				->isRequired()
+	        				->cannotBeEmpty()
+        					->end()
+        				->end()
+        			->end()
+        		->end();
 
         return $treeBuilder;
     }
