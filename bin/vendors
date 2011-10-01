@@ -35,6 +35,8 @@ if (!in_array($command = array_shift($argv), array('install', 'update'))) {
 if (!file_exists($rootDir.'/app/config/parameters.ini')) {
     copy($rootDir.'/app/config/parameters.ini.dist', $rootDir.'/app/config/parameters.ini');
     echo "NOTICE: Please edit app/config/parameters.ini to match your environment.\n";
+    echo "[Press enter to continue]\n";
+    fgets(STDIN);
 }
 
 /*
