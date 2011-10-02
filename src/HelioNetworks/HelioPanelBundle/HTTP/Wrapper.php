@@ -29,8 +29,8 @@ class Wrapper
 		$ctx = stream_context_create($params);
 		$contents = @file_get_contents($request->getUrl(), false, $ctx);
 
-		$this->logger->debug(sprintf('Got response with contents: %s', $contents));
-
+      		$this->logger->debug(sprintf('Got response from %s with contents: %s', $request->getUrl(), $contents));
+      
 		return new Response($contents);
 	}
 }
