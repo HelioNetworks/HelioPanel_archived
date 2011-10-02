@@ -1,0 +1,14 @@
+{% extends '::heliopanel.html.twig' %}
+
+
+{% block container %}
+<div>
+	<h1>Page not found</h1>
+	<strong>The page you requested doesn't exist.</strong>
+	We recommend going to
+	<a href="{{ url('heliopanel_index') }}">
+		the home page
+	</a>
+	to get back on track.
+</div>
+{% endblock %}

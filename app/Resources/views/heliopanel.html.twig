@@ -39,174 +39,166 @@
 {% block body %}
     <div align="center">
 
-    <table width="100%" cellspacing=0 cellpadding=5 style="border-radius:10px;" bgcolor="#FFFFFF">
-    <tr>
+	    <table width="100%" cellspacing=0 cellpadding=5 style="border-radius:10px;" bgcolor="#FFFFFF">
+		    <tr>
 
-    <td background="/images/headerbg.png"></td>
-    <td style="background-image:url('/images/header-shadow-l.png'); background-repeat:no-repeat; background-color:#DAAE36;" width=5></td>
+			    <td background="/images/headerbg.png"></td>
+			    <td style="background-image:url('/images/header-shadow-l.png'); background-repeat:no-repeat; background-color:#DAAE36;" width=5></td>
 
-    <td onclick="window.location='{{ url('heliopanel_index') }}'" width=714 height=88 style="background-image:url('/images/toplogo.png'); background-repeat:no-repeat; cursor:pointer; background-color:#DAAE36;">
-        <p align="right"><font face="Verdana" color="#FFFFFF" size="5"><b>HelioPanel</b><br>
-        </font></td>
+			    <td onclick="window.location='{{ url('heliopanel_index') }}'" width=714 height=88 style="background-image:url('/images/toplogo.png'); background-repeat:no-repeat; cursor:pointer; background-color:#DAAE36;">
+			        <p align="right"><font face="Verdana" color="#FFFFFF" size="5"><b>HelioPanel</b><br>
+			        </font></td>
 
-    <td style="background-image:url('/images/header-shadow-r.png'); background-repeat:no-repeat; background-color:#DAAE36;" width=5></td>
-    <td background="/images/headerbg.png"></td>
+			    <td style="background-image:url('/images/header-shadow-r.png'); background-repeat:no-repeat; background-color:#DAAE36;" width=5></td>
+			    <td background="/images/headerbg.png"></td>
 
-    </tr>
-    <tr>
-    <td height=5 bgcolor="#DAAE36"></td>
-    <td height=5 bgcolor="#DAAE36"></td>
-    <td width=714 height=28 bgcolor="#DAAE36" style="padding:2px;">
-    {# TODO: Move this into a stylesheet #}
-    <ul id="menu" style="margin-top:0px;">
-        <li><a href="#" class="drop">HelioHost</a>
-            <div class="dropdown_4columns">
-                <div class="col_1">
-                    <h3>Languages</h3>
-                    <ul>
-                        <li><a href="http://www.heliohost.org/home/features/languages/php">PHP</a></li>
-                        <li><a href="http://www.heliohost.org/home/features/languages/aspnet">ASP.NET</a></li>
-                        <li><a href="http://www.heliohost.org/home/features/languages/ruby">Ruby On Rails</a></li>
-                        <li><a href="http://www.heliohost.org/home/features/languages/python">Python & Django</a></li>
-                        <li><a href="http://www.heliohost.org/home/features/languages/jsp">Java/JSP</a></li>
-                        <li><a href="http://www.heliohost.org/home/features/languages/perl">Perl</a></li>
-                        <li><a href="http://www.heliohost.org/home/features/languages/ssi">SSI</a></li>
-                    </ul>
-                </div>
-                <div class="col_1">
-                    <h3>Features</h3>
-                    <ul>
-                        <li><a href="http://www.heliohost.org/home/features/webspace">Space and Bandwidth</a></li>
-                        <li><a href="http://www.heliohost.org/home/features/domains">URL and domains</a></li>
-                        <li><a href="http://www.heliohost.org/home/features/email">Email</a></li>
-                        <li><a href="http://www.heliohost.org/home/features/system">System and Software</a></li>
-                    </ul>
-                    <h3>Database Engines</h3>
-                    <ul>
-                        <li><a href="http://www.heliohost.org/home/features/databases/mysql">MySQL</a></li>
-                        <li><a href="http://www.heliohost.org/home/features/databases/postgresql">PostgreSQL</a></li>
-                        <li><a href="http://www.heliohost.org/home/features/databases/sqlite">SQLite</a></li>
-                    </ul>
-                </div>
-                <div class="col_1">
-                    <h3>Signup</h3>
-                    <ul>
-                        <li><a href="http://www.heliohost.org/home/signup/stevie">Stevie</a></li>
-                        <li><a href="http://www.heliohost.org/home/signup/johnny">Johnny</a></li>
-                        <li><a href="http://heliohost.uni.cc/sign-up.php">When to sign up</a></li>
-                        <li><a href="http://www.heliohost.org/home/signup">Server Selection</a></li>
-                    </ul>
-                </div>
-                <div class="col_1">
-                    <h3>Support</h3>
-                    <ul>
-                        <li><a href="http://www.helionet.org/index/index.php?showforum=48">Questions</a></li>
-                        <li><a href="http://www.helionet.org/index/index.php?showforum=45">Customer Service</a></li>
-                        <li><a href="http://www.facebook.com/pages/HelioHost/133105633434140">Facebook</a></li>
-                        <li><a href="http:/www.twitter.com/HelioHost">Twitter</a></li>
-                    </ul>
-                    <h3>Misc</h3>
-                    <ul>
-                        <li><a href="http://www.heliohost.org/home/about">About</a></li>
-                        <li><a href="http://bit.ly/oTPoPv">Donate</a></li>
-                        <li><a href="http://www.heliohost.org/h-terms.html">Terms of service</a></li>
-                        <li><a href="http://www.helionet.org/index/index.php?act=SR&f=45">Support FAQ</a></li>
-                    </ul>
-                </div>
-            </div>
-        </li>
-        <li><a href="#" class="drop">HelioNet</a>
-            <div class="dropdown_3columns">
-                <div class="col_1">
-                    <h3>General Discussion</h3>
-                    <ul>
-                        <li><a href="http://www.helionet.org/index/index.php?showforum=13">Website Management and Coding</a></li>
-                        <li><a href="http://www.helionet.org/index/index.php?showforum=8">Technology and the Internet</a></li>
-                        <li><a href="http://www.helionet.org/index/index.php?showforum=71">Philosophy, Politics, and Science</a></li>
-                        <li><a href="http://www.helionet.org/index/index.php?showforum=29">Art and Entertainment</a></li>
-                        <li><a href="http://www.helionet.org/index/index.php?showforum=5">Other Discussion</a></li>
-                    </ul>
-                </div>
-                <div class="col_1">
-                    <h3>HelioHost</h3>
-                    <ul>
-                        <li><a href="http://www.helionet.org/index/index.php?showforum=48">Questions</a></li>
-                        <li><a href="http://www.helionet.org/index/index.php?showforum=45">Customer Service</a></li>
-                        <li><a href="http://www.helionet.org/index/index.php?showforum=46">Customer Feedback</a></li>
-                    </ul>
-                </div>
-                <div class="col_1">
-                    <h3>HelioNet</h3>
-                    <ul>
-                        <li><a href="http://www.helionet.org/index/index.php?showforum=1">News</a></li>
-                        <li><a href="http://www.helionet.org/index/index.php?showforum=4">Contact HelioNet</a></li>
-                    </ul>
-                </div>
-            </div>
-        </li>
-    </ul>
+		    </tr>
+		    <tr>
+			    <td height=5 bgcolor="#DAAE36"></td>
+			    <td height=5 bgcolor="#DAAE36"></td>
+			    <td width=714 height=28 bgcolor="#DAAE36" style="padding:2px;">
+			    {# TODO: Move this into a stylesheet #}
+			    <ul id="menu" style="margin-top:0px;">
+			        <li><a href="#" class="drop">HelioHost</a>
+			            <div class="dropdown_4columns">
+			                <div class="col_1">
+			                    <h3>Languages</h3>
+			                    <ul>
+			                        <li><a href="http://www.heliohost.org/home/features/languages/php">PHP</a></li>
+			                        <li><a href="http://www.heliohost.org/home/features/languages/aspnet">ASP.NET</a></li>
+			                        <li><a href="http://www.heliohost.org/home/features/languages/ruby">Ruby On Rails</a></li>
+			                        <li><a href="http://www.heliohost.org/home/features/languages/python">Python & Django</a></li>
+			                        <li><a href="http://www.heliohost.org/home/features/languages/jsp">Java/JSP</a></li>
+			                        <li><a href="http://www.heliohost.org/home/features/languages/perl">Perl</a></li>
+			                        <li><a href="http://www.heliohost.org/home/features/languages/ssi">SSI</a></li>
+			                    </ul>
+			                </div>
+			                <div class="col_1">
+			                    <h3>Features</h3>
+			                    <ul>
+			                        <li><a href="http://www.heliohost.org/home/features/webspace">Space and Bandwidth</a></li>
+			                        <li><a href="http://www.heliohost.org/home/features/domains">URL and domains</a></li>
+			                        <li><a href="http://www.heliohost.org/home/features/email">Email</a></li>
+			                        <li><a href="http://www.heliohost.org/home/features/system">System and Software</a></li>
+			                    </ul>
+			                    <h3>Database Engines</h3>
+			                    <ul>
+			                        <li><a href="http://www.heliohost.org/home/features/databases/mysql">MySQL</a></li>
+			                        <li><a href="http://www.heliohost.org/home/features/databases/postgresql">PostgreSQL</a></li>
+			                        <li><a href="http://www.heliohost.org/home/features/databases/sqlite">SQLite</a></li>
+			                    </ul>
+			                </div>
+			                <div class="col_1">
+			                    <h3>Signup</h3>
+			                    <ul>
+			                        <li><a href="http://www.heliohost.org/home/signup/stevie">Stevie</a></li>
+			                        <li><a href="http://www.heliohost.org/home/signup/johnny">Johnny</a></li>
+			                        <li><a href="http://heliohost.uni.cc/sign-up.php">When to sign up</a></li>
+			                        <li><a href="http://www.heliohost.org/home/signup">Server Selection</a></li>
+			                    </ul>
+			                </div>
+			                <div class="col_1">
+			                    <h3>Support</h3>
+			                    <ul>
+			                        <li><a href="http://www.helionet.org/index/index.php?showforum=48">Questions</a></li>
+			                        <li><a href="http://www.helionet.org/index/index.php?showforum=45">Customer Service</a></li>
+			                        <li><a href="http://www.facebook.com/pages/HelioHost/133105633434140">Facebook</a></li>
+			                        <li><a href="http:/www.twitter.com/HelioHost">Twitter</a></li>
+			                    </ul>
+			                    <h3>Misc</h3>
+			                    <ul>
+			                        <li><a href="http://www.heliohost.org/home/about">About</a></li>
+			                        <li><a href="http://bit.ly/oTPoPv">Donate</a></li>
+			                        <li><a href="http://www.heliohost.org/h-terms.html">Terms of service</a></li>
+			                        <li><a href="http://www.helionet.org/index/index.php?act=SR&f=45">Support FAQ</a></li>
+			                    </ul>
+			                </div>
+			            </div>
+			        </li>
+			        <li><a href="#" class="drop">HelioNet</a>
+			            <div class="dropdown_3columns">
+			                <div class="col_1">
+			                    <h3>General Discussion</h3>
+			                    <ul>
+			                        <li><a href="http://www.helionet.org/index/index.php?showforum=13">Website Management and Coding</a></li>
+			                        <li><a href="http://www.helionet.org/index/index.php?showforum=8">Technology and the Internet</a></li>
+			                        <li><a href="http://www.helionet.org/index/index.php?showforum=71">Philosophy, Politics, and Science</a></li>
+			                        <li><a href="http://www.helionet.org/index/index.php?showforum=29">Art and Entertainment</a></li>
+			                        <li><a href="http://www.helionet.org/index/index.php?showforum=5">Other Discussion</a></li>
+			                    </ul>
+			                </div>
+			                <div class="col_1">
+			                    <h3>HelioHost</h3>
+			                    <ul>
+			                        <li><a href="http://www.helionet.org/index/index.php?showforum=48">Questions</a></li>
+			                        <li><a href="http://www.helionet.org/index/index.php?showforum=45">Customer Service</a></li>
+			                        <li><a href="http://www.helionet.org/index/index.php?showforum=46">Customer Feedback</a></li>
+			                    </ul>
+			                </div>
+			                <div class="col_1">
+			                    <h3>HelioNet</h3>
+			                    <ul>
+			                        <li><a href="http://www.helionet.org/index/index.php?showforum=1">News</a></li>
+			                        <li><a href="http://www.helionet.org/index/index.php?showforum=4">Contact HelioNet</a></li>
+			                    </ul>
+			                </div>
+			            </div>
+			        </li>
+			    </ul>
 
-    </td>
-    <td height=5 bgcolor="#DAAE36"></td>
-    <td height=5 bgcolor="#DAAE36"></td>
-    </tr>
-
-    <tr>
-    <td bgcolor="#F5F1E5"></td>
-    <td bgcolor="#DAAE36" background="/images/body-shadow-l.png"></td>
-    <td bgcolor="#F5F1E5" width=714>
-
-    {% if app.session.flash('success') %}
-        <div class="flash-message success">
-            <p>{{ app.session.flash('success') }}</p>
-        </div>
-    {% endif %}
-    {% if app.session.flash('error') %}
-        <div class="flash-message error">
-            <p>{{ app.session.flash('error') }}</p>
-        </div>
-    {% endif %}
-    {{ app.session.clearFlashes }}
-
-    <a href="https://github.com/HelioNetworks/HelioPanel/issues/new">Report a bug! Request a feature! Make HelioPanel better!</a>
-    <br />
-    {% if app.user %}
-        {% render 'HelioNetworksHelioPanelBundle:Account:setActive' %}
-            <a href="{{ url('account_add') }}">Or add an account.</a>
-
-    {% endif %}
-
-    {% block content %}
-    {% endblock %}
-
-    </td>
-    <td bgcolor="#DAAE36" background="/images/body-shadow-r.png"></td>
-    <td bgcolor="#F5F1E5"></td>
-    </tr>
-
-    <tr>
-    <td bgcolor="#F5F1E5" background="/images/footer-bg.png"></td>
-    <td bgcolor="#DAAE36" background="/images/footer-shadow-l.png"></td>
-    <td bgcolor="#F5F1E5" background="/images/footer-bg.png" height="87" style="padding-bottom: 0;">
-    <p align="center" style="margin-bottom:0;">
-    <span class="Apple-style-span" style="border-collapse: separate; color: rgb(0, 0, 0); font-family: 'Times New Roman'; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: 2; text-align: -webkit-auto; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-border-horizontal-spacing: 0px; -webkit-border-vertical-spacing: 0px; -webkit-text-decorations-in-effect: none; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px; font-size: medium; ">
-    <span class="Apple-style-span" style="color: rgb(51, 51, 51); font-family: Arial, Helvetica, sans-serif; font-size: 12px; line-height: 16px; text-align: center; ">
-    &copy; Copyright Helio Networks 2011. All trademarks and copyrights are property of
-    their respective owners.<br>
-    </span></span>
-    <span class="Apple-style-span" style="border-collapse: separate; color: rgb(0, 0, 0); font-family: 'Times New Roman'; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: 2; text-align: -webkit-auto; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-border-horizontal-spacing: 0px; -webkit-border-vertical-spacing: 0px; -webkit-text-decorations-in-effect: none; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px; font-size: medium; ">
-    <span class="Apple-style-span" style="color: rgb(51, 51, 51); font-family: Arial, Helvetica, sans-serif; font-size: 12px; line-height: 16px; text-align: center; ">
-    HelioPanel 0.6</span></span>
-    <span class="Apple-style-span" style="border-collapse: separate; color: rgb(0, 0, 0); font-family: 'Times New Roman'; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: 2; text-align: -webkit-auto; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-border-horizontal-spacing: 0px; -webkit-border-vertical-spacing: 0px; -webkit-text-decorations-in-effect: none; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px; font-size: medium; ">
-    <span class="Apple-style-span" style="color: rgb(51, 51, 51); font-family: Arial, Helvetica, sans-serif; font-size: 12px; line-height: 16px; text-align: center; ">
-    <br /><a href="http://heliopanel.heliohost.org/">The HelioPanel Project</a></span></span>
-    </p>
-    </td>
-    <td bgcolor="#DAAE36" background="/images/footer-shadow-r.png"></td>
-    <td bgcolor="#F5F1E5" background="/images/footer-bg.png"></td>
-    </tr>
-
-    </table>
-
+			    </td>
+			    <td height=5 bgcolor="#DAAE36"></td>
+			    <td height=5 bgcolor="#DAAE36"></td>
+		    </tr>
+		    <tr>
+			    <td bgcolor="#F5F1E5"></td>
+			    <td bgcolor="#DAAE36" background="/images/body-shadow-l.png"></td>
+			    <td bgcolor="#F5F1E5" width=714>
+        		    {% block container %}
+					    {% if app.session.flash('success') %}
+					        <div class="flash-message success">
+					            <p>{{ app.session.flash('success') }}</p>
+					        </div>
+					    {% endif %}
+					    {% if app.session.flash('error') %}
+					        <div class="flash-message error">
+					            <p>{{ app.session.flash('error') }}</p>
+					        </div>
+					    {% endif %}
+					    {{ app.session.clearFlashes }}
+					    <a href="https://github.com/HelioNetworks/HelioPanel/issues/new">Report a bug! Request a feature! Make HelioPanel better!</a>
+					    <br />
+					    {% if app.user %}
+					        {% render 'HelioNetworksHelioPanelBundle:Account:setActive' %}
+					            <a href="{{ url('account_add') }}">Or add an account.</a>
+					    {% endif %}
+					    {% block content %}{% endblock %}
+        		    {% endblock %}
+			    </td>
+		    	<td bgcolor="#DAAE36" background="/images/body-shadow-r.png"></td>
+			    <td bgcolor="#F5F1E5"></td>
+		    </tr>
+		    <tr>
+			    <td bgcolor="#F5F1E5" background="/images/footer-bg.png"></td>
+			    <td bgcolor="#DAAE36" background="/images/footer-shadow-l.png"></td>
+			    <td bgcolor="#F5F1E5" background="/images/footer-bg.png" height="87" style="padding-bottom: 0;">
+			    <p align="center" style="margin-bottom:0;">
+			    <span class="Apple-style-span" style="border-collapse: separate; color: rgb(0, 0, 0); font-family: 'Times New Roman'; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: 2; text-align: -webkit-auto; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-border-horizontal-spacing: 0px; -webkit-border-vertical-spacing: 0px; -webkit-text-decorations-in-effect: none; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px; font-size: medium; ">
+			    <span class="Apple-style-span" style="color: rgb(51, 51, 51); font-family: Arial, Helvetica, sans-serif; font-size: 12px; line-height: 16px; text-align: center; ">
+			    &copy; Copyright Helio Networks 2011. All trademarks and copyrights are property of
+			    their respective owners.<br>
+			    </span></span>
+			    <span class="Apple-style-span" style="border-collapse: separate; color: rgb(0, 0, 0); font-family: 'Times New Roman'; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: 2; text-align: -webkit-auto; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-border-horizontal-spacing: 0px; -webkit-border-vertical-spacing: 0px; -webkit-text-decorations-in-effect: none; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px; font-size: medium; ">
+			    <span class="Apple-style-span" style="color: rgb(51, 51, 51); font-family: Arial, Helvetica, sans-serif; font-size: 12px; line-height: 16px; text-align: center; ">
+			    HelioPanel 0.6</span></span>
+			    <span class="Apple-style-span" style="border-collapse: separate; color: rgb(0, 0, 0); font-family: 'Times New Roman'; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: 2; text-align: -webkit-auto; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-border-horizontal-spacing: 0px; -webkit-border-vertical-spacing: 0px; -webkit-text-decorations-in-effect: none; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px; font-size: medium; ">
+			    <span class="Apple-style-span" style="color: rgb(51, 51, 51); font-family: Arial, Helvetica, sans-serif; font-size: 12px; line-height: 16px; text-align: center; ">
+			    <br /><a href="http://heliopanel.heliohost.org/">The HelioPanel Project</a></span></span>
+			    </p>
+			    </td>
+			    <td bgcolor="#DAAE36" background="/images/footer-shadow-r.png"></td>
+			    <td bgcolor="#F5F1E5" background="/images/footer-bg.png"></td>
+		    </tr>
+	    </table>
     </div>
 {% endblock %}

@@ -37,4 +37,12 @@ class DefaultController extends HelioPanelAbstractController
     {
         return new RedirectResponse('http://heliopanel.heliohost.org/support.php');
     }
+
+    /**
+     * @Route("/exception")
+     */
+    public function exceptionAction()
+    {
+    	throw new \LogicException();
+    }
 }
