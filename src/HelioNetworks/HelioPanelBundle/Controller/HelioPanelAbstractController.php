@@ -2,6 +2,7 @@
 
 namespace HelioNetworks\HelioPanelBundle\Controller;
 
+use HelioNetworks\HelioPanelBundle\Exception\NoAccountsException;
 use HelioNetworks\HelioPanelBundle\HTTP\Request;
 use HelioNetworks\HelioPanelBundle\Entity\Hook;
 use HelioNetworks\HelioPanelBundle\Entity\User;
@@ -105,6 +106,10 @@ abstract class HelioPanelAbstractController extends Controller
         $account = $this->getUser()
             ->getAccounts()
             ->first();
+
+        if (!$account) {
+        	 throw new NoAccountsException();
+        }
 
         $this->setActiveAccount($account);
 

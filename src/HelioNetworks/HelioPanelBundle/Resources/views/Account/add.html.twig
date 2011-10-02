@@ -1,6 +1,6 @@
 {% extends '::heliopanel.html.twig' %}
 
-{% block content %}
+{% block container %}
     <form action="{{ path('account_add') }}" method="post" {{ form_enctype(form) }}>
         {{ form_widget(form) }}
 

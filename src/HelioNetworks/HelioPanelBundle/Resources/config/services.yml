@@ -26,3 +26,8 @@ services:
       class: HelioNetworks\HelioPanelBundle\HTTP\Wrapper
       calls:
         - [ setLogger, [ @logger ] ]
+    kernel.listener.no_accounts:
+      class: HelioNetworks\HelioPanelBundle\EventListener\NoAccountsListener
+      arguments: [ @router ]
+      tags:
+         - { name: kernel.event_listener, event: kernel.exception , method: onKernelException }
