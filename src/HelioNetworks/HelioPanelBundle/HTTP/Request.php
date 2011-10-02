@@ -15,7 +15,12 @@ class Request
 
     public function setData(array $data)
     {
-        $this->data = $data;
+        $this->data = http_build_query($data);
+    }
+
+    public function setRawData($data)
+    {
+    	$this->data = $data;
     }
 
     public function setMethod($method)
@@ -23,14 +28,31 @@ class Request
         $this->method = $method;
     }
 
+    public function getRawData()
+    {
+    	return $this->data;
+    }
+
+    public function getMethod()
+    {
+    	return $this->method;
+    }
+
+    public function getUrl()
+    {
+    	return $this->url;
+    }
+
    /**
     * Send the request.
+    *
+    * @deprecated Please use the wrapper instead
     */
     public function send()
     {
         $params = array('http' => array(
                   'method' => $this->method,
-                  'content' => http_build_query($this->data),
+                  'content' => $this->data,
                   'timeout' => '5',
         ));
 

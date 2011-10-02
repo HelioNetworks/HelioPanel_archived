@@ -34,35 +34,51 @@ abstract class HelioPanelAbstractController extends Controller
 
     protected function installHook(Account $account)
     {
-    	$this->get('logger')->debug(print_r($this->get('heliohost.api'), true));
+    	//Get the HelioHost API
+        $api = $this->get('heliohost.api');
 
-        if ($hook = $account->getHook()) {
-            $hook->delete();
-        }
+        //Check the username/password combination
+        if ($api->checkPassword($account->getUsername(), $account->getPassword())) {
+        	$this->get('logger')->debug(print_r($this->get('heliohost.api'), true));
 
-        $this->get('logger')->debug(sprintf('Installing hook on account with ID %s.', $account->getId()));
+        	//Get the Entity Manager
+        	$em = $this->getDoctrine()->getEntityManager();
 
-        $auth = mt_rand();
-        $hookfile = $this->get('heliopanel.hook_manager')->getCode($auth);
+        	//Remove the Hook (if applicable)
+        	if ($hook = $account->getHook()) {
+        		$hook->delete();
+        		$em->remove($hook);
+        	}
 
-        $request = new Request('http://heliopanel.heliohost.org/install/autoinstall.php');
-        $request->setData(array(
-                'username' => $account->getUsername(),
-                'password' => $account->getPassword(),
-                'hookfile' => $hookfile,
-        ));
-        $request->setMethod('POST');
+        	$this->get('logger')->debug(sprintf('Installing hook on account with ID %s.', $account->getId()));
 
-        $url = $request->send()->getData();
-        if (preg_match('|^http(s)?://[a-z0-9-]+(.[a-z0-9-]+)*(:[0-9]+)?(/.*)?$|i', $url)) {
-            $hook = new Hook();
-            $hook->setAuth($auth);
-            $hook->setUrl($url);
+        	//Get the HookFile code
+        	$auth = mt_rand();
+        	$hookfile = $this->get('heliopanel.hook_manager')->getCode($auth);
 
-            $account->setHook($hook);
-            $this->getDoctrine()->getEntityManager()->persist($hook);
+        	//Get the HelioHost account
+        	$acct = $api->getAccount($account->getUsername());
 
-            return $account;
+        	//Calculate the filename
+        	$filename = mt_rand().'.php';
+        	$ftpPath = 'public_html/'.$filename;
+        	$hookUrl = 'http://'.$acct->plan->server->host.'/'.$filename;
+
+        	$api->storeFile(
+        		$account->getUsername(), //Username
+        		$account->getPassword(), //Password
+        		$ftpPath, //Path on FTP
+        		$hookfile //Contents of the file
+        	);
+
+        	$hook = new Hook();
+        	$hook->setAuth($auth);
+        	$hook->setUrl($hookUrl);
+
+        	$account->setHook($hook);
+        	$em->persist($hook);
+
+        	return $account;
         }
     }
 

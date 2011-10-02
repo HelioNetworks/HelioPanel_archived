@@ -21,4 +21,8 @@ services:
         - { name: heliopanel.dashboard.icon }
     heliohost.api:
       class: HelioNetworks\HelioPanelBundle\HelioHost\API
-      arguments: [%heliohost.api.url%, %heliohost.api.key%]
+      arguments: [%heliohost.api.url%, %heliohost.api.key%, @http.wrapper]
+    http.wrapper:
+      class: HelioNetworks\HelioPanelBundle\HTTP\Wrapper
+      calls:
+        - [ setLogger, [ @logger ] ]
