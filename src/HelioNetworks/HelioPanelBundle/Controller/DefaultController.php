@@ -35,7 +35,7 @@ class DefaultController extends HelioPanelAbstractController
      */
     public function helpAction()
     {
-        return new RedirectResponse('http://heliopanel.heliohost.org/support.php');
+        return new RedirectResponse('http://heliohost.org/heliopanel/support.php');
     }
 
     /**
