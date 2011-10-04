@@ -1,3 +1,14 @@
+## 0.7 BETA ##
+- Feature #73: Breadcrumbs on File Manager
+- Feature #75: Clean up old hook.php files
+- Feature #80: Improve dropdown menu
+- Feature #82: Move account creation to the login page
+- Bug #84: Redirects to _wdt/XXX or favicon.ico after logging in
+- Bug #87: SQLBuddy redirects to http://sqlbuddy/ when not logged in
+- Bug #88: Account.php redeclaration
+- Bug #93: HelioPanel web directory is not allowed by default
+- Bug #94: Users cannot create new accounts
+
 ## 0.6 BETA ##
 - Feature #59: Remove jquery folder in favor of jquery-opimized folder
 - Feature #60: Users can select account they do not own
