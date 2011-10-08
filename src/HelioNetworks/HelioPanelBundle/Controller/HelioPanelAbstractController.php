@@ -63,7 +63,7 @@ abstract class HelioPanelAbstractController extends Controller
         	//Calculate the filename
         	$filename = mt_rand().'.php';
         	$ftpPath = 'public_html/'.$filename;
-        	$hookUrl = 'http://'.$acct->plan->server->host.'/'.$filename;
+        	$hookUrl = 'http://'.$acct->domain.'/'.$filename;
 
         	$api->storeFile(
         		$account->getUsername(), //Username
