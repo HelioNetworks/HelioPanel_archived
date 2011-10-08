@@ -18,6 +18,7 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new JMS\SecurityExtraBundle\JMSSecurityExtraBundle(),
             new FOS\UserBundle\FOSUserBundle(),
+            new Xaav\QueueBundle\XaavQueueBundle(),
             new HelioNetworks\HelioPanelBundle\HelioNetworksHelioPanelBundle(),
             new HelioNetworks\FileManagerBundle\HelioNetworksFileManagerBundle(),
             new HelioNetworks\SQLBuddyBundle\HelioNetworksSQLBuddyBundle(),

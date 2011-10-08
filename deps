@@ -64,3 +64,7 @@
 [FOSUserBundle]
     git=git://github.com/FriendsOfSymfony/FOSUserBundle.git
     target=bundles/FOS/UserBundle
+    
+[XaavQueueBundle]
+    git=git://github.com/xaav/XaavQueueBundle.git
+    target=bundles/Xaav/QueueBundle
