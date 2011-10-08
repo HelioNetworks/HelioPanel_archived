@@ -177,7 +177,7 @@
                         <br />
                         {% if app.user %}
                             {% render 'HelioNetworksHelioPanelBundle:Account:setActive' %}
-                                <a href="{{ url('account_add') }}">Or add an account.</a>
+                                <a href="{{ url('account') }}">Manage Accounts.</a>
                         {% endif %}
                         {% block content %}{% endblock %}
                     {% endblock %}

@@ -2,6 +2,7 @@
 
 namespace HelioNetworks\HelioPanelBundle\Controller;
 
+use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 use HelioNetworks\HelioPanelBundle\Entity\Hook;
 use HelioNetworks\HelioPanelBundle\HTTP\Request;
 use HelioNetworks\HelioPanelBundle\Entity\User;
@@ -15,8 +16,58 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Response;
 use HelioNetworks\HelioPanelBundle\Entity\Account;
 
+/**
+ * Account Controller.
+ *
+ * @Route("/account")
+ */
 class AccountController extends HelioPanelAbstractController
 {
+	/**
+	* Lists all Account entities.
+	*
+	* @Route("/", name="account")
+	* @Template()
+	*/
+	public function indexAction()
+	{
+		$em = $this->getDoctrine()->getEntityManager();
+
+		$entities = $this->getUser()->getAccounts();
+
+		return array('entities' => $entities);
+	}
+
+	/**
+	* Deletes a Account entity.
+	*
+	* @Route("/{id}/delete", name="account_delete")
+	*/
+	public function deleteAction($id)
+	{
+		$em = $this->getDoctrine()->getEntityManager();
+		$entity = $em->getRepository('HelioNetworksHelioPanelBundle:Account')->find($id);
+
+		if (!$entity) {
+			throw $this->createNotFoundException('Unable to find Account entity.');
+		}
+
+		if (!$this->getUser()->getAccounts()->contains($entity)) {
+			throw new AccessDeniedHttpException();
+		}
+
+		$em->remove($entity);
+		$em->flush();
+
+		return $this->redirect($this->generateUrl('account'));
+	}
+
+	/**
+	 * Creates an FOS User with the given username and password.
+	 *
+	 * @param string $username The username of the user
+	 * @param string $password The password of the user
+	 */
     protected function createUser($username, $password)
     {
         $user = new User();
@@ -34,7 +85,7 @@ class AccountController extends HelioPanelAbstractController
     /**
      * Create a new user based from a cPanel account.
      *
-     * @Route("/account/createUser", name="account_create_user")
+     * @Route("/createUser", name="account_create_user")
      * @Method({"POST"})
      * @Template()
      */
@@ -73,7 +124,7 @@ class AccountController extends HelioPanelAbstractController
     /**
      * Adds an account to the logged in user.
      *
-     * @Route("/account/add", name="account_add")
+     * @Route("/add", name="account_add")
      * @Template()
      */
     public function addAction()
@@ -105,7 +156,7 @@ class AccountController extends HelioPanelAbstractController
     }
 
     /**
-     * @Route("/account/setActive", name="account_set_active")
+     * @Route("/setActive", name="account_set_active")
      * @Method({"POST"})
      * @Template()
      */
