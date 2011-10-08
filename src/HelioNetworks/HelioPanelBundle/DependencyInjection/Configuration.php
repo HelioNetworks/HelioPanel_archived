@@ -21,25 +21,25 @@ class Configuration implements ConfigurationInterface
         $rootNode = $treeBuilder->root('helio_networks_helio_panel');
 
         $rootNode
-        	->children()
-        		->arrayNode('api')
-        			->cannotBeOverwritten()
-        			->isRequired()
-        			->cannotBeEmpty()
-        			->children()
-        				->scalarNode('url')
-        					->cannotBeOverwritten()
-		        			->isRequired()
-		        			->cannotBeEmpty()
-		        			->end()
-	        			->scalarNode('key')
-	        				->cannotBeOverwritten()
-	        				->isRequired()
-	        				->cannotBeEmpty()
-        					->end()
-        				->end()
-        			->end()
-        		->end();
+            ->children()
+                ->arrayNode('api')
+                    ->cannotBeOverwritten()
+                    ->isRequired()
+                    ->cannotBeEmpty()
+                    ->children()
+                        ->scalarNode('url')
+                            ->cannotBeOverwritten()
+                			->isRequired()
+                			->cannotBeEmpty()
+                			->end()
+            			->scalarNode('key')
+            				->cannotBeOverwritten()
+            				->isRequired()
+            				->cannotBeEmpty()
+                            ->end()
+                        ->end()
+                    ->end()
+                ->end();
 
         return $treeBuilder;
     }

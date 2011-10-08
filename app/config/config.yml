@@ -62,7 +62,7 @@ fos_user:
     db_driver: orm # other valid values are 'mongodb', 'couchdb'
     firewall_name: main
     user_class: HelioNetworks\HelioPanelBundle\Entity\User
-    
+
 helio_networks_helio_panel:
     api:
       key: %api_key%

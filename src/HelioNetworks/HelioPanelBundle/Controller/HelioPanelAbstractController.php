@@ -35,51 +35,51 @@ abstract class HelioPanelAbstractController extends Controller
 
     protected function installHook(Account $account)
     {
-    	//Get the HelioHost API
+        //Get the HelioHost API
         $api = $this->get('heliohost.api');
 
         //Check the username/password combination
         if ($api->checkPassword($account->getUsername(), $account->getPassword())) {
-        	$this->get('logger')->debug(print_r($this->get('heliohost.api'), true));
+            $this->get('logger')->debug(print_r($this->get('heliohost.api'), true));
 
-        	//Get the Entity Manager
-        	$em = $this->getDoctrine()->getEntityManager();
+            //Get the Entity Manager
+            $em = $this->getDoctrine()->getEntityManager();
 
-        	//Remove the Hook (if applicable)
-        	if ($hook = $account->getHook()) {
-        		$hook->delete();
-        		$em->remove($hook);
-        	}
+            //Remove the Hook (if applicable)
+            if ($hook = $account->getHook()) {
+                $hook->delete();
+                $em->remove($hook);
+            }
 
-        	$this->get('logger')->debug(sprintf('Installing hook on account with ID %s.', $account->getId()));
+            $this->get('logger')->debug(sprintf('Installing hook on account with ID %s.', $account->getId()));
 
-        	//Get the HookFile code
-        	$auth = mt_rand();
-        	$hookfile = $this->get('heliopanel.hook_manager')->getCode($auth);
+            //Get the HookFile code
+            $auth = mt_rand();
+            $hookfile = $this->get('heliopanel.hook_manager')->getCode($auth);
 
-        	//Get the HelioHost account
-        	$acct = $api->getAccount($account->getUsername());
+            //Get the HelioHost account
+            $acct = $api->getAccount($account->getUsername());
 
-        	//Calculate the filename
-        	$filename = mt_rand().'.php';
-        	$ftpPath = 'public_html/'.$filename;
-        	$hookUrl = 'http://'.$acct->domain.'/'.$filename;
+            //Calculate the filename
+            $filename = mt_rand().'.php';
+            $ftpPath = 'public_html/'.$filename;
+            $hookUrl = 'http://'.$acct->domain.'/'.$filename;
 
-        	$api->storeFile(
-        		$account->getUsername(), //Username
-        		$account->getPassword(), //Password
-        		$ftpPath, //Path on FTP
-        		$hookfile //Contents of the file
-        	);
+            $api->storeFile(
+                $account->getUsername(), //Username
+                $account->getPassword(), //Password
+                $ftpPath, //Path on FTP
+                $hookfile //Contents of the file
+            );
 
-        	$hook = new Hook();
-        	$hook->setAuth($auth);
-        	$hook->setUrl($hookUrl);
+            $hook = new Hook();
+            $hook->setAuth($auth);
+            $hook->setUrl($hookUrl);
 
-        	$account->setHook($hook);
-        	$em->persist($hook);
+            $account->setHook($hook);
+            $em->persist($hook);
 
-        	return $account;
+            return $account;
         }
     }
 
@@ -108,7 +108,7 @@ abstract class HelioPanelAbstractController extends Controller
             ->first();
 
         if (!$account) {
-        	 throw new NoAccountsException();
+             throw new NoAccountsException();
         }
 
         $this->setActiveAccount($account);

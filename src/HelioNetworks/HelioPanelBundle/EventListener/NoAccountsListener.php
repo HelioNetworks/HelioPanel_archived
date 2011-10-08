@@ -10,12 +10,12 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 
 class NoAccountsListener
 {
-	protected $router;
+    protected $router;
 
-	public function __construct(RouterInterface $router)
-	{
-		$this->router = $router;
-	}
+    public function __construct(RouterInterface $router)
+    {
+        $this->router = $router;
+    }
 
     /**
      * Handles the event when notified or filtered.
@@ -25,10 +25,10 @@ class NoAccountsListener
     public function onKernelException(GetResponseForExceptionEvent $event)
     {
         if ($event->getException() instanceof NoAccountsException) {
-        	$response = new RedirectResponse($this->router->generate('account_add'));
-        	$event->setResponse($response);
+            $response = new RedirectResponse($this->router->generate('account_add'));
+            $event->setResponse($response);
 
-        	$event->stopPropagation();
+            $event->stopPropagation();
         }
     }
 }

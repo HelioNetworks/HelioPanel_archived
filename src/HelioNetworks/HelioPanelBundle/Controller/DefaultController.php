@@ -43,6 +43,6 @@ class DefaultController extends HelioPanelAbstractController
      */
     public function exceptionAction()
     {
-    	throw new \LogicException();
+        throw new \LogicException();
     }
 }

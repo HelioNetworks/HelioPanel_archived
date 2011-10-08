@@ -20,7 +20,7 @@ class Request
 
     public function setRawData($data)
     {
-    	$this->data = $data;
+        $this->data = $data;
     }
 
     public function setMethod($method)
@@ -30,17 +30,17 @@ class Request
 
     public function getRawData()
     {
-    	return $this->data;
+        return $this->data;
     }
 
     public function getMethod()
     {
-    	return $this->method;
+        return $this->method;
     }
 
     public function getUrl()
     {
-    	return $this->url;
+        return $this->url;
     }
 
    /**
