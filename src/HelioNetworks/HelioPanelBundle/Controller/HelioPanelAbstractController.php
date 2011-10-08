@@ -143,4 +143,9 @@ abstract class HelioPanelAbstractController extends Controller
         $this->get('session')
             ->set('active_account_id', $account->getId());
     }
+
+    protected function getQueueProvider()
+    {
+    	return $this->get('xaav.jobqueue.provider');
+    }
 }

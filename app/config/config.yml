@@ -67,3 +67,10 @@ helio_networks_helio_panel:
     api:
       key: %api_key%
       url: %api_url%
+      
+xaav_queue: ~
+
+services:
+  xaav.jobqueue.provider:
+    class: Xaav\QueueBundle\JobQueue\Provider\DoctrineProvider
+    arguments: [ @doctrine.orm.entity_manager ]

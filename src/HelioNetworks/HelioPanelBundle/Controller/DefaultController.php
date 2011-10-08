@@ -2,6 +2,7 @@
 
 namespace HelioNetworks\HelioPanelBundle\Controller;
 
+use HelioNetworks\HelioPanelBundle\Job\TestJob;
 use HelioNetworks\HelioPanelBundle\Entity\User;
 use HelioNetworks\HelioPanelBundle\Form\Type\AccountType;
 use HelioNetworks\HelioPanelBundle\Entity\Account;
@@ -44,5 +45,17 @@ class DefaultController extends HelioPanelAbstractController
     public function exceptionAction()
     {
         throw new \LogicException();
+    }
+
+    /**
+     * @Route("/queue")
+     */
+    public function queueAction()
+    {
+    	$this->getQueueProvider()
+    		->getJobQueueByName('helio_networks_helio_panel')
+    		->addJobToQueue(new TestJob());
+
+    	$this->getDoctrine()->getEntityManager()->flush();
     }
 }
