@@ -5,9 +5,9 @@ $( '#dialog-box' ).dialog({
 	modal: true,
 	buttons: {
 		'Submit': function() {
+			$.blockUI();
+			$('#dialog-box').dialog('close');
 			$form = $('#dialog-box').find('form');
-			$form.hide();
-			$('<div />').html('Loading...').appendTo('#dialog-box');
 			$.post($form.attr('action'), $form.serialize(), function () {
 				location.reload();
 			});
@@ -16,9 +16,6 @@ $( '#dialog-box' ).dialog({
 			$( this ).dialog( 'close' );
 		}
 	},
-	close: function() {
-		allFields.val( '' ).removeClass( 'ui-state-error' );
-	}
 });
 
 $('.edit-file').each(function () {
@@ -35,13 +32,13 @@ $( '.modal-form' ).each(function () {
 	
 	var $this = $(this);
 	$this.click(function () {
-		$('#dialog-box').html('');
-		$('<div />').html('Loading...').appendTo('#dialog-box');
-		$('#dialog-box').dialog('open');
-		
+		$.blockUI();
+		$('#dialog-box').html('');		
 		$('#dialog-box').load($this.attr('form-src'), function () {
 			
 			$('#dialog-box').find('#current-file').val($this.attr('current-file'));
+			$('#dialog-box').dialog('open');
+			$.unblockUI();
 		});
 	});
 });

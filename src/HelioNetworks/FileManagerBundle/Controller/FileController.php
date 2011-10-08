@@ -31,7 +31,7 @@ class FileController extends HelioPanelAbstractController
             $form->bindRequest($request);
             if ($form->isValid()) {
                 $this->getHook()
-                    ->touch($fileRequest->getSource());
+                    ->save($fileRequest->getSource(), '');
             }
         }
 
@@ -77,7 +77,7 @@ class FileController extends HelioPanelAbstractController
             $form->bindRequest($request);
             if ($form->isValid()) {
                 $this->getHook()
-                    ->rm($fileRequest->getSource());
+                    ->remove($fileRequest->getSource());
             }
         }
 
