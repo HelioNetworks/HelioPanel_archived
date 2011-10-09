@@ -52,9 +52,9 @@ class DefaultController extends HelioPanelAbstractController
      */
     public function queueAction()
     {
-    	$this->getQueueProvider()
-    		->getJobQueueByName('helio_networks_helio_panel')
-    		->addJobToQueue(new TestJob());
+    	$this->getQueueAdapter()
+    		->get('helio_networks_helio_panel')
+    		->add(new TestJob());
 
     	$this->getDoctrine()->getEntityManager()->flush();
     }

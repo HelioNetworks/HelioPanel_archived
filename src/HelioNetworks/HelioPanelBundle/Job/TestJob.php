@@ -2,11 +2,11 @@
 
 namespace HelioNetworks\HelioPanelBundle\Job;
 
-use Xaav\QueueBundle\JobQueue\Job\JobInterface;
+use Xaav\QueueBundle\Queue\Job\JobInterface;
 
 class TestJob implements JobInterface
 {
-	public function pass() {
+	public function process() {
 
 		return true;
 	}

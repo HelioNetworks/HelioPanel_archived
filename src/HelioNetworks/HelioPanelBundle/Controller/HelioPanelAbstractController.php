@@ -144,8 +144,8 @@ abstract class HelioPanelAbstractController extends Controller
             ->set('active_account_id', $account->getId());
     }
 
-    protected function getQueueProvider()
+    protected function getQueueAdapter()
     {
-    	return $this->get('xaav.jobqueue.provider');
+    	return $this->get('xaav.queue.adapter');
     }
 }
