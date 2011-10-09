@@ -46,16 +46,4 @@ class DefaultController extends HelioPanelAbstractController
     {
         throw new \LogicException();
     }
-
-    /**
-     * @Route("/queue")
-     */
-    public function queueAction()
-    {
-    	$this->getQueueAdapter()
-    		->get('helio_networks_helio_panel')
-    		->add(new TestJob());
-
-    	$this->getDoctrine()->getEntityManager()->flush();
-    }
 }
