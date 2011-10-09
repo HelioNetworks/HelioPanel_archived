@@ -2,6 +2,7 @@
 
 namespace HelioNetworks\HelioPanelBundle\Controller;
 
+use Xaav\QueueBundle\Queue\QueueManager;
 use HelioNetworks\HelioPanelBundle\Exception\NoAccountsException;
 use HelioNetworks\HelioPanelBundle\HTTP\Request;
 use HelioNetworks\HelioPanelBundle\Entity\Hook;
@@ -144,8 +145,11 @@ abstract class HelioPanelAbstractController extends Controller
             ->set('active_account_id', $account->getId());
     }
 
-    protected function getQueueAdapter()
+    /**
+     * @return QueueManager
+     */
+    protected function getQueueManager()
     {
-    	return $this->get('xaav.queue.adapter');
+    	return $this->get('xaav.queue.manager');
     }
 }

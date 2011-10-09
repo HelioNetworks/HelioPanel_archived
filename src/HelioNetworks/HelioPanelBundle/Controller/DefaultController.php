@@ -2,7 +2,7 @@
 
 namespace HelioNetworks\HelioPanelBundle\Controller;
 
-use HelioNetworks\HelioPanelBundle\Job\TestJob;
+use HelioNetworks\HelioPanelBundle\Job\InstallHookJob;
 use HelioNetworks\HelioPanelBundle\Entity\User;
 use HelioNetworks\HelioPanelBundle\Form\Type\AccountType;
 use HelioNetworks\HelioPanelBundle\Entity\Account;
