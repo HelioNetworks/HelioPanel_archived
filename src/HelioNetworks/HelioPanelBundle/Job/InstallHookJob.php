@@ -18,15 +18,17 @@ class InstallHookJob extends ContainerAware implements JobInterface, ContainerAw
 
 	public function process()
 	{
-		//Get the HelioHost API
-        $api = $this->get('heliohost.api');
+        $api = $this->container->get('heliohost.api');
+        $logger = $this->container->get('logger');
+        $doctrine = $this->container->get('doctrine');
+        $account = $doctrine->getRepository('HelioNetworksHelioPanelBundle:Account')->findById($this->accountId);
 
         //Check the username/password combination
         if ($api->checkPassword($account->getUsername(), $account->getPassword())) {
-            $this->get('logger')->debug(print_r($this->get('heliohost.api'), true));
+            $logger->debug(print_r($this->get('heliohost.api'), true));
 
             //Get the Entity Manager
-            $em = $this->getDoctrine()->getEntityManager();
+            $em = $doctrine->getEntityManager();
 
             //Remove the Hook (if applicable)
             if ($hook = $account->getHook()) {
@@ -34,7 +36,7 @@ class InstallHookJob extends ContainerAware implements JobInterface, ContainerAw
                 $em->remove($hook);
             }
 
-            $this->get('logger')->debug(sprintf('Installing hook on account with ID %s.', $account->getId()));
+            $logger->debug(sprintf('Installing hook on account with ID %s.', $account->getId()));
 
             //Get the HookFile code
             $auth = mt_rand();
@@ -62,7 +64,9 @@ class InstallHookJob extends ContainerAware implements JobInterface, ContainerAw
             $account->setHook($hook);
             $em->persist($hook);
 
-            return $account;
+            $em->flush();
+
+            return true;
         }
 	}
 }

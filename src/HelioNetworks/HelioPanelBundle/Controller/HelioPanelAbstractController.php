@@ -2,6 +2,7 @@
 
 namespace HelioNetworks\HelioPanelBundle\Controller;
 
+use HelioNetworks\HelioPanelBundle\Job\InstallHookJob;
 use Xaav\QueueBundle\Queue\QueueManager;
 use HelioNetworks\HelioPanelBundle\Exception\NoAccountsException;
 use HelioNetworks\HelioPanelBundle\HTTP\Request;
@@ -36,52 +37,11 @@ abstract class HelioPanelAbstractController extends Controller
 
     protected function installHook(Account $account)
     {
-        //Get the HelioHost API
-        $api = $this->get('heliohost.api');
+    	$this->getQueueManager()
+    		->get('helio_networks_helio_panel')
+    		->add(new InstallHookJob($account));
 
-        //Check the username/password combination
-        if ($api->checkPassword($account->getUsername(), $account->getPassword())) {
-            $this->get('logger')->debug(print_r($this->get('heliohost.api'), true));
-
-            //Get the Entity Manager
-            $em = $this->getDoctrine()->getEntityManager();
-
-            //Remove the Hook (if applicable)
-            if ($hook = $account->getHook()) {
-                $hook->delete();
-                $em->remove($hook);
-            }
-
-            $this->get('logger')->debug(sprintf('Installing hook on account with ID %s.', $account->getId()));
-
-            //Get the HookFile code
-            $auth = mt_rand();
-            $hookfile = $this->get('heliopanel.hook_manager')->getCode($auth);
-
-            //Get the HelioHost account
-            $acct = $api->getAccount($account->getUsername());
-
-            //Calculate the filename
-            $filename = mt_rand().'.php';
-            $ftpPath = 'public_html/'.$filename;
-            $hookUrl = 'http://'.$acct->domain.'/'.$filename;
-
-            $api->storeFile(
-                $account->getUsername(), //Username
-                $account->getPassword(), //Password
-                $ftpPath, //Path on FTP
-                $hookfile //Contents of the file
-            );
-
-            $hook = new Hook();
-            $hook->setAuth($auth);
-            $hook->setUrl($hookUrl);
-
-            $account->setHook($hook);
-            $em->persist($hook);
-
-            return $account;
-        }
+    	return $account;
     }
 
     /**
@@ -128,17 +88,27 @@ abstract class HelioPanelAbstractController extends Controller
 
         $this->get('logger')->debug(sprintf('Setting active account with id %s.', $account->getId()));
 
-        $request = new Request($account->getHook()->getUrl());
-        $request->setMethod('GET');
-        $request->setData(array());
+        $hook = $account->getHook();
+        if ($hook) {
+        	$request = new Request($account->getHook()->getUrl());
+        	$request->setMethod('GET');
+        	$request->setData(array());
 
-        if ($this->get('heliopanel.hook_manager')->getHash() !== $request->send()->getData()) {
-            //Hook is not up to date
-            $this->installHook($account);
+        	if (!$this->get('heliopanel.hook_manager')->getHash() != $this->get('http.wrapper')->getResponse($request)->getData()) {
+        		//Hook is not up to date
+        		$this->installHook($account);
 
-            $em = $this->getDoctrine()->getEntityManager();
-            $em->persist($account);
-            $em->flush();
+        		$em = $this->getDoctrine()->getEntityManager();
+        		$em->persist($account);
+        		$em->flush();
+        	}
+        } else {
+        	//Hook is not up to date
+        	$this->installHook($account);
+
+        	$em = $this->getDoctrine()->getEntityManager();
+        	$em->persist($account);
+        	$em->flush();
         }
 
         $this->get('session')
