@@ -27,6 +27,13 @@ fos_user_resetting:
 fos_user_change_password:
     resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
     prefix: /change-password
+    
+_white_october_admin:
+    resource: .
+    type: white_october_admin
+
+white_october_admin:
+    resource: "@WhiteOctoberAdminBundle/Resources/config/routing/admin.xml"
 
 # Internal routing configuration to handle ESI
 #_internal:

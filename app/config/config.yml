@@ -72,3 +72,10 @@ xaav_queue:
     adapter:
       class: Xaav\QueueBundle\Queue\Adapter\DoctrineAdapter
       options: ~
+
+white_october_admin:
+    data_managers:
+        doctrine:
+            orm:    true
+    admins:
+      

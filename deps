@@ -68,3 +68,15 @@
 [XaavQueueBundle]
     git=git://github.com/xaav/XaavQueueBundle.git
     target=bundles/Xaav/QueueBundle
+
+[WhiteOctoberAdminBundle]
+    git=git://github.com/whiteoctober/WhiteOctoberAdminBundle.git
+    target=bundles/WhiteOctober/AdminBundle
+    
+[Pagerfanta]
+    git=git://github.com/whiteoctober/Pagerfanta.git
+    target=pagerfanta
+    
+[WhiteOctoberPagerfantaBundle]
+    git=git://github.com/whiteoctober/WhiteOctoberPagerfantaBundle.git
+    target=bundles/WhiteOctober/PagerfantaBundle

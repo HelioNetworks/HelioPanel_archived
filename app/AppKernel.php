@@ -22,6 +22,8 @@ class AppKernel extends Kernel
             new HelioNetworks\HelioPanelBundle\HelioNetworksHelioPanelBundle(),
             new HelioNetworks\FileManagerBundle\HelioNetworksFileManagerBundle(),
             new HelioNetworks\SQLBuddyBundle\HelioNetworksSQLBuddyBundle(),
+        	new WhiteOctober\PagerfantaBundle\WhiteOctoberPagerfantaBundle(),
+        	new WhiteOctober\AdminBundle\WhiteOctoberAdminBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
