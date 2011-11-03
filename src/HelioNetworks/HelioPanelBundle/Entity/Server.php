@@ -2,6 +2,7 @@
 
 namespace HelioNetworks\HelioPanelBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use HelioNetworks\HelioPanelBundle\HelioHost\Server as BaseServer;
 
@@ -35,6 +36,26 @@ class Server extends BaseServer
      * @ORM\Column(name="auth", type="string", length=255)
      */
     protected $auth;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Account", mappedBy="server")
+     */
+    protected $accounts;
+
+    public function __construct()
+    {
+    	$this->accounts = new ArrayCollection();
+    }
+
+    public function getAccounts()
+    {
+    	return $this->accounts;
+    }
+
+    public function addAccounts(Account $account)
+    {
+    	$this->accounts[] = $account;
+    }
 
 
     /**
@@ -85,5 +106,10 @@ class Server extends BaseServer
     public function getAuth()
     {
         return $this->auth;
+    }
+
+    public function __toString()
+    {
+    	return $this->url;
     }
 }

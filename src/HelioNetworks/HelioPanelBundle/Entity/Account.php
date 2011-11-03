@@ -37,6 +37,11 @@ class Account
      */
     protected $hook;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Server", inversedBy="accounts")
+     */
+    protected $server;
+
     public function __toString()
     {
         return $this->getUsername();
@@ -130,5 +135,15 @@ class Account
     public function getHook()
     {
         return $this->hook;
+    }
+
+    public function setServer(\HelioNetworks\HelioPanelBundle\Entity\Server $server)
+    {
+    	$this->server = $server;
+    }
+
+    public function getServer()
+    {
+    	return $this->server;
     }
 }

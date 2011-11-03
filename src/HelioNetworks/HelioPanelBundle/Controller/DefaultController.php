@@ -11,6 +11,7 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Response;
+use HelioNetworks\HelioPanelBundle\Exception\NoAccountsException;
 
 class DefaultController extends HelioPanelAbstractController
 {
@@ -20,6 +21,13 @@ class DefaultController extends HelioPanelAbstractController
      */
     public function indexAction()
     {
+    	try {
+    		$this->getActiveAccount();
+    	} catch (NoAccountsException $ex) {
+
+    		return new RedirectResponse($this->generateUrl('account'));
+    	}
+
         return array('dashboard' => $this->get('heliopanel.dashboard'));
     }
 

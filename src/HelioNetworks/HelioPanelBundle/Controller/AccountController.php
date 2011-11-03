@@ -130,7 +130,10 @@ class AccountController extends HelioPanelAbstractController
     public function addAction()
     {
         $account = new Account();
-        $form = $this->createForm(new AccountType(), $account);
+        $servers = $this->getDoctrine()
+        	->getRepository('HelioNetworksHelioPanelBundle:Server')
+        	->findAll();
+        $form = $this->createForm(new AccountType(), $account, array('servers' => $servers));
 
         $request = $this->getRequest();
         if ($request->getMethod() == 'POST') {
