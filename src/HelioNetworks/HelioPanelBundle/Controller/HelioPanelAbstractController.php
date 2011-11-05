@@ -35,13 +35,11 @@ abstract class HelioPanelAbstractController extends Controller
         return $hook;
     }
 
-    protected function installHook(Account $account)
+    protected function getServer()
     {
-    	$this->getQueueManager()
-    		->get('helio_networks_helio_panel')
-    		->add(new InstallHookJob($account));
-
-    	return $account;
+    	if ($account = $this->getActiveAccount()) {
+    		return $account->getServer();
+    	}
     }
 
     /**
@@ -87,29 +85,6 @@ abstract class HelioPanelAbstractController extends Controller
         }
 
         $this->get('logger')->debug(sprintf('Setting active account with id %s.', $account->getId()));
-
-        $hook = $account->getHook();
-        if ($hook) {
-        	$request = new Request($account->getHook()->getUrl());
-        	$request->setMethod('GET');
-        	$request->setData(array());
-
-        	if (!$this->get('heliopanel.hook_manager')->getHash() != $this->get('http.wrapper')->getResponse($request)->getData()) {
-        		//Hook is not up to date
-        		$this->installHook($account);
-
-        		$em = $this->getDoctrine()->getEntityManager();
-        		$em->persist($account);
-        		$em->flush();
-        	}
-        } else {
-        	//Hook is not up to date
-        	$this->installHook($account);
-
-        	$em = $this->getDoctrine()->getEntityManager();
-        	$em->persist($account);
-        	$em->flush();
-        }
 
         $this->get('session')
             ->set('active_account_id', $account->getId());

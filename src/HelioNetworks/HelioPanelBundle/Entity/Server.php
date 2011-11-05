@@ -38,6 +38,13 @@ class Server extends BaseServer
     protected $auth;
 
     /**
+     * @var string $name
+     *
+     * @ORM\Column(name="name", type="string", length=255)
+     */
+    protected $name;
+
+    /**
      * @ORM\OneToMany(targetEntity="Account", mappedBy="server")
      */
     protected $accounts;
@@ -55,6 +62,16 @@ class Server extends BaseServer
     public function addAccounts(Account $account)
     {
     	$this->accounts[] = $account;
+    }
+
+    public function getName()
+    {
+    	return $this->name;
+    }
+
+    public function setName($name)
+    {
+    	$this->name = $name;
     }
 
 
@@ -110,6 +127,6 @@ class Server extends BaseServer
 
     public function __toString()
     {
-    	return $this->url;
+    	return $this->name;
     }
 }
