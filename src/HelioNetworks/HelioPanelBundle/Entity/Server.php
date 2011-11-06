@@ -51,27 +51,27 @@ class Server extends BaseServer
 
     public function __construct()
     {
-    	$this->accounts = new ArrayCollection();
+        $this->accounts = new ArrayCollection();
     }
 
     public function getAccounts()
     {
-    	return $this->accounts;
+        return $this->accounts;
     }
 
     public function addAccounts(Account $account)
     {
-    	$this->accounts[] = $account;
+        $this->accounts[] = $account;
     }
 
     public function getName()
     {
-    	return $this->name;
+        return $this->name;
     }
 
     public function setName($name)
     {
-    	$this->name = $name;
+        $this->name = $name;
     }
 
 
@@ -127,6 +127,6 @@ class Server extends BaseServer
 
     public function __toString()
     {
-    	return $this->name;
+        return $this->name;
     }
 }

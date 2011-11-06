@@ -27,13 +27,19 @@ fos_user_resetting:
 fos_user_change_password:
     resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
     prefix: /change-password
-    
-_white_october_admin:
-    resource: .
-    type: white_october_admin
 
-white_october_admin:
-    resource: "@WhiteOctoberAdminBundle/Resources/config/routing/admin.xml"
+fos_user_register:
+    resource: "@FOSUserBundle/Resources/config/routing/registration.xml"
+    prefix: /register
+
+admin:
+    resource: '@SonataAdminBundle/Resources/config/routing/sonata_admin.xml'
+    prefix: /admin
+
+_sonata_admin:
+    resource: .
+    type: sonata_admin
+    prefix: /admin
 
 # Internal routing configuration to handle ESI
 #_internal:

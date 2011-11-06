@@ -23,51 +23,51 @@ use HelioNetworks\HelioPanelBundle\Entity\Account;
  */
 class AccountController extends HelioPanelAbstractController
 {
-	/**
-	* Lists all Account entities.
-	*
-	* @Route("/", name="account")
-	* @Template()
-	*/
-	public function indexAction()
-	{
-		$em = $this->getDoctrine()->getEntityManager();
+    /**
+    * Lists all Account entities.
+    *
+    * @Route("/", name="account")
+    * @Template()
+    */
+    public function indexAction()
+    {
+        $em = $this->getDoctrine()->getEntityManager();
 
-		$entities = $this->getUser()->getAccounts();
+        $entities = $this->getUser()->getAccounts();
 
-		return array('entities' => $entities);
-	}
+        return array('entities' => $entities);
+    }
 
-	/**
-	* Deletes a Account entity.
-	*
-	* @Route("/{id}/delete", name="account_delete")
-	*/
-	public function deleteAction($id)
-	{
-		$em = $this->getDoctrine()->getEntityManager();
-		$entity = $em->getRepository('HelioNetworksHelioPanelBundle:Account')->find($id);
+    /**
+    * Deletes a Account entity.
+    *
+    * @Route("/{id}/delete", name="account_delete")
+    */
+    public function deleteAction($id)
+    {
+        $em = $this->getDoctrine()->getEntityManager();
+        $entity = $em->getRepository('HelioNetworksHelioPanelBundle:Account')->find($id);
 
-		if (!$entity) {
-			throw $this->createNotFoundException('Unable to find Account entity.');
-		}
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find Account entity.');
+        }
 
-		if (!$this->getUser()->getAccounts()->contains($entity)) {
-			throw new AccessDeniedHttpException();
-		}
+        if (!$this->getUser()->getAccounts()->contains($entity)) {
+            throw new AccessDeniedHttpException();
+        }
 
-		$em->remove($entity);
-		$em->flush();
+        $em->remove($entity);
+        $em->flush();
 
-		return $this->redirect($this->generateUrl('account'));
-	}
+        return $this->redirect($this->generateUrl('account'));
+    }
 
-	/**
-	 * Creates an FOS User with the given username and password.
-	 *
-	 * @param string $username The username of the user
-	 * @param string $password The password of the user
-	 */
+    /**
+     * Creates an FOS User with the given username and password.
+     *
+     * @param string $username The username of the user
+     * @param string $password The password of the user
+     */
     protected function createUser($username, $password)
     {
         $user = new User();
@@ -131,8 +131,8 @@ class AccountController extends HelioPanelAbstractController
     {
         $account = new Account();
         $servers = $this->getDoctrine()
-        	->getRepository('HelioNetworksHelioPanelBundle:Server')
-        	->findAll();
+            ->getRepository('HelioNetworksHelioPanelBundle:Server')
+            ->findAll();
         $form = $this->createForm(new AccountType(), $account, array('servers' => $servers));
 
         $request = $this->getRequest();

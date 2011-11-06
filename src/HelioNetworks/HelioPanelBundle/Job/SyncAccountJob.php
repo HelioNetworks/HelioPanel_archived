@@ -8,15 +8,15 @@ use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 
 class SyncAccountJob extends ContainerAware implements ContainerAwareInterface
 {
-	protected $account;
+    protected $account;
 
-	public function __construct(Account $account)
-	{
-		$this->account = $account;
-	}
+    public function __construct(Account $account)
+    {
+        $this->account = $account;
+    }
 
-	public function process()
-	{
-		//Sync the account with the database
-	}
+    public function process()
+    {
+        //Sync the account with the database
+    }
 }

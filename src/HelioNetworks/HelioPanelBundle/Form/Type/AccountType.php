@@ -12,7 +12,7 @@ class AccountType extends AbstractType
         $builder->add('username');
         $builder->add('password', 'password');
         $builder->add('server', 'entity', array(
-        	'class' => 'HelioNetworks\HelioPanelBundle\Entity\Account',
+            'class' => 'HelioNetworks\HelioPanelBundle\Entity\Account',
             'choices' => $options['servers'],
         ));
     }

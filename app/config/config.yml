@@ -67,15 +67,9 @@ helio_networks_helio_panel:
     api:
       key: %api_key%
       url: %api_url%
-      
-xaav_queue: 
+
+xaav_queue:
     adapter:
       class: Xaav\QueueBundle\Queue\Adapter\DoctrineAdapter
       options: ~
 
-white_october_admin:
-    data_managers:
-        doctrine:
-            orm:    true
-    admins:
-      

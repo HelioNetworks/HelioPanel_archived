@@ -21,12 +21,12 @@ class DefaultController extends HelioPanelAbstractController
      */
     public function indexAction()
     {
-    	try {
-    		$this->getActiveAccount();
-    	} catch (NoAccountsException $ex) {
+        try {
+            $this->getActiveAccount();
+        } catch (NoAccountsException $ex) {
 
-    		return new RedirectResponse($this->generateUrl('account'));
-    	}
+            return new RedirectResponse($this->generateUrl('account'));
+        }
 
         return array('dashboard' => $this->get('heliopanel.dashboard'));
     }

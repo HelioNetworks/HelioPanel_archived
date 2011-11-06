@@ -1,9 +1,13 @@
 {% extends '::heliopanel.html.twig' %}
 
 {% block container %}
+
+<h1>HelioHost Account Creation</h1>
+
+<strong>Notice:</strong> It may take up to twenty four hours for your account to get created.
     <form action="{{ path('account_add') }}" method="post" {{ form_enctype(form) }}>
         {{ form_widget(form) }}
 
-        <input type="submit" />
+        <input type="submit" value="Create Account" />
     </form>
 {% endblock %}

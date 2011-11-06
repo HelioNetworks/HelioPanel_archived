@@ -2,6 +2,8 @@
 
 namespace HelioNetworks\HelioPanelBundle\Controller;
 
+use HelioNetworks\HelioPanelBundle\Job\SyncAccountJob;
+
 use HelioNetworks\HelioPanelBundle\Job\InstallHookJob;
 use Xaav\QueueBundle\Queue\QueueManager;
 use HelioNetworks\HelioPanelBundle\Exception\NoAccountsException;
@@ -37,9 +39,12 @@ abstract class HelioPanelAbstractController extends Controller
 
     protected function getServer()
     {
-    	if ($account = $this->getActiveAccount()) {
-    		return $account->getServer();
-    	}
+        if ($account = $this->getActiveAccount()) {
+            $server = $account->getServer();
+            $server->setWrapper($this->get('http.wrapper'));
+
+            return $server;
+        }
     }
 
     /**
@@ -90,11 +95,20 @@ abstract class HelioPanelAbstractController extends Controller
             ->set('active_account_id', $account->getId());
     }
 
+    protected function syncAccount(Account $account)
+    {
+        $queue = $this->getQueueManager()
+            ->get('helio_networks_helio_panel');
+
+        $job = new SyncAccountJob($account);
+        $queue->add($job);
+    }
+
     /**
      * @return QueueManager
      */
     protected function getQueueManager()
     {
-    	return $this->get('xaav.queue.manager');
+        return $this->get('xaav.queue.manager');
     }
 }

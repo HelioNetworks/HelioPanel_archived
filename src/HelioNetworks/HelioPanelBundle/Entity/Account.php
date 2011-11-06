@@ -139,11 +139,11 @@ class Account
 
     public function setServer(\HelioNetworks\HelioPanelBundle\Entity\Server $server)
     {
-    	$this->server = $server;
+        $this->server = $server;
     }
 
     public function getServer()
     {
-    	return $this->server;
+        return $this->server;
     }
 }

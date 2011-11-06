@@ -1,38 +1,40 @@
 {% extends '::heliopanel.html.twig' %}
 
 {% block container %}
-	<h1>Account list</h1>
+    <h1>Account list</h1>
 
-	<table class="records_list">
-	    <thead>
-	        <tr>
-	            <th>Id</th>
-	            <th>Username</th>
-	            <th>Password</th>
-	            <th>Actions</th>
-	        </tr>
-	    </thead>
-	    <tbody>
-	    {% for entity in entities %}
-	        <tr>
-	            <td>{{ entity.username }}</td>
-	            <td>
-	                <ul>
-	                    <li>
-	                        <a href="{{ path('account_delete', { 'id': entity.id }) }}">delete</a>
-	                    </li>
-	                </ul>
-	            </td>
-	        </tr>
-	    {% endfor %}
-	    </tbody>
-	</table>
+    <strong>Notice:</strong>You may have up to one account on each server.
 
-	<ul>
-	    <li>
-	        <a href="{{ path('account_add') }}">
-	            Add an acccount.
-	        </a>
-	    </li>
-	</ul>
+    <table class="records_list">
+        <thead>
+            <tr>
+                <th>Username</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td>{{ entity.username }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('account_delete', { 'id': entity.id }) }}">delete</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% else %}
+            <tr><td colspan="2">You have no accounts</td></tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('account_add') }}">
+                Add an acccount.
+            </a>
+        </li>
+    </ul>
 {% endblock %}
