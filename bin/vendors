@@ -23,7 +23,7 @@ if (!is_dir($vendorDir)) {
 }
 
 // php on windows can't use the shebang line from system()
-$interpreter = PHP_OS == 'WINNT' ? 'php.exe' : '';
+$interpreter = PHP_OS == 'WINNT' ? 'php.exe' : 'php';
 
 //Install Composer dependencies
 system(sprintf('%s %s update', $interpreter, escapeshellarg($rootDir.'/composer.phar')));
