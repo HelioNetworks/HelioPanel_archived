@@ -5,6 +5,9 @@ services, which allows them to easily take full control of their website without
 problems. The aim of HelioPanel is to resolve any common issues that user's face every 
 day, and to make website management much easier.
 
+[![Build Status](https://secure.travis-ci.org/HelioNetworks/HelioPanel.png?branch=master)](http://travis-ci.org/HelioNetworks/HelioPanel)
+
+
 ## Contribute ##
 
 Any contributions to the project are welcome, including:
