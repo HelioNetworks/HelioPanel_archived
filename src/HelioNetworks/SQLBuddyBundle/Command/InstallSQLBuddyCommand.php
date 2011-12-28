@@ -24,7 +24,7 @@ class InstallSQLBuddyCommand extends ContainerAwareCommand
 
         $filesystem = $this->getContainer()->get('filesystem');
         $installDir = $input->getArgument('target').'/sqlbuddy';
-        $sourceDir = dirname($this->getContainer()->get('kernel')->getRootDir()).'/vendor/sqlbuddy';
+        $sourceDir = dirname($this->getContainer()->get('kernel')->getRootDir()).'/vendor/helio-networks/sqlbuddy';
 
         try {
             $filesystem->mirror($sourceDir, $installDir);

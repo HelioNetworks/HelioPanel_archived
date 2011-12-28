@@ -1,44 +1,6 @@
-[symfony]
-    git=git://github.com/symfony/symfony.git
-    version=v2.0.0
-
-[twig]
-    git=git://github.com/fabpot/Twig.git
-    version=v1.1.1
-
-[monolog]
-    git=git://github.com/Seldaek/monolog.git
-    version=1.0.0
-
-[doctrine-common]
-    git=git://github.com/doctrine/common.git
-    version=2.1.0
-
-[doctrine-dbal]
-    git=git://github.com/doctrine/dbal.git
-    version=2.1.0
-
-[doctrine]
-    git=git://github.com/doctrine/doctrine2.git
-    version=2.1.0
-
-[swiftmailer]
-    git=git://github.com/swiftmailer/swiftmailer.git
-    version=v4.1.0
-
-[assetic]
-    git=git://github.com/kriswallsmith/assetic.git
-    version=v1.0.1
-
-[twig-extensions]
-    git=git://github.com/fabpot/Twig-extensions.git
-
 [metadata]
     git=git://github.com/schmittjoh/metadata.git
     version=1.0.0
-
-[sqlbuddy]
-    git=git://github.com/HelioNetworks/sqlbuddy.git
 
 [SensioFrameworkExtraBundle]
     git=git://github.com/sensio/SensioFrameworkExtraBundle.git
@@ -55,11 +17,6 @@
 [SensioGeneratorBundle]
     git=git://github.com/sensio/SensioGeneratorBundle.git
     target=bundles/Sensio/Bundle/GeneratorBundle
-
-[AsseticBundle]
-    git=git://github.com/symfony/AsseticBundle.git
-    target=bundles/Symfony/Bundle/AsseticBundle
-    version=v1.0.0RC2
 
 [FOSUserBundle]
     git=git://github.com/FriendsOfSymfony/FOSUserBundle.git

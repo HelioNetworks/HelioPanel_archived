@@ -122,6 +122,9 @@ if ('update' === $command) {
 // php on windows can't use the shebang line from system()
 $interpreter = PHP_OS == 'WINNT' ? 'php.exe' : '';
 
+//Install Composer dependencies
+system(sprintf('%s %s update %s', $interpreter, escapeshellarg($rootDir.'/composer.phar')));
+
 // Update the bootstrap files
 system(sprintf('%s %s', $interpreter, escapeshellarg($rootDir.'/vendor/bundles/Sensio/Bundle/DistributionBundle/Resources/bin/build_bootstrap.php')));
 
