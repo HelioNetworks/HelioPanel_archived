@@ -21,17 +21,6 @@ twig:
     debug:            %kernel.debug%
     strict_variables: %kernel.debug%
 
-# Assetic Configuration
-assetic:
-    debug:          %kernel.debug%
-    use_controller: false
-    filters:
-        cssrewrite: ~
-        # closure:
-        #     jar: %kernel.root_dir%/java/compiler.jar
-        # yui_css:
-        #     jar: %kernel.root_dir%/java/yuicompressor-2.4.2.jar
-
 # Doctrine Configuration
 doctrine:
     dbal:
@@ -67,9 +56,4 @@ helio_networks_helio_panel:
     api:
       key: %api_key%
       url: %api_url%
-
-xaav_queue:
-    adapter:
-      class: Xaav\QueueBundle\Queue\Adapter\DoctrineAdapter
-      options: ~
 
