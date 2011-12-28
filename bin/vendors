@@ -29,7 +29,7 @@ $interpreter = PHP_OS == 'WINNT' ? 'php.exe' : 'php';
 system(sprintf('%s %s update', $interpreter, escapeshellarg($rootDir.'/composer.phar')));
 
 // Update the bootstrap files
-system(sprintf('%s %s %s', $interpreter, escapeshellarg($rootDir.'/vendor/sensio/distribution-bundle/Sensio/Bundle/DistributionBundle/Resources/bin/build_bootstrap.php'), escapeshellarg($rootDir)));
+system(sprintf('%s %s', $interpreter, escapeshellarg($rootDir.'/bin/build_bootstrap')));
 
 // Update assets
 system(sprintf('%s %s assets:install %s', $interpreter, escapeshellarg($rootDir.'/app/console'), escapeshellarg($rootDir.'/web/')));

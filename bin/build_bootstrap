@@ -12,7 +12,7 @@
 
 $baseDir = dirname(__DIR__);
 
-require_once $baseDir.'/vendor/symfony/src/Symfony/Component/ClassLoader/UniversalClassLoader.php';
+require_once $baseDir.'/vendor/symfony/symfony/src/Symfony/Component/ClassLoader/UniversalClassLoader.php';
 
 /*
  * This file is part of the Symfony package.

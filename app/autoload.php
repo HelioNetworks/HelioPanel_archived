@@ -10,9 +10,7 @@ $loader->registerNamespaces(array(
     'Doctrine\\DBAL'   => __DIR__.'/../vendor/doctrine/dbal/lib',
     'Doctrine'         => __DIR__.'/../vendor/doctrine/orm/lib',
     'Monolog'          => __DIR__.'/../vendor/monolog/monolog/src',
-    'Assetic'          => __DIR__.'/../vendor/assetic/src',
-    'Metadata'         => __DIR__.'/../vendor/metadata/src',
-    'Sonata'           => __DIR__.'/../vendor/bundles',
+    'Metadata'         => __DIR__.'/../vendor/metadata/metadata/src',
     'Knp'              => array(__DIR__.'/../vendor/bundles',__DIR__.'/../vendor/knp/menu/src'),
 ));
 $loader->registerPrefixes(array(
@@ -22,9 +20,9 @@ $loader->registerPrefixes(array(
 
 // intl
 if (!function_exists('intl_get_error_code')) {
-    require_once __DIR__.'/../vendor/symfony/src/Symfony/Component/Locale/Resources/stubs/functions.php';
+    require_once __DIR__.'/../vendor/symfony/symfony/src/Symfony/Component/Locale/Resources/stubs/functions.php';
 
-    $loader->registerPrefixFallbacks(array(__DIR__.'/../vendor/symfony/src/Symfony/Component/Locale/Resources/stubs'));
+    $loader->registerPrefixFallbacks(array(__DIR__.'/../vendor/symfony/symfony/src/Symfony/Component/Locale/Resources/stubs'));
 }
 
 $loader->registerNamespaceFallbacks(array(
