@@ -2,3 +2,6 @@ language: php
 phps:
   - 5.3
   - 5.4
+
+before_script: php bin/vendors install
+script: phpunit -c app/
