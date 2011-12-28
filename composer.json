@@ -3,7 +3,7 @@
     "version": "0.8",
     "require": {
         "monolog/monolog": "1.0.0",
-        "symfony/symfony": "2.0.4",
+        "symfony/symfony": "2.0.8",
         "twig/twig": "1.3.0",
         "twig/extensions": "master-dev",
         "doctrine/orm": "2.1.3",

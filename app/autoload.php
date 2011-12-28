@@ -3,12 +3,11 @@
 use Symfony\Component\ClassLoader\UniversalClassLoader;
 use Doctrine\Common\Annotations\AnnotationRegistry;
 
+//Require the composer autoloader
+require_once __DIR__.'/../vendor/.composer/autoload.php';
+
 $loader = new UniversalClassLoader();
 $loader->registerNamespaces(array(
-    'Symfony'          => array(__DIR__.'/../vendor/symfony/symfony/src', __DIR__.'/../vendor/bundles'),
-    'Doctrine\\Common' => __DIR__.'/../vendor/doctrine/common/lib',
-    'Doctrine\\DBAL'   => __DIR__.'/../vendor/doctrine/dbal/lib',
-    'Doctrine'         => __DIR__.'/../vendor/doctrine/orm/lib',
     'Monolog'          => __DIR__.'/../vendor/monolog/monolog/src',
     'Metadata'         => __DIR__.'/../vendor/metadata/metadata/src',
     'Knp'              => array(__DIR__.'/../vendor/bundles',__DIR__.'/../vendor/knp/menu/src'),
@@ -42,6 +41,3 @@ AnnotationRegistry::registerFile(__DIR__.'/../vendor/doctrine/orm/lib/Doctrine/O
 // the lazy loading of the init file (which is expensive)
 require_once __DIR__.'/../vendor/swiftmailer/swiftmailer/lib/classes/Swift.php';
 Swift::registerAutoload(__DIR__.'/../vendor/swiftmailer/swiftmailer/lib/swift_init.php');
-
-//Require the composer autoloader
-require_once __DIR__.'/../vendor/.composer/autoload.php';
