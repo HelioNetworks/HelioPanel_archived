@@ -5,10 +5,10 @@
 
 ; Fill in the details to connect to the database below
     database_driver   = pdo_mysql
-    database_host     = localhost
+    database_host     = 0.0.0.0
     database_port     =
     database_name     = symfony
-    database_user     = root
+    database_user     = 
     database_password =
 
 ; Fill in the mail server details
