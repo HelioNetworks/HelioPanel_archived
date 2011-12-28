@@ -1,6 +1,19 @@
 {
     "name": "heliopanel",
     "version": "0.8",
+    "repositories": {
+        "sonata": {
+            "jquery-bundle": {
+                "name": "sonata/jquery-bundle",
+                "version": "master-dev",
+                "source": {
+                    "url": "https://github.com/sonata-project/SonatajQueryBundle.git",
+                    "type": "vcs",
+                    "reference": "head"
+                }
+            }
+        }
+    },
     "require": {
         "monolog/monolog": "1.0.0",
         "symfony/symfony": "2.0.8",
@@ -16,6 +29,7 @@
         "sensio/distribution-bundle": "1.0-dev",
         "sensio/generator-bundle": "master-dev",
         "friendsofsymfony/user-bundle": "1.1.0",
-        "sonata/admin-bundle": "master-dev"
+        "sonata/admin-bundle": "master-dev",
+        "sonata/jquery-bundle": "master-dev"
     }
 }
