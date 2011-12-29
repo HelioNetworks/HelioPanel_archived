@@ -26,7 +26,7 @@ if (!is_dir($vendorDir)) {
 $interpreter = PHP_OS == 'WINNT' ? 'php.exe' : 'php';
 
 //Install Composer dependencies
-system(sprintf('%s %s update', $interpreter, escapeshellarg($rootDir.'/composer.phar')));
+system(sprintf('%s %s install', $interpreter, escapeshellarg($rootDir.'/composer.phar')));
 
 // Update the bootstrap files
 system(sprintf('%s %s', $interpreter, escapeshellarg($rootDir.'/bin/build_bootstrap')));
