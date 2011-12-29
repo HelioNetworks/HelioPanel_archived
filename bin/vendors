@@ -45,5 +45,4 @@ system(sprintf('%s %s cache:clear --no-warmup', $interpreter, escapeshellarg($ro
 system(sprintf('%s %s sqlbuddy:install web', $interpreter, escapeshellarg($rootDir.'/app/console')));
 
 // Update the DB
-system(sprintf('%s %s doctrine:database:create', $interpreter, escapeshellarg($rootDir.'/app/console')));
 system(sprintf('%s %s doctrine:schema:update --force', $interpreter, escapeshellarg($rootDir.'/app/console')));
