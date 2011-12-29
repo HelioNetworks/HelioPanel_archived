@@ -24,13 +24,15 @@ if (!is_dir($vendorDir)) {
 
 echo "Downloading composer...\n";
 copy('http://getcomposer.org/composer.phar', $rootDir.'/composer.phar');
-echo "Done.\n";
+echo "Done\n";
 
 // php on windows can't use the shebang line from system()
 $interpreter = PHP_OS == 'WINNT' ? 'php.exe' : 'php';
 
 //Install Composer dependencies
+echo "Installing dependencies...\n";
 system(sprintf('%s %s install', $interpreter, escapeshellarg($rootDir.'/composer.phar')));
+echo "Done\n";
 
 // Update the bootstrap files
 system(sprintf('%s %s', $interpreter, escapeshellarg($rootDir.'/bin/build_bootstrap')));
