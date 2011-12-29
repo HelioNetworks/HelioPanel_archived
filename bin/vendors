@@ -22,8 +22,9 @@ if (!is_dir($vendorDir)) {
     mkdir($vendorDir, 0777, true);
 }
 
-echo "Downloading composer...";
+echo "Downloading composer...\n";
 copy('http://getcomposer.org/composer.phar', $rootDir.'/composer.phar');
+echo "Done.\n";
 
 // php on windows can't use the shebang line from system()
 $interpreter = PHP_OS == 'WINNT' ? 'php.exe' : 'php';

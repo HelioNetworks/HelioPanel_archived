@@ -10,11 +10,8 @@ $loader = new UniversalClassLoader();
 $loader->registerNamespaces(array(
     'Monolog'          => __DIR__.'/../vendor/monolog/monolog/src',
     'Metadata'         => __DIR__.'/../vendor/metadata/metadata/src',
-    'Knp'              => array(__DIR__.'/../vendor/bundles',__DIR__.'/../vendor/knp/menu/src'),
 ));
 $loader->registerPrefixes(array(
-    'Twig_Extensions_' => __DIR__.'/../vendor/twig/extensions/lib',
-    'Twig_'            => __DIR__.'/../vendor/twig/twig/lib',
 ));
 
 // intl
