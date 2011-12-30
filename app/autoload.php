@@ -7,12 +7,6 @@ use Doctrine\Common\Annotations\AnnotationRegistry;
 require_once __DIR__.'/../vendor/.composer/autoload.php';
 
 $loader = new UniversalClassLoader();
-$loader->registerNamespaces(array(
-    'Monolog'          => __DIR__.'/../vendor/monolog/monolog/src',
-    'Metadata'         => __DIR__.'/../vendor/metadata/metadata/src',
-));
-$loader->registerPrefixes(array(
-));
 
 // intl
 if (!function_exists('intl_get_error_code')) {
@@ -23,14 +17,11 @@ if (!function_exists('intl_get_error_code')) {
 
 $loader->registerNamespaceFallbacks(array(
     __DIR__.'/../src',
-    __DIR__.'/../vendor/bundles',
 ));
 $loader->register();
 
 AnnotationRegistry::registerLoader(function($class) use ($loader) {
-    $loader->loadClass($class);
-
-    return class_exists($class, false);
+    return class_exists($class);
 });
 AnnotationRegistry::registerFile(__DIR__.'/../vendor/doctrine/orm/lib/Doctrine/ORM/Mapping/Driver/DoctrineAnnotations.php');
 
