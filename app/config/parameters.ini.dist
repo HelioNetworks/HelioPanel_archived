@@ -5,10 +5,10 @@
 
 ; Fill in the details to connect to the database below
     database_driver   = pdo_mysql
-    database_host     = 0.0.0.0
-    database_port     =
+    database_host     = localhost
+    database_port     = 3306
     database_name     = myapp_test
-    database_user     = 
+    database_user     = travis
     database_password =
 
 ; Fill in the mail server details
