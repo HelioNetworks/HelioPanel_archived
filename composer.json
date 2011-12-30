@@ -2,17 +2,16 @@
     "name": "heliopanel",
     "version": "0.8",
     "require": {
-        "symfony/symfony": "2.0.*",
-        "twig/extensions": "master-dev",
+        "symfony/symfony": "2.0.7",
+        "twig/extensions": "*",
         "doctrine/orm": ">=2.1.0,<2.1.x-dev",
-        "helio-networks/sqlbuddy": "master-dev",
-        "knplabs/knp-menu-bundle": "master-dev",
-        "metadata/metadata": "master-dev",
+        "helio-networks/sqlbuddy": "*",
+        "sonata/admin-bundle": "*",
+        "metadata/metadata": "*",
         "sensio/framework-extra-bundle": "2.0-dev",
         "jms/security-extra-bundle": "master-dev",
         "sensio/distribution-bundle": "1.0-dev",
         "sensio/generator-bundle": "master-dev",
-        "friendsofsymfony/user-bundle": "1.1.0",
-        "sonata/admin-bundle": "master-dev"
+        "friendsofsymfony/user-bundle": "1.1.0"
     }
 }
