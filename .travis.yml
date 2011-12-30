@@ -7,3 +7,5 @@ before_script:
  - "mysql -e 'create database myapp_test;'" 
  - php bin/vendors install
 script: phpunit -c app/
+after_script:
+ - cat app/logs/dev.log
