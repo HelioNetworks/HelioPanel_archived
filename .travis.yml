@@ -4,6 +4,4 @@ phps:
   - 5.4
 
 before_script: "mysql -e 'create database myapp_test;' && php bin/vendors install"
-after_script: "cat app/logs/dev.log"
-
-script: "phpunit -c app/"
+script: "phpunit -c app/ && cat app/logs/dev.log"
