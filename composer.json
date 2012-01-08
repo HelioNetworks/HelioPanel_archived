@@ -12,6 +12,8 @@
         "jms/security-extra-bundle": "master-dev",
         "sensio/distribution-bundle": "1.0-dev",
         "sensio/generator-bundle": "master-dev",
-        "friendsofsymfony/user-bundle": "1.1.0"
+        "friendsofsymfony/user-bundle": "1.1.0",
+        "sonata/user-bundle": "*",
+        "sonata/doctrine-orm-admin-bundle": "*"
     }
 }
