@@ -1,3 +1,7 @@
+> ## Archived 
+> This repo has been archived and is no longer maintained.\
+> If you want to use, edit or improve this code, you are welcome to fork it ***but*** we may not acknowledge this and pull requests may be ignored.
+
 Please note that this is the development area for HelioPanel and usually does not resemble 
 the most stable release. For information on installing please visit the official website 
 mentioned above. HelioPanel is a control panel offered to the user's of HelioHost's 
